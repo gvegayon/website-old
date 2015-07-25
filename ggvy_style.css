@@ -1,0 +1,70 @@
+#wrap { 
+	width: 800px; 
+	margin: 0 auto; 
+}
+header {
+  color:#1e1e1e;
+  width:800px;
+  text-align:center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-shadow: 0 2px 1px #9c9c9c;
+  font-weight:normal;
+  font-size:20pt;
+}
+
+/* Some general settings */
+b {color:#1e1e1e;}
+strong {color:#1e1e1e;}
+
+nav {
+  line-height:30px;
+  background-color:gray;
+  height:50px;
+  width:800px;
+  color:white;
+  text-align:center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  border-radius: 50px;
+  box-shadow: 0 2px 1px #9c9c9c;
+  word-spacing: 30px;
+}
+p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+section {
+  width:800px;
+  float:center;
+  text-align: justify;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+footer {
+  background-color:black;
+  color:white;
+  clear:both;
+  text-align:center;
+}
+
+/* *****************************************************************************
+Links style for the nav
+***************************************************************************** */
+/* unvisited link */
+nav a:link {color: white;text-decoration: none}
+
+/* visited link */
+nav a:visited {color: white;text-decoration: none}
+
+/* Hover */
+nav a:hover {color: white; text-shadow: 0 2px 1px black;text-decoration: none}
+
+/* selected link */
+nav a:active {color: black;text-decoration: none}
+
+/* Header style */
+h2 {color:#1e1e1e; font-weight:lighter;}
+h3 {color:#1e1e1e; font-weight:lighter;}
+h4 {color:#1e1e1e; font-weight:lighter;}
+.center {
+    margin: auto;
+    width: 60%;/*
+    padding: 10px; */
+}
