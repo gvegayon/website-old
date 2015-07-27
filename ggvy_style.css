@@ -1,7 +1,7 @@
-#wrap { 
+/*#wrap { 
 	width: 800px; 
 	margin: 0 auto; 
-}
+}*/
 header {
   color:#1e1e1e;
   width:800px;
@@ -10,16 +10,29 @@ header {
   text-shadow: 0 2px 1px #9c9c9c;
   font-weight:normal;
   font-size:20pt;
+  padding: 2px;
+}
+
+footer {
+  background-color:white;
+  color:inherit;
+  width:800px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size:10pt;
+  padding: 2px;
+  text-align: center;
+  border-top-style:solid;
+  border-top-color:gray;
+  border-top-width:1px;
 }
 
 /* Some general settings */
 b {color:#1e1e1e;}
-strong {color:#1e1e1e;}
-
+strong {color:#787878} /*font-weight: normal; text-shadow:0 1px 1px gray;}*/
 nav {
   line-height:30px;
   background-color:gray;
-  height:50px;
+  height:30px;
   width:800px;
   color:white;
   text-align:center;
@@ -33,15 +46,20 @@ p {
 }
 section {
   width:800px;
-  float:center;
+  float:inherit;
   text-align: justify;
   font-family: "Comic Sans MS", cursive, sans-serif;
+  padding-bottom:10px;
+  padding-top:10px;
 }
-footer {
-  background-color:black;
-  color:white;
-  clear:both;
-  text-align:center;
+
+/* *****************************************************************************
+Links style for the nav
+***************************************************************************** */
+pre {
+  background-color:rgb(194, 209, 224);
+  padding: 10px;
+  border-radius: 30px;
 }
 
 /* *****************************************************************************
@@ -65,6 +83,6 @@ h3 {color:#1e1e1e; font-weight:lighter;}
 h4 {color:#1e1e1e; font-weight:lighter;}
 .center {
     margin: auto;
-    width: 60%;/*
-    padding: 10px; */
+    width: 60%;
+    padding:10px;
 }
