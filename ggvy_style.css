@@ -11,18 +11,21 @@ header {
   font-weight:normal;
   font-size:20pt;
   padding: 2px;
+  background-image:url("figures/red_pequena.png");
+  background-position:left;
+  background-repeat:no-repeat;
 }
 
 footer {
   background-color:white;
-  color:inherit;
+  color:rgb(150,150,150);
   width:800px;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size:10pt;
   padding: 2px;
   text-align: center;
   border-top-style:solid;
-  border-top-color:gray;
+  border-top-color:rgb(200,200,200);
   border-top-width:1px;
 }
 
