@@ -2,11 +2,15 @@
 	width: 800px; 
 	margin: 0 auto; 
 }*/
+:root {
+  --site-font: Arial, Helvetica, sans-serif;
+}
+
 header {
   color:#1e1e1e;
   width:800px;
   text-align:center;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: var(--site-font);
   text-shadow: 0 2px 1px #9c9c9c;
   font-weight:normal;
   font-size:20pt;
@@ -39,19 +43,19 @@ nav {
   width:800px;
   color:white;
   text-align:center;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: var(--site-font);
   border-radius: 50px;
   box-shadow: 0 2px 1px #9c9c9c;
   word-spacing: 30px;
 }
 p {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: var(--site-font)/*"Comic Sans MS", cursive, sans-serif*/;
 }
 section {
   width:800px;
   float:inherit;
   text-align: justify;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: var(--site-font);
   padding-bottom:10px;
   padding-top:10px;
 }
