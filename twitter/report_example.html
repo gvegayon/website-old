@@ -9,7 +9,6 @@
 <meta name="generator" content="pandoc" />
 
 <meta name="author" content="George G. Vega Yon" />
-
 <meta name="date" content="2015-07-15" />
 
 <title>Twitter Report</title>
@@ -62,6 +61,17 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </head>
 
 <body>
+  
+<!-- Google Tag Manager (Includes tracking code) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K7D5FB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K7D5FB');</script>
+<!-- End Google Tag Manager -->
+  
 
 <style type="text/css">
 .main-container {
@@ -165,6 +175,7 @@ sen &lt;- gsub('\\s+.+','',sen)
 tab &lt;- as.data.frame(table(tw_gender(sen)))
 colnames(tab) &lt;- c('Gender','count')
 tab %&gt;% ggvis(~Gender, ~count) %&gt;% layer_bars()</code></pre>
+
 <p><div id="plot_id455538278-container" class="ggvis-output-container">
 <div id="plot_id455538278" class="ggvis-output"></div>
 <div class="plot-gear-icon">
@@ -316,8 +327,6 @@ var plot_id455538278_spec = {
 ggvis.getPlot("plot_id455538278").parseSpec(plot_id455538278_spec);
 </script></p>
 </div>
-
-
 </div>
 
 <script>

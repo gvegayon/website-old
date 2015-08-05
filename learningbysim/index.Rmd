@@ -1,0 +1,54 @@
+---
+title: "Learning by Simulation"
+author: "George G. Vega Yon"
+date: "August 4, 2015"
+output: 
+  html_document:
+    css: ../ggvy_style.css
+    number_sections: yes
+---
+
+# Introduction
+
+This website (intended for personal learning) is designed to be a companion for working with statistics/econometrics and R. In particular, this document has 3 parts: Casella and Berger, Davidson and MacKinnon and Wooldridge.
+
+This is centered on applied methods using R.
+
+The whole idea is that it is easier to learn when you get to 
+
+# Casella and Berger
+
+## Probability Theory
+## Transformations and Expectations
+## Common Families of Distributions
+## Multiple Random Variables
+## Properties of Random Sample
+## Principles of Data Reduction
+## Point Estimation
+## Hypothesis Testing
+## Interval Estimation
+## Asymptotic Evaluations
+## Analysis of Variance and Regression
+## Regression Models
+
+
+# Davison and MacKinnon
+
+## Regression Models
+## The Geometry of Linear Regression
+## The Statistical Properties of Ordinary Least Squares
+## Hypothesis Testing in Linear Regression Models
+## Confidence Intervals
+## Generalized Least Squares and Related Topics
+## Instrumental Variables Estimation
+## The Generalized Method of Moments
+## Discrete and Limited Dependent Variables
+## Multivariate Models
+## Methods for Stationary Time-Series Data
+## Unit Roots and Cointegration
+## Testing the Especification of Econometric Models
+
+
+# Wooldridge
+
+## 
