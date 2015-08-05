@@ -35,12 +35,86 @@ The whole idea is that it is easier to learn when you get to
 # Davison and MacKinnon
 
 ## Regression Models
+
+```{r OLS}
+# Firs of all, set the seed and the parameters
+set.seed(123)
+k <- 3
+n <- 100
+
+# Generating data (a matrix of 3 variables) and the output y
+X <- matrix(rnorm(k*n), ncol=k)
+y <- 2 + X[,1]*2 + X[,2]*5 + X[,3]*-1 + rnorm(n)
+
+# Running a simple regression
+ols <- lm(y~X)
+summary(ols)
+```
+
+
 ## The Geometry of Linear Regression
 ## The Statistical Properties of Ordinary Least Squares
 ## Hypothesis Testing in Linear Regression Models
 ## Confidence Intervals
 ## Generalized Least Squares and Related Topics
 ## Instrumental Variables Estimation
+
+In this case we will use the package `AER` which provides a out-of-the-box implementation of the Instrumental Variables regression model, remember that we can use the matrix notation for the IV estimator
+
+$$\beta_{IV}=(X'P_WX)^{-1}X'P_Wy$$
+
+Where $P_W$ is the projection matrix that spans the space of our instrument(s) $W$. In order to simulate an instrument, what we will do is create a bivariate normal variable, in order to do that, we will use the function `mvrnorm` from the `MASS` package. The code follows
+
+
+```{r IV estimation ivreg, message=FALSE}
+# Loading the package
+library(AER)
+library(MASS)
+
+# Firs of all, set the seed and the parameters
+set.seed(123)
+k <- 3
+n <- 100
+
+```
+
+Now we generate the data (assuming that the correlation matrix will be .5 between the instrument and the *unobservable*)
+
+```{r IV estimation ivreg cont, message=FALSE}
+# Generating the data
+X <- matrix(rnorm((k-1)*n), ncol=k-1)
+covar <- matrix(c(1,.5,.5,1),ncol=2,byrow=TRUE)
+w <- MASS::mvrnorm(n, mu=c(0,0), Sigma=covar)
+```
+
+The output variable will be generated with the `X` matrix and only the first column of the matrix `w`. Observe that the second column will be used as instrument
+
+```{r, message=FALSE}
+y <- X[,1]*1 + X[,2]*2 + w[,1*-1] + rnorm(n)
+
+# Running the regression
+db <- data.frame(y,X,w)
+colnames(db) <- c('y','x1','x2','w1','w2')
+summary(ivreg(y~x1+x2 | x1+x2+w2, data=db))
+```
+
+
+We can work this out as a two stage OLS
+
+
+Now, we can try to estimate it by our own using `lm` and the `sandwich` package
+
+```{r IV estimation lm}
+W  <- cbind(1,X,w[,2])
+Pw <- W%*%solve(t(W)%*%W)%*%t(W)
+Z  <- cbind(1,X)
+solve(t(Z)%*%Pw%*%Z)%*%t(Z)%*%Pw%*%y
+```
+
+Now, for the error terms
+
+
+
 ## The Generalized Method of Moments
 ## Discrete and Limited Dependent Variables
 ## Multivariate Models
