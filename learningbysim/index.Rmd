@@ -26,6 +26,35 @@ The whole idea is that it is easier to learn when you get to
 ## Principles of Data Reduction
 ## Point Estimation
 ## Hypothesis Testing
+
+```{r}
+library(stats) # Already loaded
+
+# One-way test for equal mean
+data(sleep)
+head(sleep)
+
+oneway.test(extra~group, sleep)
+```
+
+Now, a two sided t-test (default)
+
+```{r}
+y <- rnorm(n,mean=2,sd=2)
+t.test(x[,1],y, alternative="two.sided")
+```
+
+Observe that when we specify one side (suppose greater), the t-stat does not change, only the p-value
+
+```{r}
+# Student's t-test
+set.seed(123)
+n <- 1000
+x <- matrix(rnorm(n*2), ncol=2)
+t.test(x[,1],x[,2], alternative = 'greater')
+```
+
+
 ## Interval Estimation
 ## Asymptotic Evaluations
 ## Analysis of Variance and Regression
@@ -95,23 +124,42 @@ y <- X[,1]*1 + X[,2]*2 + w[,1*-1] + rnorm(n)
 # Running the regression
 db <- data.frame(y,X,w)
 colnames(db) <- c('y','x1','x2','w1','w2')
-summary(ivreg(y~x1+x2 | x1+x2+w2, data=db))
+iv <- ivreg(y~x1+x2+w1 | x1+x2+w2, data=db)
+summary(iv)
 ```
 
 
 We can work this out as a two stage OLS
 
+```{r, message=FALSE}
+# First stage: Endogenous variable against the instrument
+ols1 <- lm(w1~x1+x2+w2, data=db)
 
-Now, we can try to estimate it by our own using `lm` and the `sandwich` package
+# Second stage: Prediction and run the model replacing w1 with w1_hat
+db$w1_hat <- predict(ols1)
+ols2 <- lm(y~x1+x2+w1_hat,data=db)
+ols2
+```
+
+Or we can use the formula with the projection matrix
 
 ```{r IV estimation lm}
+# Using projection matrices
 W  <- cbind(1,X,w[,2])
 Pw <- W%*%solve(t(W)%*%W)%*%t(W)
-Z  <- cbind(1,X)
+Z  <- cbind(1,X,w[,1])
 solve(t(Z)%*%Pw%*%Z)%*%t(Z)%*%Pw%*%y
 ```
 
-Now, for the error terms
+Now, to get the variance we will need the `sandwich` package, we will compute the following formula
+
+$$ \sigma^2(X'P_WX)^{-1} $$
+
+```{r, message=FALSE}
+# Using the unscaled matrix
+unscaled <- summary(ols2)$cov.unscaled
+sqrt(diag(unscaled)*summary(ols2)$sigma^2)
+```
 
 
 
