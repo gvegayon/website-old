@@ -86,7 +86,7 @@ h2 {color:#1e1e1e; font-weight:lighter;}
 h3 {color:#1e1e1e; font-weight:lighter;}
 h4 {color:#1e1e1e; font-weight:lighter;}
 
-img, iframe {
+img { /*iframe*/
   display: block;
   width: auto;
   max-width: 80%;
@@ -95,3 +95,5 @@ img, iframe {
 }
 
 
+
+        
