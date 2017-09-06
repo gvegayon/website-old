@@ -1,0 +1,218 @@
+---
+title: "Wooldridge 2010 Examples"
+author: "George G. Vega Yon"
+date: "November 4, 2016"
+output:
+  html_document:
+    theme: simplex
+    highlight: tango
+    code_folding: show
+    toc: true
+    toc_float: true
+bibliography: bibliography.bib
+nocite: |
+  @stata2012, @Wooldridge2010
+---
+
+# Chapter 22: Duration Analysis
+
+For this chapter we will use the `survival` package [@Therneau2016].
+
+The fundamental question, conditional on having survived at $t$, what is the probability of failure (death) between $(t,t+h]$. This is the hazard function.
+
+$$
+\begin{align*}
+\lambda(t) 
+\tag{22.3}& = \lim_{h\downarrow 0}\frac{\Pr(t\leq T< t+h|T\geq t)}{h} \\
+\tag{22.5}& = \lim_{h\downarrow 0}\frac{F(t+h) - F(t)}{h}\frac{1}{1-F(t)} = \frac{f(t)}{1-F(t)} = \frac{f(t)}{S(t)} \\
+\tag{22.6}& = - \frac{d \log S(t)}{d t}
+\end{align*}
+$$
+
+Then, using the fundamental theorem of calculus, we have
+
+$$
+\begin{align*}
+\int_0^t \lambda(s)ds & = -\left[\log(1-F(t)) - \log(1 + F(0))\right] \\
+\int_0^t \lambda(s)ds & = -\log S(t) \\
+\exp\left[-\int_0^t \lambda(s)ds\right] & = S(t) \\
+\end{align*}
+$$
+From eq (22.5)
+
+$$
+f(t) = \lambda(t)\exp\left[-\int_0^t\lambda(s)ds\right]\tag{22.8} 
+$$
+
+Which implies that we can compute the probabilities using the hazard function.
+
+## Example 22.5: Weibull Model for Recidivism Duration
+
+In the case of the weibull distribution, the cdf conditional on the covariates
+and the parameters can be written as follows:
+
+$$
+F(t_i|\mathbf{x}_i;\theta) = 1 - \exp(-\kappa t ^\alpha),\quad\kappa = \exp(\mathbf{x}_i\beta)
+$$
+
+Since we have censored data, the conditional likelihood for observation $i$ can
+be written as follows:
+
+$$
+f(t_i|\mathbf{x}_i;\theta)^{d_i}\left[1 - F(t_i|\mathbf{x}_i;\theta)\right]^{(1-d_i)}\tag{22.23}
+$$
+
+where $d_i=1$ iff the observation is uncensored, and $1-F(t_i|\mathbf{x}_i;\theta)$
+is the probability that observation $i$ is censored. Under weibull we have
+
+$$
+f(t_i|\mathbf{x}_i;\theta) = \exp(\mathbf{x}_i\beta)\alpha t^{\alpha-1}\exp\left[-\exp(\mathbf{x}_i\beta)t^\alpha\right]
+$$
+
+Table 22.1: Weibull Estimation of Criminal Recidivism
+
+```{stata}
+// Available on https://mitpress.mit.edu/books/econometric-analysis-cross-section-and-panel-data
+// or at http://www.stata.com/texts/eacsap/
+use recid, clear
+
+stset durat, failure(cens == 0)
+streg workprg priors tserved felon alcohol drugs black married educ age, /*
+  */ distribution(weibull) nohr
+  
+stcurve, hazard saving(recid, replace) xtitle(Months until arrest)
+graph use recid
+graph export recid_hazard.eps, replace
+```
+
+
+```{r 22.1-converting-image, echo=FALSE}
+system("convert -density 300 recid_hazard.eps -resize 1024x780 recid_hazard.png")
+invisible <- file.remove("recid_hazard.eps")
+knitr::include_graphics("recid_hazard.png")
+```
+
+The `nohr` option tells Stata not to display the coefficients exponentiated (as
+hazard ratios). Now in R
+
+```{r}
+# Loading packages and data
+library(foreign)
+library(survival)
+recid <- read.dta("recid.dta")
+
+# Running the model
+ans <- survreg(Surv(durat, event=I(cens == 0)) ~ 
+         workprg + priors + tserved + felon + alcohol + drugs + black +
+         married + educ + age, data=recid, dist="weibull")
+
+summary(ans)
+```
+
+Now, you may be wondering why the estimates seem different. The reason is because,
+while `Stata`'s estimation method follows Proportional Hazard (PH) equations, 
+`R` uses Accelerated Failure Time (AFT). In Stata we can use the option `time`
+to use AFT instead (try it yourself!).
+
+In order to do the conversion, from the Stata manual, we see that the survival
+functions of each method can be written as follows: 
+
+$$
+\begin{align*}
+\mbox{PH: } & \exp\left(-\lambda_jt_j^p\right),\quad\mbox{with } \lambda_j=\exp(x_j\beta)  \\
+\mbox{AFT: } & \exp\left(-\lambda_jt_j^p\right),\quad\mbox{with } \lambda_j=\exp(-px_j\beta)
+\end{align*}
+$$
+
+Following the previous formulations, we only need to multiply the coefficients
+and the standard errors by $\frac{1}{p}$ (with a minus in the case of
+coefficients):
+
+```{r}
+cbind(
+  beta = c(coef(ans)*(-1/ans$scale), `p`=1/ans$scale),
+  sd   = sqrt(diag(ans$var))*(1/ans$scale))
+```
+
+At the end, the results are not exactly the same due to the implementation of the
+algorithm. This is explicitly mentioned in the manual of the `survival` package:
+
+> All the distributions are cast into a location-scale framework, based on
+  chapter 2.2 of Kalbfleisch and Prentice. The resulting parameterization of the
+  distributions is sometimes (e.g. gaussian) identical to the usual form found
+  in statistics textbooks, but other times (e.g. Weibull) it is not. See the
+  book for detailed formulas.
+
+## 22.5.1 Cox's Partial Likelihood Method for the Proportional Hazard Model
+
+Each individual $i$ has a hazard function specified by the following model $\lambda_i(t) = \exp(\mathbf{x}_i'\beta)\lambda_0(t)$. In the base case, similar to what is done with the Kaplan-Meier model, we assume that each individual has a different survival and hace we can build the cumulative distribution function by, besides of assuming independence between obs, adding up, hence, up to time $T^*$, the cumulative of the hazard function is
+
+$$
+\Lambda_{T^*}(t) = \sum_{i \in R_i} \exp(\mathbf{x}_i'\beta)\lambda_0(t) =\lambda_0(t) \sum_{i \in R_i}\exp(\mathbf{x}_i'\beta)
+$$
+where $R_i \equiv \{i \in N: T_i \geq T^*\}$. Hence, if we truncate the hazard function (which is a pdf) to that set, we obtain
+
+$$
+\mathcal{L}_i = \frac{\exp(\mathbf{x}_i'\beta)}{\sum_{i \in R_i}\exp(\mathbf{x}_i'\beta)}
+$$
+
+## 22.3.4 Unobserved heterogeneity
+
+When to use it:
+
+> The strongest case is seen when we are interested in testing for duration 
+  dependence on observed covariates _and_ unobserved heterogeneity, when the 
+  unobserved heterogeneity enters the hazard multiplicatively (@Wooldridge2010, p. 1006)
+
+Assumptions:
+
+1.  the heterogeneity is independent of the observed covariates, as well as
+    starting times and censoring,
+2.  the heterogeneity has a distribution known up to a finite number of 
+    parameters, and
+3.  the heterogeneity enters the hazard function multiplicatively
+
+Often, when models introduce heterogeneity, these are called mixture models.
+
+```{stata}
+use recid, clear
+
+stset durat, failure(cens==0)
+gen id = _n
+
+streg workprg priors tserved felon alcohol drugs black married educ age, /*
+	*/ distribution(weibull) nohr frailty(gamma)
+
+stcurve, hazard saving(recid_het, replace) xtitle(Months until arrest) 
+graph use recid_het
+graph export recid_het_hazard.eps, replace
+```
+
+And the associated plot
+
+```{r 22.4-converting-image, echo=FALSE}
+system("convert -density 300 recid_het_hazard.eps -resize 1024x780 recid_het_hazard.png")
+invisible <- file.remove("recid_het_hazard.eps")
+knitr::include_graphics("recid_het_hazard.png")
+```
+
+
+Unfortunately, I haven't been able to reproduce this example in R. The fardest
+that I've reached is including frailty in the model without much success.
+
+Will review this on the future!
+
+```{r}
+ans <- survreg(
+  Surv(durat, event=I(cens == 0)) ~ 
+    workprg + priors + tserved + felon + alcohol + drugs + black +
+    married + educ + age + 
+    frailty(gl(nrow(recid),1)),
+  data=recid, dist="weibull")
+
+ans
+```
+
+
+
+# References

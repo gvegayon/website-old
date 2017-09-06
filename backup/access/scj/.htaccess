@@ -1,0 +1,6 @@
+<Files *>
+AuthType Basic
+Require valid-user
+AuthName "Name for Authentication purposes"
+AuthUserFile /home/gvegayon/public_html/access/scj/.htpasswd
+</Files>
