@@ -23,7 +23,7 @@ weight = 1
   year = '2021 (expected)'
 
 [[education.courses]]
-  course = "M.Sc. in Social Sciences (aka Economics)"
+  course = "M.Sc. in Economics"
   institution = "California Institute of Technology"
   year = 2016
 

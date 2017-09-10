@@ -11,6 +11,15 @@
     <atom:link href="/publication/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Network Influences on Policy Implementation: Evidence from a Global Health Treaty</title>
+      <link>/publication/fctc/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fctc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>On the Automatic Annotation of Gene Functions Using Observational Data and Phylogenetic Trees</title>
       <link>/publication/aphylo/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
@@ -20,23 +29,21 @@
     </item>
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <title>The Impact of TV Rating on Twitter&#39;s Activity: Evidence for Chile Based on the Teleton 2012</title>
+      <link>/publication/tvrating/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
       
-      <guid>/publication/person-re-identification/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
+      <guid>/publication/tvrating/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Mobile visual clothing search</title>
-      <link>/publication/clothing-search/</link>
+      <title>El Impacto de un Alza en la Cotización Previsional: Pensiones, Salarios y Empleo</title>
+      <link>/publication/pensions/</link>
       <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
       
-      <guid>/publication/clothing-search/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
+      <guid>/publication/pensions/</guid>
+      <description></description>
     </item>
     
   </channel>

@@ -1,6 +1,6 @@
 +++
 abstract = "Gene annotation is important for a variety of downstream analyses of genetic data. However, in the 'Big Data' era, it is hard to manually update such annotation databases in a timely way. Nor is it clear that such manual approaches are likely to provide the most accurate annotations. For this reason, in this paper we use a probabilistic evolutionary model built upon phylogenetic trees and experimental evidence of gene functional annotations to predict whether or not unannotated genes have a particular function."
-abstract_short = ""
+abstract_short = "In this paper we use a probabilistic evolutionary model built upon phylogenetic trees and experimental evidence of gene functional annotations to predict whether or not unannotated genes have a particular function."
 authors = ["GG Vega Yon", "DC Thomas", "P Marjoram", "et al."]
 date = "2017-08-01"
 image_preview = ""
