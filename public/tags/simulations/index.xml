@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulations on George G. Vega Yon</title>
+    <link>/tags/simulations/</link>
+    <description>Recent content in Simulations on George G. Vega Yon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Fri, 29 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/simulations/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Sistema de Pensiones en Chile</title>
+      <link>/post/sistema-de-pensiones-en-chile/</link>
+      <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sistema-de-pensiones-en-chile/</guid>
+      <description>&lt;p&gt;Con todo el tema del plebiscito anti AFP (porque no es más que eso), y varios correos que he recibido en los últimos años con personas preguntándome acerca de como funciona el sistema de pensiones (que me parece genial!), me decidí a escribir este pequeño post con algunas de las ideas que tengo al respecto. Y qué mejor forma que partir por los mitos sobre el sistema!&lt;/p&gt;
+&lt;div id=&#34;mitos-sobre-el-sistema-de-pensiones&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mitos sobre el sistema de pensiones&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/&#34; class=&#34;uri&#34;&gt;http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/&#34; class=&#34;uri&#34;&gt;http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/&#34; class=&#34;uri&#34;&gt;http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades&#34; class=&#34;uri&#34;&gt;http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/&#34; class=&#34;uri&#34;&gt;https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx&#34; class=&#34;uri&#34;&gt;http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf&#34; class=&#34;uri&#34;&gt;https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;El problema es que hay muchos mitos y los “líderes” son los que los difunden. Aquí van algunos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Te calculan la pension hasta los 110 años!&lt;/strong&gt; Falso! Cuando se calcula el monto de pension por retiro programado (la modalidad mas comun), se utilizan lo que se conocen como tablas de mortalidad. En ellas se considera la posibilidad (que es diferente a certeza) de sobrevivir hasta los 110 años. De no usar esas tablas la alternativa seria, por ejemplo, calcular pago de pensiones hasta los 85 años (que es mas menos la edad de sobrevida promedio del hombre en Chile), y que pasa si pasas los 85, 90 años? Eso es lo que se trata de evitar.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Las AFP se estan haciendo ricas con mi plata!&lt;/strong&gt; Falso. Las AFP cobran comision por contribución, lo que quiere decir que te cobran por cada aporte que tu haces, en otras palabras, las AFPs NO TOCAN TU FONDO DE PENSION. Hoy las comisiones van de 0.41% (Planvital) a 1.5% (Cuprum)… Si quieres que las AFP no ganen tanto, entonces cambiate a una que cobre poco…&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Trabaje toda mi vida y me pagan una &lt;span class=&#34;math inline&#34;&gt;\(\#\#\)&lt;/span&gt;?% de pensión! Obviamente la culpa es del sistema!&lt;/strong&gt; Lamentablemente no es así. Luego de cientos de estudios científicos muy complejos, los expertos llegaron a increíble conclusión de que para gastar más mañana hay que ahorrar más hoy. Si hay algo que se debería cambiar en el sistema, es que la tasa de contribución deberia de ser de al menos 15% y sin tope. Hoy es de 10%.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Mi [[elija un familiar]] trabajó toda su vida, se jubiló y ahora gana mucho menos de la mitad!&lt;/strong&gt; Tiene que ver con lo anterior. Resulta que muchas personas que se están jubilando con el “sistema nuevo” se vieron perjudicadas por faltas por parte de sus empleadores. Muchas personas o cotizaron por el mínimo (que equivale a decir que cotizaron por menos del 10%), o de frentón llegaron a arreglos con sus empleadores donde les pagaron “retroactivamente” las cotizaciones. El problema es el siguiente, las cotizaciones más importantes son las de los primeros años. Al momento de acercarse a la edad de jubilación, lo único que queda es aportar más dinero en grandes cantidades, pero si nunca ahorraste cuando joven, no puedes esperar tener una pensión similar a la de tus últimos años trabajando.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;El estado manejaría mejor la plata&lt;/strong&gt; Aun que lo dudo, puede ser. Pero de todas formas, como ya he dicho antes, la clave está en aumentar la tasa de ahorro. Aún cuando tengas al mejor administrador de fondos (ya sea estatal o privado), nada cambiará si la tasa de ahorro no cambia.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Al final del día, si bien el sistema no es perfecto, lo unique que si es seguro es que volver a un sistema de reparto no es solución. En mi opinión, los sistemas mixtos (que de hecho es lo que tenemos en Chile hoy) son la solución, y quizás dar más opciones de ahorro a la gente. Pero al final del día, la clave está en ahorrar más. Si no ahorramos lo suficiente, el sistema en el que se administre nuestro dinero da lo mismo…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulando-politica&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Simulando política&lt;/h2&gt;
+&lt;p&gt;Para entender de mejor manera el problema, a continuación presento un set de simulaciones sencillas donde varío dos parámetros del sistema de pensiones: La tasa de contribución, y el año de retiro. Antes de continuar es importante notar que estas simulaciones se realizan bajo los siguientes supuestos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;No hay lagunas, en otras palabras, el trabajador nunca está desempleado&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sólo existe un fondo, por lo tanto no hablaré de los tipos de fondos en que se invierte el dinero.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Al momento del retiro, el cálculo de la pensión se hace assumiendo que la persona es soltera.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Las siguientes equaciones describen el modelo de simulación:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I_1 &amp;amp;= 300 \\
+I_t &amp;amp;= I_{t-1}\times\left(1 + \frac{r_I}{\log(t)}\right), \quad t&amp;gt;1\mbox{ y }r_I\sim N(0.02, 0.02)\\
+C_t &amp;amp;= 12I_{t}\times a\\
+S_t &amp;amp; = (S_{t-1} + C_t)\times(1 + R_t),\quad R_t\sim N(.04, .1)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Donde &lt;span class=&#34;math inline&#34;&gt;\(I_t\)&lt;/span&gt; es el nivel de ingreso (remuneración) en el año &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(r_t\)&lt;/span&gt; es la tasa de crecimiento anual del ingreso en el año &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(S_t\)&lt;/span&gt; es el saldo del fondo de capitalización individual en el año &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(C_t\)&lt;/span&gt; es el monto anual de contribución en el año &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, y &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; es la tasa de contribución mensual.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-09-29-sistema-de-pensiones-en-chile_files/figure-html/Simulando-renta-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;!-- html table generated in R 3.4.2 by xtable 1.8-2 package --&gt;
+&lt;!-- Sat Nov  4 00:00:41 2017 --&gt;
+&lt;table border=&#34;1&#34;&gt;
+&lt;caption align=&#34;bottom&#34;&gt;
+Distribución de Rentabilidad Anual simulada (en %)
+&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th&gt;
+2.5%
+&lt;/th&gt;
+&lt;th&gt;
+10%
+&lt;/th&gt;
+&lt;th&gt;
+50%
+&lt;/th&gt;
+&lt;th&gt;
+90%
+&lt;/th&gt;
+&lt;th&gt;
+97.5%
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+-15.64
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+-8.82
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+4.02
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+16.79
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+23.64
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- html table generated in R 3.4.2 by xtable 1.8-2 package --&gt;
+&lt;!-- Sat Nov  4 00:00:41 2017 --&gt;
+&lt;table border=&#34;1&#34;&gt;
+&lt;caption align=&#34;bottom&#34;&gt;
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 7%. Filas representan edad de retiro y columnas percentil.
+&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th&gt;
+&lt;/th&gt;
+&lt;th&gt;
+2.5%
+&lt;/th&gt;
+&lt;th&gt;
+10%
+&lt;/th&gt;
+&lt;th&gt;
+50%
+&lt;/th&gt;
+&lt;th&gt;
+90%
+&lt;/th&gt;
+&lt;th&gt;
+97.5%
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+11.48
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+14.42
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+22.07
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+34.93
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+44.33
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+63
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+13.87
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+17.48
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+27.72
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+44.20
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+56.54
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+65
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+15.60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+19.97
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+32.00
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+52.14
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+68.49
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+67
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+17.83
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+22.98
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+37.20
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+61.85
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+80.99
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- html table generated in R 3.4.2 by xtable 1.8-2 package --&gt;
+&lt;!-- Sat Nov  4 00:00:41 2017 --&gt;
+&lt;table border=&#34;1&#34;&gt;
+&lt;caption align=&#34;bottom&#34;&gt;
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 10%. Filas representan edad de retiro y columnas percentil.
+&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th&gt;
+&lt;/th&gt;
+&lt;th&gt;
+2.5%
+&lt;/th&gt;
+&lt;th&gt;
+10%
+&lt;/th&gt;
+&lt;th&gt;
+50%
+&lt;/th&gt;
+&lt;th&gt;
+90%
+&lt;/th&gt;
+&lt;th&gt;
+97.5%
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+16.40
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+20.60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+31.53
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+49.90
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+63.34
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+63
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+19.82
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+24.97
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+39.60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+63.14
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+80.77
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+65
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+22.28
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+28.53
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+45.71
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+74.48
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+97.85
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+67
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+25.47
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+32.83
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+53.14
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+88.35
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+115.70
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- html table generated in R 3.4.2 by xtable 1.8-2 package --&gt;
+&lt;!-- Sat Nov  4 00:00:41 2017 --&gt;
+&lt;table border=&#34;1&#34;&gt;
+&lt;caption align=&#34;bottom&#34;&gt;
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 15%. Filas representan edad de retiro y columnas percentil.
+&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th&gt;
+&lt;/th&gt;
+&lt;th&gt;
+2.5%
+&lt;/th&gt;
+&lt;th&gt;
+10%
+&lt;/th&gt;
+&lt;th&gt;
+50%
+&lt;/th&gt;
+&lt;th&gt;
+90%
+&lt;/th&gt;
+&lt;th&gt;
+97.5%
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+24.60
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+30.90
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+47.30
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+74.85
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+95.00
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+63
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+29.73
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+37.46
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+59.39
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+94.71
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+121.16
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+65
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+33.43
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+42.79
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+68.57
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+111.73
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+146.77
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;
+67
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+38.21
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+49.25
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+79.72
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+132.53
+&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;
+173.55
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

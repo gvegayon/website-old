@@ -1,0 +1,113 @@
+---
+title: An Unexpected Tobit Fact
+author: George G. Vega Yon
+date: '2017-09-25'
+slug: an-unexpected-tobit-fact
+categories:
+  - R
+  - Stats
+tags:
+  - r
+  - regression
+  - rstats
+  - aer
+summary: '
+Today I figured out a somewhat interesting property of the Tobit model. While models such as $y = f(X, g(y))$ are usually wrong under iid, here I present an interesting example in which running such models makes no difference in the context of tobit regressions. While this has no use in practical scenarios, it does when it comes to have a better understanding of this meethod.
+'
+math: true
+---
+
+
+
+<p>Hoy recibí un correo inesperado de mi jefe aca en USC quejándose (preguntándome mas bien) que por qué algunos pares de especificaciones Tobit eran idénticas. Mi primera impresión fue “seguro R guardó la misma tabla con nombre distinto… ups!”, algo que podía ser posible pues, además de que soy humano, el proceso para correr los modelos lo había automatizado pues en total son 270 especificaciones… no iba a escribir una por una!</p>
+<p>Al volver a correr un par de modelos de manera “manual”, me di cuenta que efectivamente los resultados eran idénticos, algo que no esperaba. Cuáles eran las especifaciones?</p>
+<span class="math display">\[\begin{align*}
+y &amp; = X\beta + \varepsilon,\quad \mbox{if }y_{miss} \neq 0\tag{1} \\
+y &amp; = X\beta + y_{miss} + \varepsilon \tag{2}
+\end{align*}\]</span>
+<p>Donde y_miss es una dummy igual a 0 si es que y es missing. En otras palabras, el primer modelo excluye aquellas observaciones en las cuales y es missing, y el segundo las incluye assumiendo que son iguales a 0, pero además agrega una dummy indicando cuando tal supuesto se aplicó. Se que están pensando que el modelo es endógeno y todo eso (no me miren feo), pero solo lo corrí para complacer a mi jefe y ver que pasaba :). Obviamente no incluiremos ese modelo en nuestro paper!</p>
+<p>Para estar seguro de lo que estaba haciendo, decidí hacer una simulación con datos similares, una variable y truncada en &lt; 0 y aleatoriamente agregando zeros en y para simular la imputación que hicimos en nuestros datos. Sorprendentemente, ambas especificaciones resultaron en lo mismo!</p>
+<p>Acá va el codigo:</p>
+<pre class="r"><code>rm(list = ls())
+library(AER)</code></pre>
+<pre><code>## Loading required package: car</code></pre>
+<pre><code>## Loading required package: lmtest</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## Loading required package: sandwich</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre class="r"><code># Seeds and parameters
+set.seed(1123)
+N &lt;- 1e3
+K &lt;- 4
+
+# Data Generating Proccess
+a     &lt;- 5
+b     &lt;- cbind(runif(K, -1,1))
+X     &lt;- matrix(rnorm(N*K), ncol = K)
+y        &lt;- a + X %*% b + rnorm(N)
+y[y &lt; 0] &lt;- 0
+
+# The zero dummy
+zero_dummy &lt;- cbind(runif(N)&gt;.9) # 10% of non-reporting
+y[zero_dummy] &lt;- 0
+
+# Running the specifications
+summary(tobit(y~ X, subset = !zero_dummy))</code></pre>
+<pre><code>## 
+## Call:
+## tobit(formula = y ~ X, subset = !zero_dummy)
+## 
+## Observations:
+##          Total  Left-censored     Uncensored Right-censored 
+##            908              1            907              0 
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  4.97518    0.03166 157.146  &lt; 2e-16 ***
+## X1           0.49842    0.03244  15.364  &lt; 2e-16 ***
+## X2           0.74734    0.03165  23.611  &lt; 2e-16 ***
+## X3           0.69200    0.03063  22.589  &lt; 2e-16 ***
+## X4           0.13911    0.03028   4.595 4.33e-06 ***
+## Log(scale)  -0.04781    0.02348  -2.036   0.0418 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Scale: 0.9533 
+## 
+## Gaussian distribution
+## Number of Newton-Raphson Iterations: 5 
+## Log-likelihood: -1245 on 6 Df
+## Wald-statistic:  1346 on 4 Df, p-value: &lt; 2.22e-16</code></pre>
+<pre class="r"><code>summary(tobit(y~ X + zero_dummy))</code></pre>
+<pre><code>## 
+## Call:
+## tobit(formula = y ~ X + zero_dummy)
+## 
+## Observations:
+##          Total  Left-censored     Uncensored Right-censored 
+##           1000             93            907              0 
+## 
+## Coefficients:
+##                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)      4.97518    0.03166 157.146  &lt; 2e-16 ***
+## X1               0.49842    0.03244  15.364  &lt; 2e-16 ***
+## X2               0.74734    0.03165  23.611  &lt; 2e-16 ***
+## X3               0.69200    0.03063  22.589  &lt; 2e-16 ***
+## X4               0.13911    0.03028   4.595 4.33e-06 ***
+## zero_dummyTRUE -12.33751  335.69958  -0.037   0.9707    
+## Log(scale)      -0.04781    0.02348  -2.036   0.0418 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Scale: 0.9533 
+## 
+## Gaussian distribution
+## Number of Newton-Raphson Iterations: 16 
+## Log-likelihood: -1245 on 7 Df
+## Wald-statistic:  1346 on 5 Df, p-value: &lt; 2.22e-16</code></pre>
+<p>Luego de darle algunas vueltas, me di cuenta que lo que pasaba era los siguiente: En el modelo 1, MLE hace su trabajo, estima los parametros y ya. En el segundo modelo, cuando agregamos las observaciones con y=0 por supuesto junto con la dummy zero_dummy, lo unico que cambia de la función de Máxima Verosimilitud es el componente Probit (pues solo estamos agregando ceros), el componente OLS se mantiene igual pues zero_dummy = 0 en esa parte de la función. Luego, en la parte Tobit, y aquí es donde no estoy tan seguro como explicar esto con matemática, el MLE estima el modelo y, dado que zero_dummy predice a la parfección ceros cuando es igual a 1, asigna un valor grande a su coeficiente, haciendo que al final del día las observaciones adicionales no agreguen información al modelo, lo que termina en obtener el mismo set de estimadores.</p>

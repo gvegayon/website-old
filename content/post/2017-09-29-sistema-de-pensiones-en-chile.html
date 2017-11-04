@@ -1,0 +1,422 @@
+---
+title: Sistema de Pensiones en Chile
+author: George G. Vega Yon
+date: '2017-09-29'
+slug: sistema-de-pensiones-en-chile
+categories:
+  - Policy
+  - Econ
+  - Stats
+tags:
+  - simulations
+  - rstats
+summary: "
+Hola mundo
+"
+math: true
+html_document:
+  code_folding: show
+  code_download: true
+---
+
+
+
+<p>Con todo el tema del plebiscito anti AFP (porque no es más que eso), y varios correos que he recibido en los últimos años con personas preguntándome acerca de como funciona el sistema de pensiones (que me parece genial!), me decidí a escribir este pequeño post con algunas de las ideas que tengo al respecto. Y qué mejor forma que partir por los mitos sobre el sistema!</p>
+<div id="mitos-sobre-el-sistema-de-pensiones" class="section level2">
+<h2>Mitos sobre el sistema de pensiones</h2>
+<p><a href="http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/" class="uri">http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/</a></p>
+<p><a href="http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/" class="uri">http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/</a></p>
+<p><a href="http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/" class="uri">http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/</a></p>
+<p><a href="http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades" class="uri">http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades</a></p>
+<p><a href="https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/" class="uri">https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/</a></p>
+<p><a href="http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx" class="uri">http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx</a></p>
+<p><a href="https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf" class="uri">https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf</a></p>
+<p>El problema es que hay muchos mitos y los “líderes” son los que los difunden. Aquí van algunos:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Te calculan la pension hasta los 110 años!</strong> Falso! Cuando se calcula el monto de pension por retiro programado (la modalidad mas comun), se utilizan lo que se conocen como tablas de mortalidad. En ellas se considera la posibilidad (que es diferente a certeza) de sobrevivir hasta los 110 años. De no usar esas tablas la alternativa seria, por ejemplo, calcular pago de pensiones hasta los 85 años (que es mas menos la edad de sobrevida promedio del hombre en Chile), y que pasa si pasas los 85, 90 años? Eso es lo que se trata de evitar.</p></li>
+<li><p><strong>Las AFP se estan haciendo ricas con mi plata!</strong> Falso. Las AFP cobran comision por contribución, lo que quiere decir que te cobran por cada aporte que tu haces, en otras palabras, las AFPs NO TOCAN TU FONDO DE PENSION. Hoy las comisiones van de 0.41% (Planvital) a 1.5% (Cuprum)… Si quieres que las AFP no ganen tanto, entonces cambiate a una que cobre poco…</p></li>
+<li><p><strong>Trabaje toda mi vida y me pagan una <span class="math inline">\(\#\#\)</span>?% de pensión! Obviamente la culpa es del sistema!</strong> Lamentablemente no es así. Luego de cientos de estudios científicos muy complejos, los expertos llegaron a increíble conclusión de que para gastar más mañana hay que ahorrar más hoy. Si hay algo que se debería cambiar en el sistema, es que la tasa de contribución deberia de ser de al menos 15% y sin tope. Hoy es de 10%.</p></li>
+<li><p><strong>Mi [[elija un familiar]] trabajó toda su vida, se jubiló y ahora gana mucho menos de la mitad!</strong> Tiene que ver con lo anterior. Resulta que muchas personas que se están jubilando con el “sistema nuevo” se vieron perjudicadas por faltas por parte de sus empleadores. Muchas personas o cotizaron por el mínimo (que equivale a decir que cotizaron por menos del 10%), o de frentón llegaron a arreglos con sus empleadores donde les pagaron “retroactivamente” las cotizaciones. El problema es el siguiente, las cotizaciones más importantes son las de los primeros años. Al momento de acercarse a la edad de jubilación, lo único que queda es aportar más dinero en grandes cantidades, pero si nunca ahorraste cuando joven, no puedes esperar tener una pensión similar a la de tus últimos años trabajando.</p></li>
+<li><p><strong>El estado manejaría mejor la plata</strong> Aun que lo dudo, puede ser. Pero de todas formas, como ya he dicho antes, la clave está en aumentar la tasa de ahorro. Aún cuando tengas al mejor administrador de fondos (ya sea estatal o privado), nada cambiará si la tasa de ahorro no cambia.</p></li>
+</ol>
+<p>Al final del día, si bien el sistema no es perfecto, lo unique que si es seguro es que volver a un sistema de reparto no es solución. En mi opinión, los sistemas mixtos (que de hecho es lo que tenemos en Chile hoy) son la solución, y quizás dar más opciones de ahorro a la gente. Pero al final del día, la clave está en ahorrar más. Si no ahorramos lo suficiente, el sistema en el que se administre nuestro dinero da lo mismo…</p>
+</div>
+<div id="simulando-politica" class="section level2">
+<h2>Simulando política</h2>
+<p>Para entender de mejor manera el problema, a continuación presento un set de simulaciones sencillas donde varío dos parámetros del sistema de pensiones: La tasa de contribución, y el año de retiro. Antes de continuar es importante notar que estas simulaciones se realizan bajo los siguientes supuestos:</p>
+<ol style="list-style-type: decimal">
+<li><p>No hay lagunas, en otras palabras, el trabajador nunca está desempleado</p></li>
+<li><p>Sólo existe un fondo, por lo tanto no hablaré de los tipos de fondos en que se invierte el dinero.</p></li>
+<li><p>Al momento del retiro, el cálculo de la pensión se hace assumiendo que la persona es soltera.</p></li>
+</ol>
+<p>Las siguientes equaciones describen el modelo de simulación:</p>
+<p><span class="math display">\[
+\begin{aligned}
+I_1 &amp;= 300 \\
+I_t &amp;= I_{t-1}\times\left(1 + \frac{r_I}{\log(t)}\right), \quad t&gt;1\mbox{ y }r_I\sim N(0.02, 0.02)\\
+C_t &amp;= 12I_{t}\times a\\
+S_t &amp; = (S_{t-1} + C_t)\times(1 + R_t),\quad R_t\sim N(.04, .1)
+\end{aligned}
+\]</span></p>
+<p>Donde <span class="math inline">\(I_t\)</span> es el nivel de ingreso (remuneración) en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(r_t\)</span> es la tasa de crecimiento anual del ingreso en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(S_t\)</span> es el saldo del fondo de capitalización individual en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(C_t\)</span> es el monto anual de contribución en el año <span class="math inline">\(t\)</span>, y <span class="math inline">\(a\)</span> es la tasa de contribución mensual.</p>
+<p><img src="/post/2017-09-29-sistema-de-pensiones-en-chile_files/figure-html/Simulando-renta-1.png" width="672" /></p>
+<!-- html table generated in R 3.4.2 by xtable 1.8-2 package -->
+<!-- Sat Nov  4 00:00:41 2017 -->
+<table border="1">
+<caption align="bottom">
+Distribución de Rentabilidad Anual simulada (en %)
+</caption>
+<tr>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+-15.64
+</td>
+<td align="right">
+-8.82
+</td>
+<td align="right">
+4.02
+</td>
+<td align="right">
+16.79
+</td>
+<td align="right">
+23.64
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.2 by xtable 1.8-2 package -->
+<!-- Sat Nov  4 00:00:41 2017 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 7%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+11.48
+</td>
+<td align="right">
+14.42
+</td>
+<td align="right">
+22.07
+</td>
+<td align="right">
+34.93
+</td>
+<td align="right">
+44.33
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+13.87
+</td>
+<td align="right">
+17.48
+</td>
+<td align="right">
+27.72
+</td>
+<td align="right">
+44.20
+</td>
+<td align="right">
+56.54
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+15.60
+</td>
+<td align="right">
+19.97
+</td>
+<td align="right">
+32.00
+</td>
+<td align="right">
+52.14
+</td>
+<td align="right">
+68.49
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+17.83
+</td>
+<td align="right">
+22.98
+</td>
+<td align="right">
+37.20
+</td>
+<td align="right">
+61.85
+</td>
+<td align="right">
+80.99
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.2 by xtable 1.8-2 package -->
+<!-- Sat Nov  4 00:00:41 2017 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 10%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+16.40
+</td>
+<td align="right">
+20.60
+</td>
+<td align="right">
+31.53
+</td>
+<td align="right">
+49.90
+</td>
+<td align="right">
+63.34
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+19.82
+</td>
+<td align="right">
+24.97
+</td>
+<td align="right">
+39.60
+</td>
+<td align="right">
+63.14
+</td>
+<td align="right">
+80.77
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+22.28
+</td>
+<td align="right">
+28.53
+</td>
+<td align="right">
+45.71
+</td>
+<td align="right">
+74.48
+</td>
+<td align="right">
+97.85
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+25.47
+</td>
+<td align="right">
+32.83
+</td>
+<td align="right">
+53.14
+</td>
+<td align="right">
+88.35
+</td>
+<td align="right">
+115.70
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.2 by xtable 1.8-2 package -->
+<!-- Sat Nov  4 00:00:41 2017 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 15%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+24.60
+</td>
+<td align="right">
+30.90
+</td>
+<td align="right">
+47.30
+</td>
+<td align="right">
+74.85
+</td>
+<td align="right">
+95.00
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+29.73
+</td>
+<td align="right">
+37.46
+</td>
+<td align="right">
+59.39
+</td>
+<td align="right">
+94.71
+</td>
+<td align="right">
+121.16
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+33.43
+</td>
+<td align="right">
+42.79
+</td>
+<td align="right">
+68.57
+</td>
+<td align="right">
+111.73
+</td>
+<td align="right">
+146.77
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+38.21
+</td>
+<td align="right">
+49.25
+</td>
+<td align="right">
+79.72
+</td>
+<td align="right">
+132.53
+</td>
+<td align="right">
+173.55
+</td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,28 @@
+---
+title: Yet another plot of R's colors()
+author: George G. Vega Yon
+date: '2017-09-15'
+categories:
+  - R
+tags:
+  - r
+  - rstats
+slug: yet-another-plot-of-r-s-colors
+summary: "
+Just another matrix with the colors()\'s colors
+"
+---
+
+
+
+<p>I know there are plenty of these online, but I just thought about having my own for quick reference…</p>
+<pre class="r"><code>ncols &lt;- ceiling(sqrt(length(colors())))^2
+dat &lt;- matrix(1:ncols, sqrt(ncols))
+image(dat, col = colors()[1:ncols])
+pos &lt;- seq(0, 1, length.out = sqrt(ncols))
+pos &lt;- lapply(pos, function(x) cbind(x, pos))
+pos &lt;- do.call(rbind, pos)
+
+ncols &lt;- length(colors())
+text(x=pos[1:ncols,2], y=pos[1:ncols,1], labels = 1:ncols, cex=.75, srt=60)</code></pre>
+<p><img src="/post/2017-09-15-yet-another-plot-of-r-s-colors_files/figure-html/unnamed-chunk-1-1.png" width="800px" height="800px" /></p>

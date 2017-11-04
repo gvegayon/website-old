@@ -1,0 +1,77 @@
+---
+title: Environments in R Rock
+author: George G. Vega Yon
+date: '2017-10-02'
+slug: environments-in-r-rock
+categories:
+  - R
+tags:
+  - r
+  - rstats
+summary: "
+In this post I provide a short example in which default arguments are specified not in the function definition, but rather externally making use of environments. A _method_ that I've use recently used in [netdiffuseR](https://github.com/USCCANA/netdiffuseR).
+"
+---
+
+
+
+<p>Last week I found myself working on <a href="https://github.com/USCCANA/netdiffuseR" target="_blank">netdiffuseR</a> trying to establish nice defaults for some plotting functions with the following goals:</p>
+<ol style="list-style-type: decimal">
+<li><p>Make the code easy to maintain: So if I need to change defaults I just change a few lines and that works for all plot functions,</p></li>
+<li><p>Make the code easy to see in the manual (help) file: So is easier to the user to focus on the main features of a plot rather than looking at a large description of a function with lots of parameters and lots of defaults, and</p></li>
+<li><p>Make the code hopefully efficient: Not that I care that much, but if I’m going to be passing arguments across functions, it better be efficient!</p></li>
+</ol>
+<p>So, long story short, I came up with the following approach:</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a list of defaults included in the package: This is actually something that I’ve already seen in some other places, like for example <a href="https://github.com/igraph/rigraph/blob/665d71ebd40cdfe9b996a4f50c35d65b791e4102/R/par.R" target="_blank">igraph</a>, they have a couple of environments that set plotting defaults.</p></li>
+<li><p>Make a heavy use of the ellipsis! <code>...</code> So I can actually grab whatever the user passed through it, and later modify the arguments (I’ll show this in an example)</p></li>
+<li><p>Use 1. to modify 2. at will… with environments!</p></li>
+</ol>
+<p>While I’m not sure this is the most efficient way of doing this (and I’m pretty sure that I’m not the first person to do something like this), it works for what I’m doing right now. The following piece of code illustrates how this works.</p>
+<p>This is a list of the defaults that we would like all the functions to have:</p>
+<pre class="r"><code># This list holds the default parameters
+defaults &lt;- list(color=&quot;steelblue&quot;, add=FALSE)</code></pre>
+<p>This function is the one that sets the defaults, follow the comments to see how it works:</p>
+<pre class="r"><code># This function sets the defaults giving the name of an object that holds the
+# parameters... or at least should hold them!
+set.defaults &lt;- function(obj_name) {
+  
+  # Where was this function called from? This way we get
+  # the parent frame (the environment from where the function was called)
+  # this actually holds all the elements, but works as a reference, so no copy!
+  env &lt;- parent.frame()
+  
+  # Now we loop throught the defaults that I&#39;ve specified
+  # in -defaults-
+  for (d in names(defaults))
+    # If -d- hasn&#39;t been specified, then set it!
+    if (!length(env[[obj_name]][[d]]))
+      env[[obj_name]][[d]] &lt;- defaults[[d]]
+}</code></pre>
+<p>This is a function that illustrates how everything works together. So we can pass extra arguments with the ellipsis, we store them in a list called <code>dots</code> (I’m sure there must be a more efficient way of doing this, but it’s OK for now :]), sets the defaults calling <code>set.defaults</code>, and returns the <code>dots</code> list:</p>
+<pre class="r"><code>f &lt;- function(...) {
+  
+  # Getting the dots
+  dots &lt;- list(...)
+  
+  # Setting defaults
+  set.defaults(&quot;dots&quot;)
+  
+  # Did we got them?
+  return(dots)
+}</code></pre>
+<p>Now let’s see if it works!</p>
+<pre class="r"><code>f()</code></pre>
+<pre><code>## $color
+## [1] &quot;steelblue&quot;
+## 
+## $add
+## [1] FALSE</code></pre>
+<pre class="r"><code>f(color=&quot;green&quot;)</code></pre>
+<pre><code>## $color
+## [1] &quot;green&quot;
+## 
+## $add
+## [1] FALSE</code></pre>
+<p>As expected, the first call of the function returns the default parameters. In the second call, since I specified <code>&quot;green&quot;</code>, the function <code>set.defaults</code> only set the argument <code>add</code>.</p>
+<p>You can read more about environments in <a href="http://adv-r.had.co.nz/Environments.html" target="_blank">Hadley Wickham’s Advance R</a>.</p>
