@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on George G. Vega Yon</title>
+    <link>https://gvegayon.github.io/project/</link>
+    <description>Recent content in Projects on George G. Vega Yon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/project/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PARALLEL: Stata module for parallel computing</title>
+      <link>https://gvegayon.github.io/project/parallel/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://gvegayon.github.io/project/parallel/</guid>
+      <description>&lt;p&gt;Parallel lets you run Stata faster, sometimes faster than MP itself. By organizing your job in several Stata instances, parallel allows you to work with out-of-the-box parallel computing. Using the the parallel prefix, you can get faster simulations, bootstrapping, reshaping big data, etc. without having to know a thing about parallel computing. With no need of having Stata/MP installed on your computer, parallel has showed to dramatically speedup computations up to two, four, or more times depending on how many processors your computer has.&lt;/p&gt;
+
+&lt;p&gt;More details &lt;a href=&#34;https://github.com/gvegayon/parallel&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>aphylo: Statistical Inference of Annotated Phylogenetic Trees</title>
+      <link>https://gvegayon.github.io/project/aphylo/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://gvegayon.github.io/project/aphylo/</guid>
+      <description>&lt;p&gt;The aphylo R package implements estimation and data imputation methods for Functional Annotations in Phylogenetic Trees. The core function consists on the computation of the log-likelihood of observing a given phylogenetic tree with functional annotation on its leafs, and probabilities associated to gain and loss of functionalities, including probabilities of experimental misclassification. Furthermore, the log-likelihood is computed using peeling algorithms, which required developing and implementing efficient algorithms for re-coding and preparing phylogenetic tree data so that can be used with the package. Finally, aphylo works smoothly with popular tools for analysis of phylogenetic data such as ape R package, &amp;ldquo;Analyses of Phylogenetics and Evolution&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;More details &lt;a href=&#34;https://github.com/USCbiostats/aphylo&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>netdiffuseR: Analysis of Diffusion and Contagion Processes on Networks</title>
+      <link>https://gvegayon.github.io/project/netdiffuser/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://gvegayon.github.io/project/netdiffuser/</guid>
+      <description>&lt;p&gt;Empirical statistical analysis, visualization and simulation of diffusion and contagion processes on networks. The package implements algorithms for calculating network diffusion statistics such as transmission rate, hazard rates, exposure models, network threshold levels, infectiousness (contagion), and susceptibility. The package is inspired by work published in Valente, et al., (2015) DOI:10.1016/j.socscimed.2015.10.001; Valente (1995) ISBN:9781881303213, Myers (2000) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;303110&lt;/sub&gt;, Iyengar and others (2011) DOI:10.1287/mksc.1100.0566, Burt (1987) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;228667&lt;/sub&gt;; among others.&lt;/p&gt;
+
+&lt;p&gt;More details &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
