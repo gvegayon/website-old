@@ -757,13 +757,6 @@
     <h1>Recent Posts</h1>
     
     
-    <p class="view-all">
-      <a href="/gvegayon/post/">
-        More Posts
-        <i class="fa fa-angle-double-right"></i>
-      </a>
-    </p>
-    
 
   </div>
   <div class="col-xs-12 col-md-8">
@@ -771,74 +764,6 @@
     
 
     
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://gvegayon.github.io/gvegayon/post/research-software-dev/" itemprop="url">Research != Software dev?</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="2017-10-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Oct 25, 2017
-    </time>
-  </span>
-
-  
-  
-  
-  <span class="article-categories">
-    <i class="fa fa-folder"></i>
-    
-    <a href="/gvegayon/categories/r">R</a
-    >, 
-    
-    <a href="/gvegayon/categories/stats">Stats</a
-    >
-    
-  </span>
-  
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/gvegayon/tags/random">random</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    Some times I feel like I&rsquo;m in the wrong place. At least a few times, while talking to scientists, I&rsquo;ve realized that people don&rsquo;t think of scientific software the same way I do, this is, as actual research. While I know I&rsquo;m not a fancy computer/informatics scientist, I do believe that scientific software development is underestimated.
-When I was in the visiting day at Caltech, I recall that one of the questions that our host did to us during the visiting day was &ldquo;what makes you excited about coming to Caltech?
-    
-  </div>
-  <p class="read-more">
-    <a href="https://gvegayon.github.io/gvegayon/post/research-software-dev/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
       
         
         
@@ -1117,6 +1042,77 @@ When I was in the visiting day at Caltech, I recall that one of the questions th
   </div>
   <p class="read-more">
     <a href="https://gvegayon.github.io/gvegayon/post/yet-another-plot-of-r-s-colors/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
+        
+        
+
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="https://gvegayon.github.io/gvegayon/post/setting-up-optional-openmp-support-with-rcpparmadillo/" itemprop="url">Setting up optional OpenMP support with RcppArmadillo</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-08-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Aug 29, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/gvegayon/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/gvegayon/tags/r">r</a
+    >, 
+    
+    <a href="/gvegayon/tags/rstats">rstats</a
+    >, 
+    
+    <a href="/gvegayon/tags/rcpp">rcpp</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    Setting up an R package that supports OpenMP can be a bit awkward. While systems like Ubuntu with g++ have straight forward support for -fopenmp flags, the same may not be true un MacOS&rsquo;s clang, since the latter is not shipped with it.
+In order to solve this, it is necesary to have different src/Makevars file depending on whether the compiler supports OpenMP or not. This can be solved using a configure file, more over, autoconf.
+    
+  </div>
+  <p class="read-more">
+    <a href="https://gvegayon.github.io/gvegayon/post/setting-up-optional-openmp-support-with-rcpparmadillo/" class="btn btn-primary btn-outline">
       CONTINUE READING
     </a>
   </p>

@@ -8,6 +8,7 @@ categories:
   - Stats
 tags:
   - random
+draft: true
 ---
 
 Some times I feel like I'm in the wrong place. At least a few times, while talking to scientists, I've realized that people don't think of scientific software the same way I do, this is, as actual research. While I know I'm not a fancy computer/informatics scientist, I do believe that scientific software development is underestimated.
