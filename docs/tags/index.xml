@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on George G. Vega Yon</title>
-    <link>https://gvegayon.github.io/tags/</link>
+    <link>https://gvegayon.github.io/gvegayon/tags/</link>
     <description>Recent content in Tags on George G. Vega Yon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/" rel="self" type="application/rss+xml" />
+    <atom:link href="/gvegayon/tags/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
-      <link>https://gvegayon.github.io/tags/academic/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/academic/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/academic/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/academic/</guid>
       <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Aer</title>
-      <link>https://gvegayon.github.io/tags/aer/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/aer/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/aer/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/aer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Networks</title>
-      <link>https://gvegayon.github.io/tags/networks/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/networks/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/networks/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://gvegayon.github.io/tags/r/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/r/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/r/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Random</title>
-      <link>https://gvegayon.github.io/tags/random/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/random/</link>
       <pubDate>Wed, 25 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/random/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/random/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rcpp</title>
-      <link>https://gvegayon.github.io/tags/rcpp/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/rcpp/</link>
       <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/rcpp/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/rcpp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Regression</title>
-      <link>https://gvegayon.github.io/tags/regression/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/regression/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/regression/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/regression/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rstats</title>
-      <link>https://gvegayon.github.io/tags/rstats/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/rstats/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/rstats/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/rstats/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Simulations</title>
-      <link>https://gvegayon.github.io/tags/simulations/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/simulations/</link>
       <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/simulations/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/simulations/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Statistical Computing</title>
-      <link>https://gvegayon.github.io/tags/statistical-computing/</link>
+      <link>https://gvegayon.github.io/gvegayon/tags/statistical-computing/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/tags/statistical-computing/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/tags/statistical-computing/</guid>
       <description></description>
     </item>
     

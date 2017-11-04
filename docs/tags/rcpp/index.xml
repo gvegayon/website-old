@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rcpp on George G. Vega Yon</title>
-    <link>https://gvegayon.github.io/tags/rcpp/</link>
+    <link>https://gvegayon.github.io/gvegayon/tags/rcpp/</link>
     <description>Recent content in Rcpp on George G. Vega Yon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
     <lastBuildDate>Tue, 29 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/rcpp/" rel="self" type="application/rss+xml" />
+    <atom:link href="/gvegayon/tags/rcpp/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up optional OpenMP support with RcppArmadillo</title>
-      <link>https://gvegayon.github.io/post/setting-up-optional-openmp-support-with-rcpparmadillo/</link>
+      <link>https://gvegayon.github.io/gvegayon/post/setting-up-optional-openmp-support-with-rcpparmadillo/</link>
       <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/post/setting-up-optional-openmp-support-with-rcpparmadillo/</guid>
+      <guid>https://gvegayon.github.io/gvegayon/post/setting-up-optional-openmp-support-with-rcpparmadillo/</guid>
       <description>
 
 &lt;p&gt;Setting up an R package that supports OpenMP can be a bit awkward. While systems like Ubuntu with g++ have straight forward support for &lt;code&gt;-fopenmp&lt;/code&gt; flags, the same may not be true un MacOS&amp;rsquo;s &lt;code&gt;clang&lt;/code&gt;, since the latter is not shipped with it.&lt;/p&gt;
