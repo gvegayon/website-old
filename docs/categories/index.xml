@@ -2,46 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on George G. Vega Yon</title>
-    <link>https://gvegayon.github.io/gvegayon/categories/</link>
+    <link>/https://gvegayon.github.io/gvegayon/categories/</link>
     <description>Recent content in Categories on George G. Vega Yon</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <atom:link href="/gvegayon/categories/" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Econ</title>
-      <link>https://gvegayon.github.io/gvegayon/categories/econ/</link>
-      <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://gvegayon.github.io/gvegayon/categories/econ/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Policy</title>
-      <link>https://gvegayon.github.io/gvegayon/categories/policy/</link>
-      <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://gvegayon.github.io/gvegayon/categories/policy/</guid>
-      <description></description>
-    </item>
+    <atom:link href="/https:/gvegayon.github.io/gvegayon/categories/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>R</title>
-      <link>https://gvegayon.github.io/gvegayon/categories/r/</link>
+      <link>/https://gvegayon.github.io/gvegayon/categories/r/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/gvegayon/categories/r/</guid>
+      <guid>/https://gvegayon.github.io/gvegayon/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Stats</title>
-      <link>https://gvegayon.github.io/gvegayon/categories/stats/</link>
-      <pubDate>Fri, 29 Sep 2017 00:00:00 +0000</pubDate>
+      <link>/https://gvegayon.github.io/gvegayon/categories/stats/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://gvegayon.github.io/gvegayon/categories/stats/</guid>
+      <guid>/https://gvegayon.github.io/gvegayon/categories/stats/</guid>
       <description></description>
     </item>
     

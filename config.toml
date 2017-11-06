@@ -1,11 +1,11 @@
-baseurl = "https://gvegayon.github.io/gvegayon/"  # End your URL with a `/` trailing slash.
+baseurl = "https://gvegayon.github.io/"  # End your URL with a `/` trailing slash.
 title = "George G. Vega Yon"
 copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "backup$", "\\.gitignore$", "\\.Rhistory$", '\\.rmd$']
-publishDir = "docs"
+publishDir = "../gvegayon.github.io"
 
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
