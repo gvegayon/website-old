@@ -1,4 +1,4 @@
-baseurl = "http://ggvy.cl/"  # End your URL with a `/` trailing slash.
+baseurl = ""  # End your URL with a `/` trailing slash.
 title = "George G. Vega Yon"
 copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
