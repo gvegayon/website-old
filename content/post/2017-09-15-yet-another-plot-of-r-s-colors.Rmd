@@ -15,7 +15,7 @@ Just another matrix with the colors()\'s colors
 
 I know there are plenty of these online, but I just thought about having my own for quick reference...
 
-```{r, out.width='800px', out.height='800px', fig.width=8, fig.height=8}
+```{r fancy-colors, out.height='800px', fig.width=8, fig.height=8}
 ncols <- ceiling(sqrt(length(colors())))^2
 dat <- matrix(1:ncols, sqrt(ncols))
 image(dat, col = colors()[1:ncols])

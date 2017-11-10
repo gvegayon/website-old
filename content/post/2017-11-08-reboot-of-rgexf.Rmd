@@ -56,7 +56,8 @@ col[is.na(col[,1]),1:3] <- 255
 col[,4] <- .5
 ```
 
-Finally, we create the GEXF object and call the plot function. In this case we are using [gexf-js](https://github.com/raphv/gexf-js) (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files and start the server using the [servr](https://cran.r-project.org/package=servr)
+Finally, we create the GEXF object and call the plot function. In this case we are using [gexf-js](https://github.com/raphv/gexf-js) (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files by setting `copy.only = TRUE` and start the server using the [servr](https://cran.r-project.org/package=servr). 
+
 
 ```{r gexf}
 # Creating the gexf object
@@ -73,12 +74,12 @@ plot(
   gf,
   edgeWidthFactor = .1,
   copy.only = TRUE,
-  dir       = "reboot-of-rgexf/gexf/"
+  dir       = "../../static/viz/reboot-of-rgexf"
   )
 
 ```
 
-You can take a look at resulting website [here](gexf/index.html). 
+You can take a look at resulting website [here](../../viz/reboot-of-rgexf/index.html). 
 
 ## Session info
 
