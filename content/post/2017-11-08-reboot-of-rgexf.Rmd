@@ -74,12 +74,12 @@ plot(
   gf,
   edgeWidthFactor = .1,
   copy.only = TRUE,
-  dir       = "../../static/viz/reboot-of-rgexf"
+  dir       = "../../static/post/reboot-of-rgexf/viz"
   )
 
 ```
 
-You can take a look at resulting website [here](../../viz/reboot-of-rgexf/index.html). 
+You can take a look at resulting website [here](viz). 
 
 ## Session info
 
