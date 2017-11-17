@@ -87,3 +87,6 @@ You can take a look at resulting website [here](viz).
 devtools::session_info()
 ```
 
+## Last updated
+
+This post was last updated on 2017-11-13 to reflect a small change in `rgexf` that makes it easier to process colors and positions.
