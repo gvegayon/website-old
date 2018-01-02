@@ -22,7 +22,7 @@ defaultContentLanguageInSubdir = false
 
 [params]
   name = "George G. Vega Yon"
-  role = "Research Programmer / Ph.D. Student"
+  role = "Statistical Computing"
   organization = "University of Southern California"
   organization_url = ""
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
