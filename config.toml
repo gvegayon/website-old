@@ -1,4 +1,4 @@
-baseurl = "http://ggvy.cl"
+baseurl = "http://ggvy.cl/"
 title = "GGVY"
 copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
