@@ -1,4 +1,4 @@
-baseurl = "http://ggvy.cl/"
+baseurl = "http://ggvy.cl"
 title = "GGVY"
 copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
@@ -8,7 +8,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "backup$", "\\.gitignore$", "\\.
 publishDir = "../gvegayon.github.io"
 
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+disqusShortname = "ggvy"
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-40608305-3"
