@@ -13,6 +13,10 @@ In this post I provide a short example in which default arguments are specified 
 "
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 Last week I found myself working on <a href="https://github.com/USCCANA/netdiffuseR" target="_blank">netdiffuseR</a> trying to establish nice defaults for some plotting functions with the following goals:
 
 1.  Make the code easy to maintain: So if I need to change defaults I just change a few lines and that works for all plot functions,

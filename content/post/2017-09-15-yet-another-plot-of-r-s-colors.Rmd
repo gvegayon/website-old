@@ -13,6 +13,10 @@ Just another matrix with the colors()\'s colors
 "
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 I know there are plenty of these online, but I just thought about having my own for quick reference...
 
 ```{r fancy-colors, out.height='800px', fig.width=8, fig.height=8}

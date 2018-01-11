@@ -12,6 +12,10 @@ tags:
   - rstats
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 1.  Install libuwind
     ```shell
     $ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz && \

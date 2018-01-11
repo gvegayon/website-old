@@ -11,6 +11,10 @@ tags:
 summary: Finally, after a long wait, the R packages [googlePublicData](https://github.com/gvegayon/googlePublicData) (more than 2 years since the last update!) and [ABCoptim](https://github.com/gvegayon/ABCoptim) (roughly a year since the last update) have new versions on [CRAN](https://cran.r-project.org).
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 Finally, after a long wait, the R packages [googlePublicData](https://github.com/gvegayon/googlePublicData) (more than 2 years since the last update!) and [ABCoptim](https://github.com/gvegayon/ABCoptim) (roughly a year since the last update) have new versions on [CRAN](https://cran.r-project.org).
 
 The first just got an update that fixed some nasty bugs that were evident once you upload the data to [Google Public Data Explorer](https://www.google.com/publicdata), and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching `optim`, and new methods for printing and plotting the results.

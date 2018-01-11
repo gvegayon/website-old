@@ -13,6 +13,10 @@ tags:
 summary: The [rgexf](https://github.com/gvegayon/rgexf) R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I'll show how to use the new version (on development and soon the be shipped to [CRAN](https://cran.r-project.org/package=rgexf)) together with the [netdiffuseR](https://github.com/USCCANA/netdiffuseR) R package to visualize a random diffusion process.
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 The [rgexf](https://github.com/gvegayon/rgexf) R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I'll show how to use the new version (on development and soon the be shipped to [CRAN](https://cran.r-project.org/package=rgexf)) together with the [netdiffuseR](https://github.com/USCCANA/netdiffuseR) R package to visualize a random diffusion process.
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}

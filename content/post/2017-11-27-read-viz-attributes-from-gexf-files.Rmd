@@ -12,6 +12,10 @@ tags:
   - viz
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
 So one of the new features that I've working on is processing viz attributes. In the [CRAN version of rgexf](https://cran.r-project.org/package=rgexf), the function `read.gexf` only reads in non-visual attributes and the graph structure itself, which is no longer true [as of today](https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5) (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).
 
 We start by loading the R packages and reading the "lesmiserables.gexf" file that is included in `rgexf`. We use the `gexf.to.igraph` function to coerce the `gexf` object to an object of class `igraph`
