@@ -21,7 +21,7 @@ draft: true
 ---
 
 ```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=FALSE)
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=TRUE)
 ```
 
 Con todo el tema del plebiscito anti AFP (porque no es más que eso), y varios correos que he recibido en los últimos años con personas preguntándome acerca de como funciona el sistema de pensiones (que me parece genial!), me decidí a escribir este pequeño post con algunas de las ideas que tengo al respecto. Y qué mejor forma que partir por los mitos sobre el sistema!

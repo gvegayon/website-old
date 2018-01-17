@@ -9,16 +9,11 @@ tags: []
 draft: true
 ---
 
-```{r setup, echo=FALSE}
+```{r nicebox, dependson=-1}
 if (!require(DiagrammeR)) {
   install.packages("DiagrammeR")
   library(DiagrammeR)
 }
-  
-```
-
-
-```{r nicebox, dependson=-1}
 
 grViz("
 digraph boxes_and_circles {

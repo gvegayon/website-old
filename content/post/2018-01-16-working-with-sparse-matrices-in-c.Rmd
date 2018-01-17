@@ -2,7 +2,7 @@
 title: Working with sparse matrices in C++
 author: George G. Vega Yon
 date: '2018-01-16'
-slug: working-with-sparse-matrices-in-c
+slug: working-with-sparse-matrices-in-cpp
 categories:
   - R
 tags:
