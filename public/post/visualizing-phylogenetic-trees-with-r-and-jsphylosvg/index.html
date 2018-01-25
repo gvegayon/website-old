@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.32.4" />
+  <meta name="author" content="George G. Vega Yon">
+  <meta name="description" content="Statistical Computing">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-40608305-3', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://ggvy.cl/index.xml" type="application/rss+xml" title="GGVY">
+  <link rel="feed" href="https://ggvy.cl/index.xml" type="application/rss+xml" title="GGVY">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://ggvy.cl/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/">
+
+  
+
+  <title>Visualizing Phylogenetic Trees with R and jsPhyloSVG | GGVY</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GGVY</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Research</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Visualizing Phylogenetic Trees with R and jsPhyloSVG</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-12-08 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Dec 8, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/r">r</a
+    >, 
+    
+    <a href="/tags/rstats">rstats</a
+    >, 
+    
+    <a href="/tags/viz">viz</a
+    >, 
+    
+    <a href="/tags/phylo">phylo</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fggvy.cl%2fpost%2fvisualizing-phylogenetic-trees-with-r-and-jsphylosvg%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Visualizing%20Phylogenetic%20Trees%20with%20R%20and%20jsPhyloSVG&amp;url=https%3a%2f%2fggvy.cl%2fpost%2fvisualizing-phylogenetic-trees-with-r-and-jsphylosvg%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fggvy.cl%2fpost%2fvisualizing-phylogenetic-trees-with-r-and-jsphylosvg%2f&amp;title=Visualizing%20Phylogenetic%20Trees%20with%20R%20and%20jsPhyloSVG"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fggvy.cl%2fpost%2fvisualizing-phylogenetic-trees-with-r-and-jsphylosvg%2f&amp;title=Visualizing%20Phylogenetic%20Trees%20with%20R%20and%20jsPhyloSVG"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Visualizing%20Phylogenetic%20Trees%20with%20R%20and%20jsPhyloSVG&amp;body=https%3a%2f%2fggvy.cl%2fpost%2fvisualizing-phylogenetic-trees-with-r-and-jsphylosvg%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jsphylosvg/jsphylosvg-min.js"></script>
+<script src="/rmarkdown-libs/jsphylosvg/raphael-min.js"></script>
+<script src="/rmarkdown-libs/jsphylosvg/yui-min.js"></script>
+<script src="/rmarkdown-libs/jsPhyloSVG-binding/jsPhyloSVG.js"></script>
+
+
+<p>During the last year I’ve been working on a daily basis with <a href="../publication/aphylo/">phylogenetic trees</a>, objects that in graph jargon are called Directed Acyclic Graphs. While R does have some cool packages out there to visualize these–including <a href="https://zachcp.github.io/phylocanvas/">phylocanvas</a> which looks great!–I wanted to tryout <a href="http://www.jsphylosvg.com">jsPhyloSVG</a>, and moreover, to learn how to use <a href="http://www.htmlwidgets.org">htmlwidgets</a>.</p>
+<p>So, after a week-long process of playing with JavaScript, of which I had no prior knowledge (so thank you <a href="https://w3schools.com">W3shools</a>)!, and hours of head-scratching, I created this R package, <a href="https://USCBiostats.github.io/jsPhyloSVG">jsPhyloSVG</a> that provides an htmlwidget for the library of the same name. An example follows</p>
+<pre class="r"><code># I&#39;ll be using the ape package to simulate a tree
+library(ape)
+# You can get it from github USCBiostats/jsPhyloSVG
+library(jsPhyloSVG)
+
+# A random phylogenetic tree with 50 tips
+tree &lt;- rtree(50)
+
+jsPhyloSVG(write.tree(tree))</code></pre>
+<div id="htmlwidget-1" style="width:576px;height:480px;" class="jsPhyloSVG html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"tree":"((((t43:0.932305844,t31:0.9845660173):0.1447749503,((t36:0.2047534357,(t33:0.5947111531,t30:0.1363537442):0.4523779938):0.7487354644,(t15:0.4477529069,((t7:0.1778784869,t26:0.6665748472):0.9773745697,t40:0.3106660887):0.2765452175):0.03037715843):0.04805329302):0.4547258427,(((t8:0.441354393,t49:0.02917329199):0.6289364961,(((t32:0.5995104022,t37:0.8488309553):0.6598875793,(t24:0.228343871,t46:0.990097211):0.276045535):0.6202068042,t45:0.1444826063):0.8427942758):0.3079548648,t17:0.3514447703):0.08520040149):0.1349591794,((((t44:0.5093783112,t48:0.8294241913):0.0461006409,(((((((t22:0.5195081867,t38:0.4020721868):0.3774028523,t11:0.937823409):0.8035644148,t10:0.2306567996):0.7398158929,t34:0.5381271895):0.7243057585,t6:0.2920015957):0.4826544332,t41:0.8750956142):0.2028468326,((t21:0.1134213735,t2:0.889464349):0.866344922,((t5:0.4883335188,(t27:0.5046961394,(t18:0.3843020839,t9:0.4849177306):0.8046769423):0.3719995969):0.9010140565,t19:0.8208623556):0.03838334465):0.9540978081):0.7979266369):0.4276919626,(t25:0.03141828487,t50:0.3015144009):0.6947834471):0.7647038966,((t13:0.1159334404,((t39:0.03575936123,t4:0.05359950056):0.5595376433,t16:0.2884342759):0.9279359682):0.3650581299,(((t42:0.7499528064,t12:0.2922347388):0.2771610385,((t28:0.1899906085,t14:0.9218426929):0.9448720694,t1:0.6552358426):0.9238845527):0.1547263861,((t29:0.02971262229,t3:0.662239939):0.7393785079,((t35:0.2758810781,(t20:0.3702376105,t23:0.04204657627):0.476135704):0.7810493102,t47:0.3382842308):0.3418468167):0.0841111003):0.1162081454):0.8675771332):0.6727451095);","layout":"circular"},"evals":[],"jsHooks":[]}</script>
+<p>You can take a look at the project repo <a href="https://github.com/USCBiostats/jsPhyloSVG">here</a>.</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://ggvy.cl/post/read-viz-attributes-from-gexf-files/"><span
+      aria-hidden="true">&larr;</span> Read viz attributes from GEXF files</a></li>
+    
+
+    
+    <li class="next"><a href="https://ggvy.cl/post/working-with-sparse-matrices-in-cpp/">Working with sparse matrices in C&#43;&#43; <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ggvy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016 George G. Vega Yon &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/cpp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+

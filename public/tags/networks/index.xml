@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networks on GGVY</title>
+    <link>https://ggvy.cl/tags/networks/</link>
+    <description>Recent content in Networks on GGVY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/networks/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Read viz attributes from GEXF files</title>
+      <link>https://ggvy.cl/post/read-viz-attributes-from-gexf-files/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ggvy.cl/post/read-viz-attributes-from-gexf-files/</guid>
+      <description>&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
+&lt;p&gt;We start by loading the R packages and reading the “lesmiserables.gexf” file that is included in &lt;code&gt;rgexf&lt;/code&gt;. We use the &lt;code&gt;gexf.to.igraph&lt;/code&gt; function to coerce the &lt;code&gt;gexf&lt;/code&gt; object to an object of class &lt;code&gt;igraph&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading R packages
+library(rgexf)
+library(igraph)
+
+# Reading and coercing into an igraph object
+fn      &amp;lt;- system.file(&amp;quot;gexf-graphs&amp;quot;, &amp;quot;lesmiserables.gexf&amp;quot;, package=&amp;quot;rgexf&amp;quot;)
+gexf1   &amp;lt;- read.gexf(fn)
+igraph1 &amp;lt;- gexf.to.igraph(gexf1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here comes the nice new feature. &lt;code&gt;read.gexf&lt;/code&gt; and &lt;code&gt;gexf.to.igraph&lt;/code&gt; take into account the visual attributes of the network, and we can use those with &lt;code&gt;plot.igraph&lt;/code&gt; directly without us specifying them! The only changes that I do in the next code chunk are rescaling the vertex and labels sizes (igraph automatically changes scales, which messes a bit with what we read from the GEXF object), and setting the edges to be curved and labels to be black using the &lt;code&gt;sans&lt;/code&gt; font family, and this is what we get&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We set the mai = c(0,0,0,0) so we have more space for our plot
+oldpar &amp;lt;- par(no.readonly = TRUE)
+par(mai = rep(0,4))
+plot(igraph1,
+     vertex.size        = V(igraph1)$size/2,
+     vertex.label.cex   = V(igraph1)$size/50,
+     vertex.label.color = &amp;quot;black&amp;quot;,
+     edge.curved        = TRUE,
+     vertex.label.family = &amp;quot;sans&amp;quot;
+     )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://ggvy.cl/post/2017-11-27-read-viz-attributes-from-gexf-files_files/figure-html/igraph-plot-1.svg&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(oldpar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And to make sure we are getting the same output, we can take a look at how the &lt;code&gt;plot.gexf&lt;/code&gt; function draws our GEXF graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(
+  gexf1,
+  copy.only = TRUE,
+  dir       = &amp;quot;../../static/post/read-viz-attributes-from-gexf-files/viz&amp;quot;
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
+## /home/vegayon/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;As expected, the same result.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reboot of rgexf</title>
+      <link>https://ggvy.cl/post/reboot-of-rgexf/</link>
+      <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ggvy.cl/post/reboot-of-rgexf/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://github.com/gvegayon/rgexf&#34;&gt;rgexf&lt;/a&gt; R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN&lt;/a&gt;) together with the &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt; R package to visualize a random diffusion process.&lt;/p&gt;
+&lt;p&gt;First, we load all the packages that we will be using&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading the relevant packages
+library(igraph, quietly = TRUE)
+library(rgexf, quietly = TRUE)
+library(netdiffuseR, quietly = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A random diffusion network
+set.seed(122)
+net &amp;lt;- rdiffnet(n = 200, t=20, seed.graph = &amp;quot;small-world&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, we get the parameters ready, in this case, position using the function &lt;code&gt;layout_nicely&lt;/code&gt; from the igraph package, and colors using the Time of Adoption (toa)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Setting viz attributes
+pos &amp;lt;- cbind(layout_nicely(diffnet_to_igraph(net)[[1]]), 0)
+
+# Coloring according to time of adoption. White ones are not
+# adopters.
+col &amp;lt;- diffnet.toa(net)
+col &amp;lt;- col/20
+col &amp;lt;- colorRamp(blues9, alpha = TRUE)(col)
+col[is.na(col[,1]),1:3] &amp;lt;- 255
+col[,4] &amp;lt;- .5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, we create the GEXF object and call the plot function. In this case we are using &lt;a href=&#34;https://github.com/raphv/gexf-js&#34;&gt;gexf-js&lt;/a&gt; (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files by setting &lt;code&gt;copy.only = TRUE&lt;/code&gt; and start the server using the &lt;a href=&#34;https://cran.r-project.org/package=servr&#34;&gt;servr&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Creating the gexf object
+gf &amp;lt;- igraph.to.gexf(
+  diffnet_to_igraph(net)[[1]],
+  nodesVizAtt = list(
+    color    = col,
+    position = pos
+    )
+  )
+
+# Plotting using gexf-js
+plot(
+  gf,
+  edgeWidthFactor = .1,
+  copy.only = TRUE,
+  dir       = &amp;quot;../../static/post/reboot-of-rgexf/viz&amp;quot;
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
+## /home/vegayon/Documents/website/static/post/reboot-of-rgexf/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can take a look at resulting website &lt;a href=&#34;viz&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;session-info&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Session info&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ─ Session info ──────────────────────────────────────────────────────────
+##  setting  value                       
+##  version  R version 3.4.3 (2017-11-30)
+##  os       Ubuntu 16.04.3 LTS          
+##  system   x86_64, linux-gnu           
+##  ui       X11                         
+##  language en_US                       
+##  collate  en_US.UTF-8                 
+##  tz       US/Pacific                  
+##  date     2018-01-17                  
+## 
+## ─ Packages ──────────────────────────────────────────────────────────────
+##  package        * version     date      
+##  assertthat       0.2.0       2017-04-11
+##  backports        1.1.2       2017-12-13
+##  blogdown         0.4.4       2018-01-17
+##  bookdown         0.5         2017-08-20
+##  boot             1.3-20      2017-07-30
+##  cli              1.0.0       2017-11-10
+##  clisymbols       1.2.0       2017-05-21
+##  codetools        0.2-15      2016-10-05
+##  crayon           1.3.4       2017-09-16
+##  desc             1.1.1       2017-08-03
+##  devtools         1.13.3.9000 2018-01-11
+##  digest           0.6.14      2018-01-14
+##  evaluate         0.10.1      2017-06-24
+##  htmltools        0.3.6       2017-04-28
+##  httpuv           1.3.5       2017-07-04
+##  igraph         * 1.1.2       2017-07-21
+##  knitr            1.18        2017-12-27
+##  lattice          0.20-35     2017-03-25
+##  magrittr         1.5         2014-11-22
+##  MASS             7.3-48      2017-12-24
+##  MatchIt          3.0.1       2017-04-18
+##  Matrix           1.2-11      2017-08-16
+##  memoise          1.1.0       2017-04-21
+##  netdiffuseR    * 1.18.2999   2017-09-27
+##  network          1.13.0      2015-09-19
+##  networkDynamic   0.9.0       2016-01-15
+##  pkgbuild         0.0.0.9000  2018-01-11
+##  pkgconfig        2.0.1       2017-03-21
+##  pkgload          0.0.0.9000  2017-11-10
+##  R6               2.2.2       2017-06-17
+##  Rcpp             0.12.14     2017-11-23
+##  rgexf          * 0.16.0      2018-01-02
+##  rlang            0.1.6       2017-12-21
+##  rmarkdown        1.8         2017-11-17
+##  rprojroot        1.3-2       2018-01-03
+##  servr            0.8         2017-11-06
+##  sessioninfo      1.0.1.9000  2017-11-10
+##  sna              2.4         2016-08-08
+##  SparseM          1.77        2017-04-23
+##  statnet.common   4.0.0       2017-08-16
+##  stringi          1.1.6       2017-11-17
+##  stringr          1.2.0       2017-02-18
+##  testthat         2.0.0.9000  2018-01-11
+##  usethis          1.1.0.9000  2018-01-11
+##  withr            2.1.1       2017-12-19
+##  XML              3.98-1.9    2017-06-19
+##  yaml             2.1.16      2017-12-12
+##  source                              
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.2)                      
+##  Github (rstudio/blogdown@8ed8bc1)   
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/cli@ab1c3aa)          
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.3.1)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  Github (hadley/devtools@0bcfd6e)    
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.3.3)                      
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.0)                      
+##  Github (USCCANA/netdiffuseR@92b4bff)
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/pkgbuild@ce7f6d1)     
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/pkgload@70eaef8)      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)                      
+##  local                               
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.2)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.2)                      
+##  Github (r-lib/sessioninfo@c871d01)  
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)                      
+##  CRAN (R 3.4.0)                      
+##  Github (hadley/testthat@2ca7ac9)    
+##  Github (r-lib/usethis@390e05b)      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;last-updated&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Last updated&lt;/h2&gt;
+&lt;p&gt;This post was last updated on 2017-11-13 to reflect a small change in &lt;code&gt;rgexf&lt;/code&gt; that makes it easier to process colors and positions.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>netdiffuseR: Analysis of Diffusion and Contagion Processes on Networks</title>
+      <link>https://ggvy.cl/project/netdiffuser/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ggvy.cl/project/netdiffuser/</guid>
+      <description>&lt;p&gt;Empirical statistical analysis, visualization and simulation of diffusion and contagion processes on networks. The package implements algorithms for calculating network diffusion statistics such as transmission rate, hazard rates, exposure models, network threshold levels, infectiousness (contagion), and susceptibility. The package is inspired by work published in Valente, et al., (2015) DOI:10.1016/j.socscimed.2015.10.001; Valente (1995) ISBN:9781881303213, Myers (2000) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;303110&lt;/sub&gt;, Iyengar and others (2011) DOI:10.1287/mksc.1100.0566, Burt (1987) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;228667&lt;/sub&gt;; among others.&lt;/p&gt;
+
+&lt;p&gt;More details &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,11 +1,11 @@
-baseurl = "http://ggvy.cl/"
+baseurl = "https://ggvy.cl/"
 title = "GGVY"
 copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "backup$", "\\.gitignore$", "\\.Rhistory$", '\\.rmd$']
-publishDir = "../gvegayon.github.io"
+publishDir = "public"
 
 # Enable comments by entering your Disqus shortname
 disqusShortname = "ggvy"

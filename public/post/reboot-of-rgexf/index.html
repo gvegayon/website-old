@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.32.4" />
+  <meta name="author" content="George G. Vega Yon">
+  <meta name="description" content="Statistical Computing">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-40608305-3', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://ggvy.cl/index.xml" type="application/rss+xml" title="GGVY">
+  <link rel="feed" href="https://ggvy.cl/index.xml" type="application/rss+xml" title="GGVY">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://ggvy.cl/post/reboot-of-rgexf/">
+
+  
+
+  <title>Reboot of rgexf | GGVY</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GGVY</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Research</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Reboot of rgexf</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-11-08 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Nov 8, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/r">r</a
+    >, 
+    
+    <a href="/tags/rstats">rstats</a
+    >, 
+    
+    <a href="/tags/networks">networks</a
+    >, 
+    
+    <a href="/tags/viz">viz</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fggvy.cl%2fpost%2freboot-of-rgexf%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Reboot%20of%20rgexf&amp;url=https%3a%2f%2fggvy.cl%2fpost%2freboot-of-rgexf%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fggvy.cl%2fpost%2freboot-of-rgexf%2f&amp;title=Reboot%20of%20rgexf"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fggvy.cl%2fpost%2freboot-of-rgexf%2f&amp;title=Reboot%20of%20rgexf"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Reboot%20of%20rgexf&amp;body=https%3a%2f%2fggvy.cl%2fpost%2freboot-of-rgexf%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>The <a href="https://github.com/gvegayon/rgexf">rgexf</a> R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to <a href="https://cran.r-project.org/package=rgexf">CRAN</a>) together with the <a href="https://github.com/USCCANA/netdiffuseR">netdiffuseR</a> R package to visualize a random diffusion process.</p>
+<p>First, we load all the packages that we will be using</p>
+<pre class="r"><code># Loading the relevant packages
+library(igraph, quietly = TRUE)
+library(rgexf, quietly = TRUE)
+library(netdiffuseR, quietly = TRUE)</code></pre>
+<p>Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.</p>
+<pre class="r"><code># A random diffusion network
+set.seed(122)
+net &lt;- rdiffnet(n = 200, t=20, seed.graph = &quot;small-world&quot;)</code></pre>
+<p>Now, we get the parameters ready, in this case, position using the function <code>layout_nicely</code> from the igraph package, and colors using the Time of Adoption (toa)</p>
+<pre class="r"><code># Setting viz attributes
+pos &lt;- cbind(layout_nicely(diffnet_to_igraph(net)[[1]]), 0)
+
+# Coloring according to time of adoption. White ones are not
+# adopters.
+col &lt;- diffnet.toa(net)
+col &lt;- col/20
+col &lt;- colorRamp(blues9, alpha = TRUE)(col)
+col[is.na(col[,1]),1:3] &lt;- 255
+col[,4] &lt;- .5</code></pre>
+<p>Finally, we create the GEXF object and call the plot function. In this case we are using <a href="https://github.com/raphv/gexf-js">gexf-js</a> (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files by setting <code>copy.only = TRUE</code> and start the server using the <a href="https://cran.r-project.org/package=servr">servr</a>.</p>
+<pre class="r"><code># Creating the gexf object
+gf &lt;- igraph.to.gexf(
+  diffnet_to_igraph(net)[[1]],
+  nodesVizAtt = list(
+    color    = col,
+    position = pos
+    )
+  )
+
+# Plotting using gexf-js
+plot(
+  gf,
+  edgeWidthFactor = .1,
+  copy.only = TRUE,
+  dir       = &quot;../../static/post/reboot-of-rgexf/viz&quot;
+  )</code></pre>
+<pre><code>## GEXF graph successfully written at:
+## /home/vegayon/Documents/website/static/post/reboot-of-rgexf/viz/network.gexf</code></pre>
+<p>You can take a look at resulting website <a href="viz">here</a>.</p>
+<div id="session-info" class="section level2">
+<h2>Session info</h2>
+<pre class="r"><code>devtools::session_info()</code></pre>
+<pre><code>## ─ Session info ──────────────────────────────────────────────────────────
+##  setting  value                       
+##  version  R version 3.4.3 (2017-11-30)
+##  os       Ubuntu 16.04.3 LTS          
+##  system   x86_64, linux-gnu           
+##  ui       X11                         
+##  language en_US                       
+##  collate  en_US.UTF-8                 
+##  tz       US/Pacific                  
+##  date     2018-01-17                  
+## 
+## ─ Packages ──────────────────────────────────────────────────────────────
+##  package        * version     date      
+##  assertthat       0.2.0       2017-04-11
+##  backports        1.1.2       2017-12-13
+##  blogdown         0.4.4       2018-01-17
+##  bookdown         0.5         2017-08-20
+##  boot             1.3-20      2017-07-30
+##  cli              1.0.0       2017-11-10
+##  clisymbols       1.2.0       2017-05-21
+##  codetools        0.2-15      2016-10-05
+##  crayon           1.3.4       2017-09-16
+##  desc             1.1.1       2017-08-03
+##  devtools         1.13.3.9000 2018-01-11
+##  digest           0.6.14      2018-01-14
+##  evaluate         0.10.1      2017-06-24
+##  htmltools        0.3.6       2017-04-28
+##  httpuv           1.3.5       2017-07-04
+##  igraph         * 1.1.2       2017-07-21
+##  knitr            1.18        2017-12-27
+##  lattice          0.20-35     2017-03-25
+##  magrittr         1.5         2014-11-22
+##  MASS             7.3-48      2017-12-24
+##  MatchIt          3.0.1       2017-04-18
+##  Matrix           1.2-11      2017-08-16
+##  memoise          1.1.0       2017-04-21
+##  netdiffuseR    * 1.18.2999   2017-09-27
+##  network          1.13.0      2015-09-19
+##  networkDynamic   0.9.0       2016-01-15
+##  pkgbuild         0.0.0.9000  2018-01-11
+##  pkgconfig        2.0.1       2017-03-21
+##  pkgload          0.0.0.9000  2017-11-10
+##  R6               2.2.2       2017-06-17
+##  Rcpp             0.12.14     2017-11-23
+##  rgexf          * 0.16.0      2018-01-02
+##  rlang            0.1.6       2017-12-21
+##  rmarkdown        1.8         2017-11-17
+##  rprojroot        1.3-2       2018-01-03
+##  servr            0.8         2017-11-06
+##  sessioninfo      1.0.1.9000  2017-11-10
+##  sna              2.4         2016-08-08
+##  SparseM          1.77        2017-04-23
+##  statnet.common   4.0.0       2017-08-16
+##  stringi          1.1.6       2017-11-17
+##  stringr          1.2.0       2017-02-18
+##  testthat         2.0.0.9000  2018-01-11
+##  usethis          1.1.0.9000  2018-01-11
+##  withr            2.1.1       2017-12-19
+##  XML              3.98-1.9    2017-06-19
+##  yaml             2.1.16      2017-12-12
+##  source                              
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.2)                      
+##  Github (rstudio/blogdown@8ed8bc1)   
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/cli@ab1c3aa)          
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.3.1)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  Github (hadley/devtools@0bcfd6e)    
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.3.3)                      
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.0)                      
+##  Github (USCCANA/netdiffuseR@92b4bff)
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/pkgbuild@ce7f6d1)     
+##  CRAN (R 3.4.1)                      
+##  Github (r-lib/pkgload@70eaef8)      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)                      
+##  local                               
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.2)                      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.2)                      
+##  Github (r-lib/sessioninfo@c871d01)  
+##  CRAN (R 3.3.2)                      
+##  CRAN (R 3.4.0)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)                      
+##  CRAN (R 3.4.0)                      
+##  Github (hadley/testthat@2ca7ac9)    
+##  Github (r-lib/usethis@390e05b)      
+##  CRAN (R 3.4.3)                      
+##  CRAN (R 3.4.1)                      
+##  CRAN (R 3.4.2)</code></pre>
+</div>
+<div id="last-updated" class="section level2">
+<h2>Last updated</h2>
+<p>This post was last updated on 2017-11-13 to reflect a small change in <code>rgexf</code> that makes it easier to process colors and positions.</p>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://ggvy.cl/post/environments-in-r-rock/"><span
+      aria-hidden="true">&larr;</span> Environments in R Rock</a></li>
+    
+
+    
+    <li class="next"><a href="https://ggvy.cl/post/new-versions-of-abcoptim-and-googlepublicdata-on-cran/">New versions of ABCoptim and googlePublicData on CRAN <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ggvy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016 George G. Vega Yon &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/cpp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+
