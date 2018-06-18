@@ -1,0 +1,25 @@
+---
+title: Profiling Rcpp
+author: George G. Vega Yon
+date: '2017-11-14'
+slug: profiling-rcpp
+draft: true
+categories:
+  - R
+tags:
+  - rcpp
+  - r
+  - rstats
+---
+
+
+
+<ol style="list-style-type: decimal">
+<li><p>Install libuwind</p>
+<pre class="shell"><code>$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;&amp; \
+    tar -xf libunwind-1.2.tar.gz &amp;&amp; cd libunwind-1.2; \
+    ./configure; sudo make; sudo make install</code></pre></li>
+<li><p>Install <a href="https://github.com/gperftools/gperftools">google-perftools</a></p>
+<pre class="shell"><code>$ git clone https://github.com/gperftools/gperftools
+$ </code></pre></li>
+</ol>

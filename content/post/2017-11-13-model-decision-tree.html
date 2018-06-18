@@ -1,0 +1,74 @@
+---
+title: Model Decision Tree
+author: George G. Vega Yon
+date: '2017-11-13'
+slug: model-decision-tree
+categories:
+  - Stats
+tags: []
+draft: true
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/viz/viz.js"></script>
+<link href="/rmarkdown-libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/grViz-binding/grViz.js"></script>
+
+
+<pre class="r"><code>if (!require(DiagrammeR)) {
+  install.packages(&quot;DiagrammeR&quot;, repos = &quot;https://cloud.r-project.org&quot;)
+  library(DiagrammeR)
+}</code></pre>
+<pre><code>## Loading required package: DiagrammeR</code></pre>
+<pre class="r"><code>grViz(&quot;
+digraph boxes_and_circles {
+  # Defining models
+  node [shape = box]
+  
+  # Common world
+  ols [label=&#39;Linear Regression&#39;]
+  probit [label=Probit]
+  logit [label=Logit]
+  tobit [label=Tobit]
+
+  # Networks
+  ERGM
+  Siena
+  tERGM
+
+  # Decisions
+  node [shape=diamond]
+  isiid [label=&#39;Is iid&#39;]
+  iscts [label=&#39;Is continuous&#39;]
+
+  node [shape=plaintext]
+  iid [label=&#39;Independent data&#39;]
+  noiid [label=&#39;Not independent data&#39;]
+  ctsdat [label=&#39;Continuous&#39;]
+  disdat [label=&#39;Discrete&#39;]
+  mixdat [label=&#39;Mixture&#39;]
+  
+
+  # Edges
+  isiid -&gt; iid [dir=none,label=Yes]
+  iid -&gt; iscts [dir=none]
+  
+  iscts -&gt; ctsdat [label=Yes] 
+  ctsdat -&gt; ols
+  
+  iscts -&gt; disdat [label=No]
+  disdat -&gt; {probit logit}
+
+  iscts -&gt; mixdat [label=Both]
+  mixdat -&gt; tobit
+  
+
+  isiid -&gt; noiid [dir=none, label=No]
+  noiid -&gt; ERGM
+  
+}
+
+  
+      &quot;)</code></pre>
+<div id="htmlwidget-1" style="width:576px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"diagram":"\ndigraph boxes_and_circles {\n  # Defining models\n  node [shape = box]\n  \n  # Common world\n  ols [label=\"Linear Regression\"]\n  probit [label=Probit]\n  logit [label=Logit]\n  tobit [label=Tobit]\n\n  # Networks\n  ERGM\n  Siena\n  tERGM\n\n  # Decisions\n  node [shape=diamond]\n  isiid [label=\"Is iid\"]\n  iscts [label=\"Is continuous\"]\n\n  node [shape=plaintext]\n  iid [label=\"Independent data\"]\n  noiid [label=\"Not independent data\"]\n  ctsdat [label=\"Continuous\"]\n  disdat [label=\"Discrete\"]\n  mixdat [label=\"Mixture\"]\n  \n\n  # Edges\n  isiid -> iid [dir=none,label=Yes]\n  iid -> iscts [dir=none]\n  \n  iscts -> ctsdat [label=Yes] \n  ctsdat -> ols\n  \n  iscts -> disdat [label=No]\n  disdat -> {probit logit}\n\n  iscts -> mixdat [label=Both]\n  mixdat -> tobit\n  \n\n  isiid -> noiid [dir=none, label=No]\n  noiid -> ERGM\n  \n}\n\n  \n      ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
