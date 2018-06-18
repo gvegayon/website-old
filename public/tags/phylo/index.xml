@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phylo on GGVY</title>
+    <link>/tags/phylo/</link>
+    <description>Recent content in Phylo on GGVY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/phylo/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Visualizing Phylogenetic Trees with R and jsPhyloSVG</title>
+      <link>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</guid>
+      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/jsphylosvg-min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/raphael-min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/yui-min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jsPhyloSVG-binding/jsPhyloSVG.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;During the last year I’ve been working on a daily basis with &lt;a href=&#34;../publication/aphylo/&#34;&gt;phylogenetic trees&lt;/a&gt;, objects that in graph jargon are called Directed Acyclic Graphs. While R does have some cool packages out there to visualize these–including &lt;a href=&#34;https://zachcp.github.io/phylocanvas/&#34;&gt;phylocanvas&lt;/a&gt; which looks great!–I wanted to tryout &lt;a href=&#34;http://www.jsphylosvg.com&#34;&gt;jsPhyloSVG&lt;/a&gt;, and moreover, to learn how to use &lt;a href=&#34;http://www.htmlwidgets.org&#34;&gt;htmlwidgets&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, after a week-long process of playing with JavaScript, of which I had no prior knowledge (so thank you &lt;a href=&#34;https://w3schools.com&#34;&gt;W3shools&lt;/a&gt;)!, and hours of head-scratching, I created this R package, &lt;a href=&#34;https://USCBiostats.github.io/jsPhyloSVG&#34;&gt;jsPhyloSVG&lt;/a&gt; that provides an htmlwidget for the library of the same name. An example follows&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# I&amp;#39;ll be using the ape package to simulate a tree
+library(ape)
+# You can get it from github USCBiostats/jsPhyloSVG
+library(jsPhyloSVG)
+
+# A random phylogenetic tree with 50 tips
+tree &amp;lt;- rtree(50)
+
+jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;jsPhyloSVG html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;tree&#34;:&#34;((((t42:0.06164457602,t12:0.8180190395):0.9365026811,((((t46:0.8872811985,t18:0.2442051622):0.05846408405,(t45:0.103828141,t31:0.3593903473):0.7426412788):0.5980824926,t17:0.3825574517):0.6083812208,(t48:0.07718362426,(((t23:0.167053587,t37:0.1261179752):0.7458510986,t6:0.9474354652):0.4349117738,(t50:0.7063381786,t8:0.4962021697):0.9406450125):0.1210038015):0.7206946658):0.2086854116):0.2198985894,((t21:0.2193838274,((t13:0.5840207564,t33:0.2736268432):0.3320097523,t47:0.1042833098):0.3601851477):0.4512686338,t25:0.4689089167):0.9308448818):0.04086005269,(((((t40:0.1956768476,t26:0.7943518062):0.1782792471,((t22:0.376651922,t49:0.02243229607):0.3668012598,(((t34:0.664548245,t3:0.1619326761):0.987456419,t11:0.8452820375):0.4688073481,(t16:0.1818585785,t29:0.232394211):0.4287885327):0.7964651871):0.5320081892):0.5300812169,((((t19:0.7511951746,t2:0.204252976):0.4938647044,t7:0.3556977008):0.3586013827,(t38:0.8039303906,(t32:0.9500118557,t43:0.6342438555):0.1515436959):0.7556200498):0.06952625257,(t39:0.9166283135,(t5:0.389964974,t14:0.06258801115):0.1248964793):0.2041574172):0.5678209993):0.3246593522,t30:0.7534215476):0.03259838023,((t36:0.9918274684,((t28:0.5589617616,t15:0.8905687227):0.1676856377,t10:0.7602554555):0.8512989033):0.8380841515,(((t41:0.2416828792,(t9:0.7206978209,t24:0.2196376026):0.6739168777):0.155479881,t20:0.8713164511):0.52036779,(t1:0.6211066761,(t35:0.7013573709,((t44:0.8949779936,t27:0.373667527):0.6651984421,t4:0.3912915958):0.9155155858):0.3391307804):0.4781178217):0.498043109):0.8864928086):0.3566122628);&#34;,&#34;layout&#34;:&#34;circular&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;You can take a look at the project repo &lt;a href=&#34;https://github.com/USCBiostats/jsPhyloSVG&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

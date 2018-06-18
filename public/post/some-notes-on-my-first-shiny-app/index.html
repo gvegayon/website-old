@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="George G. Vega Yon">
+  <meta name="description" content="Statistical Computing">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-40608305-3', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="GGVY">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="GGVY">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/some-notes-on-my-first-shiny-app/">
+
+  
+
+  <title>Some notes on my first shiny app | GGVY</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GGVY</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Research</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Some notes on my first shiny app</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-11-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Nov 16, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/viz">viz</a
+    >, 
+    
+    <a href="/tags/rstats">rstats</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fsome-notes-on-my-first-shiny-app%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Some%20notes%20on%20my%20first%20shiny%20app&amp;url=%2fpost%2fsome-notes-on-my-first-shiny-app%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fsome-notes-on-my-first-shiny-app%2f&amp;title=Some%20notes%20on%20my%20first%20shiny%20app"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fsome-notes-on-my-first-shiny-app%2f&amp;title=Some%20notes%20on%20my%20first%20shiny%20app"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Some%20notes%20on%20my%20first%20shiny%20app&amp;body=%2fpost%2fsome-notes-on-my-first-shiny-app%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Since there are plenty of examples out there telling you how to get started with shiny (like <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Rstudio&rsquo;s</a>, or <a href="https://www.google.com/search?newwindow=1&amp;ei=Og8OWpG4CYOUjwO9tZzABw&amp;q=shiny+tutorial&amp;oq=shiny+tutorial&amp;gs_l=psy-ab.3..0i71k1l4.0.0.0.38217.0.0.0.0.0.0.0.0..0.0....0...1..64.psy-ab..0.0.0....0.v793tYPbUcw" target="_blank">Google</a>), I will focus on telling some of the stuff that I did learned and may not be obvious at first, including some of the mistakes I made.</p>
+
+<p>Before start, I just want to stress that I&rsquo;m writing this after my first shiny app, you&rsquo;ve been warned! Here it goes:</p>
+
+<ol>
+<li><p><strong>Use the &ldquo;two-file&rdquo; method</strong> Instead of putting everything, UI and Server, in a single <code>app.R</code> file, create two separate files <code>server.R</code> and <code>ui.R</code> (see <a href="http://shiny.rstudio.com/articles/two-file.html" target="_blank">here</a>). This is not hard to figure out, but is not the first thing that you see when you create a shiny app from Rstudio. The reason why is very simple, as your project grows, you want to have it organized using several Rscripts rather than a single big R file that&rsquo;s called <code>app.R</code>. That&rsquo;s OK but not very friendly to maintain. This takes us to the next point.</p></li>
+
+<li><p><strong>Use separate R files for more complex functions</strong> If you have other functions that you would like to run with your app, either use the <code>global.R</code> script, which will be run automatically, or just source your file like <code>source(&quot;extra-functions.R&quot;)</code> (see <a href="https://shiny.rstudio.com/articles/modules.html" target="_blank">here</a>). Again, this makes code maintenance easier.</p></li>
+
+<li><p><strong>Make sure all the packages that you need are installed</strong> You can either keep the source version of such packages as a sub directory, or follow a more simple approach such as using <code>require</code>, e.g.:</p>
+
+<pre><code class="language-r">if (!require(somepackage)) {
+  install.packages(&quot;somepackage&quot;)
+  library(somepackage)
+}
+</code></pre>
+
+<p>This is especially important when deploying shiny in a in-house server as the &ldquo;shiny user&rdquo; has to have access to those R packages. You can always try to install them globally too so that all users in the server have access to the required packages.</p>
+
+<p>More important, <font color="red"><b>make sure that you have <code>shiny</code> and <code>rmarkdown</code> installed and available system-wide!</b></font> I spent roughly half an hour figuring out why my shiny apps didn&rsquo;t started once I started the server in our machine.</p></li>
+
+<li><p><strong>Nested apps</strong> If you want to include several apps under the same folder in your <code>/srv/shiny-server</code> folder (which is where the shiny apps live), e.g. <code>my-apps</code>, avoid including <code>R</code> or <code>Rmd</code> files in that folder, shiny will try to run those as shiny apps and, for some reason that I&rsquo;m not aware of, links that go from html pages in that folder to your sub directory apps will not work.</p>
+
+<p>For example, suppose that we have two apps, <code>shinyApp1</code> and <code>shinyApp2</code> and we want to keep those in the same folder <code>your-site</code>, and you have a nice front-end website allowing you to access to such apps with relative links in the form of <code>&lt;a href=&quot;shinyApp1&quot;&gt;Go to shinyApp1&lt;/a&gt;</code>, you&rsquo;ll just need to <strong>include the <code>index.html</code></strong> of your website (which you can create with <code>rmarkdown</code>). The <strong>following would be wrong</strong>:</p>
+
+<pre><code>+---/srv/shiny-server
+|   +---/you-site
+|       +---index.html
+|       +---index.Rmd    # THIS SHOULDN'T BE HERE!
+|       +---shinyApp1
+|           +---server.R
+|           +---ui.R
+|       +---shinyApp2
+|           +---server.R
+|           +---ui.R
+</code></pre>
+
+<p>This would result in having a broken link in your <code>index.html</code> file. You should do this instead, remove the Rmd file from the <code>your-site</code> folder:</p>
+
+<pre><code>+---/srv/shiny-server
+|   +---/you-site
+|       +---index.html
+|       +---shinyApp1
+|           +---server.R
+|           +---ui.R
+|       +---shinyApp2
+|           +---server.R
+|           +---ui.R
+</code></pre>
+
+<p>This example was adapted from <a href="http://docs.rstudio.com/shiny-server/#host-a-directory-of-applications" target="_blank">Section 2.7.1</a> from the Shiny&rsquo;s Admin guide.</p></li>
+
+<li><p><strong>Read about Reactivity</strong> This is a fundamental thing to understand in Shiny, moreover, the key function to review is <code>reactive</code>, which allows you to create intermediate points (reactive conductors) between your input and output data in the shiny app. Just to give you an idea, here is an (adapted) example that I find useful from the <a href="http://shiny.rstudio.com/articles/#reactivity" target="_blank">shiny documentation</a>:</p>
+
+<p>This will work</p>
+
+<pre><code class="language-r"># A function that will be called from within the server
+fib &lt;- function(n) ifelse(n&lt;3, 1, fib(n-1)+fib(n-2))
+    
+server &lt;- function(input, output) {
+      
+  # Calling your fancy fib function, notice the
+  #
+  #     reactive({ ... })
+  #
+  # wrapper.
+  currentFib         &lt;- reactive({ fib(as.numeric(input$n)) })
+    
+  # You use it as a function later on.
+  output$nthValue    &lt;- renderText({ currentFib() })
+  output$nthValueInv &lt;- renderText({ 1 / currentFib() })
+}
+</code></pre>
+
+<p>This won&rsquo;t work, since currentFib is not in the &ldquo;reactive&rdquo; world!</p>
+
+<pre><code class="language-r">server &lt;- function(input, output) {
+  # Will give error
+  currentFib      &lt;- fib(as.numeric(input$n))
+  output$nthValue &lt;- renderText({ currentFib })
+}
+</code></pre></li>
+</ol>
+
+<p>For my next steps, I expect to be able to include a shiny app in the R packages <code>aphylo</code> (which is not on CRAN yet, but available <a href="https://github.com/USCBiostats/aphylo" target="_blank">here</a>) and <code>rgexf</code> (which it is on <a href="https://cran.r-project.org/package=rgexf" target="_blank">CRAN</a>, but is currently on a major update <a href="https://github.com/gvegayon/rgexf" target="_blank">here</a>)</p>
+
+<p>I recommend taking a look at <a href="https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html" target="_blank">this section</a> from the <a href="https://bookdown.org/yihui/bookdown" target="_blank">bookdown</a> that talks about how to include shiny apps within web pages.</p>
+
+<p>Finally, if you are interested, you can take a look at the shiny app <a href="https://gvegayon.shinyapps.io/predq/" target="_blank">here</a> and at the code <a href="https://github.com/gvegayon/predq" target="_blank">here</a></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/profiling-rcpp/"><span
+      aria-hidden="true">&larr;</span> Profiling Rcpp</a></li>
+    
+
+    
+    <li class="next"><a href="/post/read-viz-attributes-from-gexf-files/">Read viz attributes from GEXF files <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ggvy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016 George G. Vega Yon &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/cpp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+

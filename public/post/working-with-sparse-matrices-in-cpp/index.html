@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="George G. Vega Yon">
+  <meta name="description" content="Statistical Computing">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-40608305-3', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="GGVY">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="GGVY">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/working-with-sparse-matrices-in-cpp/">
+
+  
+
+  <title>Working with sparse matrices in C&#43;&#43; | GGVY</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GGVY</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Research</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Working with sparse matrices in C&#43;&#43;</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-01-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Jan 16, 2018
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/r">R</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/rcpp">rcpp</a
+    >, 
+    
+    <a href="/tags/rstats">rstats</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fworking-with-sparse-matrices-in-cpp%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Working%20with%20sparse%20matrices%20in%20C%2b%2b&amp;url=%2fpost%2fworking-with-sparse-matrices-in-cpp%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fworking-with-sparse-matrices-in-cpp%2f&amp;title=Working%20with%20sparse%20matrices%20in%20C%2b%2b"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fworking-with-sparse-matrices-in-cpp%2f&amp;title=Working%20with%20sparse%20matrices%20in%20C%2b%2b"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Working%20with%20sparse%20matrices%20in%20C%2b%2b&amp;body=%2fpost%2fworking-with-sparse-matrices-in-cpp%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested <code>for(i...) for (j...)</code> loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.</p>
+<p>About a year ago, while working on <a href="https://github.com/USCCANA/netdiffuseR">netdiffuseR</a>, I was struggling a bit to write down an efficient way of iterating through non-zero elements. Right after writing my own function to return the position of non-zero elements, I wrote <a href="http://conradsanderson.id.au/">Dr Conrad Sanderson</a>–one of the masterminds behind armadillo–and learned that a nice solution for this was already included in armadillo, <a href="http://arma.sourceforge.net/docs.html#iterators_mat">matrix iterators</a>.</p>
+<div id="a-simple-example" class="section level2">
+<h2>A simple example</h2>
+<p>First off, to work with iterators for sparse matrices we will look at the simplest example: extracting positions and values from the matrix.</p>
+<pre class="cpp"><code>#include &lt;RcppArmadillo.h&gt;
+// [[Rcpp::depends(RcppArmadillo)]]
+
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+NumericMatrix sp_show_storage(arma::sp_mat x) {
+  
+  NumericMatrix ans(x.n_nonzero, 3u);
+  int i = 0;
+  for(arma::sp_mat::const_iterator it = x.begin(); it != x.end(); ++it) {
+    
+    ans(i, 0) = it.row(); // Row position
+    ans(i, 1) = it.col(); // Col position
+    ans(i++, 2) = *it;    // Value
+    
+  }
+  
+  // Adding colnames
+  colnames(ans) = CharacterVector::create(&quot;row&quot;, &quot;col&quot;, &quot;val&quot;);
+    
+  return ans;
+}
+</code></pre>
+<p>Here is a fake (not at all) sparse matrix of size 3x3 in which each of the non-zero elements <code>(i,j)</code> are in the form of <code>ij</code>.</p>
+<pre class="r"><code>library(Matrix)
+M &lt;- matrix(0,nrow=3, ncol=3)
+M[1,2] &lt;- 12
+M[2,1] &lt;- 21
+M[2,3] &lt;- 23
+M[3,2] &lt;- 32
+(M &lt;- methods::as(M, &quot;dgCMatrix&quot;))</code></pre>
+<pre><code>## 3 x 3 sparse Matrix of class &quot;dgCMatrix&quot;
+##              
+## [1,]  . 12  .
+## [2,] 21  . 23
+## [3,]  . 32  .</code></pre>
+<p>And here is what <code>sp_show_storage</code> returns from this sparse matrix.</p>
+<pre class="r"><code>sp_show_storage(M)</code></pre>
+<pre><code>##      row col val
+## [1,]   1   0  21
+## [2,]   0   1  12
+## [3,]   2   1  32
+## [4,]   1   2  23</code></pre>
+</div>
+<div id="what-about-iterating-through-rows-instead-of-columns" class="section level2">
+<h2>What about iterating through rows instead of columns?</h2>
+<p>The following lines of code create three functions, <code>sp_iterate</code>, <code>sp_row_iterate</code>, and <code>sp_t_iterate</code>, this is, a column-major iterator, a row-major iterator, and a pseudo row-major iterator (I first transpose the matrix, and then iterate using the column-major iterator), respectively.</p>
+<pre class="cpp"><code>#include &lt;RcppArmadillo.h&gt;
+// [[Rcpp::depends(RcppArmadillo)]]
+
+using namespace Rcpp;
+
+// Column-major method iterator (default)
+// [[Rcpp::export]]
+arma::vec sp_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_iterator iter;
+  int k = 0;
+  for (iter i = x.begin(); i != x.end(); i++)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+
+// Sort-of row-major method iterator. For this to work, we first need to tell
+// armadillo which row we would like to look at... this doesn&#39;t look nice.
+// [[Rcpp::export]]
+arma::vec sp_row_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_row_iterator iter;
+  int k = 0;
+  for (unsigned int i = 0; i &lt; x.n_rows; i++)
+    for (iter j = x.begin_row(i); j != x.end_row(i); ++j)
+      ans.at(k++) = *j;
+  
+  return ans;
+}
+
+// Another sort-of row-major method iterator. Now, instead of using
+// `const_row_iterator`, we use `const_iterator` but transpose the matrix first
+// [[Rcpp::export]]
+arma::vec sp_t_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  arma::sp_mat z = x.t();
+  
+  int k = 0;
+  typedef arma::sp_mat::const_iterator iter;
+  for (iter i = z.begin(); i != z.end(); ++i)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+</code></pre>
+<p>And here is what we get from calling each of the functions:</p>
+<pre class="r"><code>data.frame(
+  col_major  = sp_iterate(M),
+  row_major  = sp_row_iterate(M),
+  row_major2 = sp_t_iterate(M)
+)</code></pre>
+<pre><code>##   col_major row_major row_major2
+## 1        21        12         12
+## 2        12        21         21
+## 3        32        23         23
+## 4        23        32         32</code></pre>
+<p>Now what about speed?</p>
+<pre class="r"><code>set.seed(1)
+n &lt;- 200
+M &lt;- methods::as(
+  matrix(runif(n^2) &lt; .001, nrow = n),
+  &quot;dgCMatrix&quot;
+)
+
+microbenchmark::microbenchmark(
+   sp_row_iterate(M),
+   sp_t_iterate(M),
+   times = 100, unit=&quot;relative&quot;
+)</code></pre>
+<pre><code>## Unit: relative
+##               expr      min       lq     mean   median       uq      max
+##  sp_row_iterate(M) 29.80559 26.02395 13.39483 24.80326 23.29237 1.835886
+##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.000000
+##  neval
+##    100
+##    100</code></pre>
+<p>It turns out that <code>const_row_iterator</code> implementation is significantly slower because of how the data is stored. The <code>SpMat</code> object from <code>armadillo</code> uses the <a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order">Column-Major Order</a> method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.</p>
+<p>For those of you who like looking at source code, you can take a look at the way the <code>const_row_iterator</code> are implemented <a href="https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html">here</a> starting line 392. Here is an extract from the code:</p>
+<blockquote>
+<p>This is irritating because we don’t know where the elements are in each row. What we will do is loop across all columns looking for elements in row 0 (and add to our sum), then in row 1, and so forth, until we get to the desired position.</p>
+</blockquote>
+<p>I can’t agree more with that!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is <em>too dense</em>, neither your memory nor your computing time will get benefits from using sparse matrices.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/"><span
+      aria-hidden="true">&larr;</span> Visualizing Phylogenetic Trees with R and jsPhyloSVG</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ggvy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016 George G. Vega Yon &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/cpp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+  </body>
+</html>
+

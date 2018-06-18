@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rcpp on GGVY</title>
+    <link>/tags/rcpp/</link>
+    <description>Recent content in Rcpp on GGVY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/rcpp/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Working with sparse matrices in C&#43;&#43;</title>
+      <link>/post/working-with-sparse-matrices-in-cpp/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/working-with-sparse-matrices-in-cpp/</guid>
+      <description>&lt;p&gt;Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested &lt;code&gt;for(i...) for (j...)&lt;/code&gt; loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.&lt;/p&gt;
+&lt;p&gt;About a year ago, while working on &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt;, I was struggling a bit to write down an efficient way of iterating through non-zero elements. Right after writing my own function to return the position of non-zero elements, I wrote &lt;a href=&#34;http://conradsanderson.id.au/&#34;&gt;Dr Conrad Sanderson&lt;/a&gt;–one of the masterminds behind armadillo–and learned that a nice solution for this was already included in armadillo, &lt;a href=&#34;http://arma.sourceforge.net/docs.html#iterators_mat&#34;&gt;matrix iterators&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;a-simple-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A simple example&lt;/h2&gt;
+&lt;p&gt;First off, to work with iterators for sparse matrices we will look at the simplest example: extracting positions and values from the matrix.&lt;/p&gt;
+&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;#include &amp;lt;RcppArmadillo.h&amp;gt;
+// [[Rcpp::depends(RcppArmadillo)]]
+
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+NumericMatrix sp_show_storage(arma::sp_mat x) {
+  
+  NumericMatrix ans(x.n_nonzero, 3u);
+  int i = 0;
+  for(arma::sp_mat::const_iterator it = x.begin(); it != x.end(); ++it) {
+    
+    ans(i, 0) = it.row(); // Row position
+    ans(i, 1) = it.col(); // Col position
+    ans(i++, 2) = *it;    // Value
+    
+  }
+  
+  // Adding colnames
+  colnames(ans) = CharacterVector::create(&amp;quot;row&amp;quot;, &amp;quot;col&amp;quot;, &amp;quot;val&amp;quot;);
+    
+  return ans;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is a fake (not at all) sparse matrix of size 3x3 in which each of the non-zero elements &lt;code&gt;(i,j)&lt;/code&gt; are in the form of &lt;code&gt;ij&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Matrix)
+M &amp;lt;- matrix(0,nrow=3, ncol=3)
+M[1,2] &amp;lt;- 12
+M[2,1] &amp;lt;- 21
+M[2,3] &amp;lt;- 23
+M[3,2] &amp;lt;- 32
+(M &amp;lt;- methods::as(M, &amp;quot;dgCMatrix&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3 x 3 sparse Matrix of class &amp;quot;dgCMatrix&amp;quot;
+##              
+## [1,]  . 12  .
+## [2,] 21  . 23
+## [3,]  . 32  .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here is what &lt;code&gt;sp_show_storage&lt;/code&gt; returns from this sparse matrix.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sp_show_storage(M)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      row col val
+## [1,]   1   0  21
+## [2,]   0   1  12
+## [3,]   2   1  32
+## [4,]   1   2  23&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-about-iterating-through-rows-instead-of-columns&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What about iterating through rows instead of columns?&lt;/h2&gt;
+&lt;p&gt;The following lines of code create three functions, &lt;code&gt;sp_iterate&lt;/code&gt;, &lt;code&gt;sp_row_iterate&lt;/code&gt;, and &lt;code&gt;sp_t_iterate&lt;/code&gt;, this is, a column-major iterator, a row-major iterator, and a pseudo row-major iterator (I first transpose the matrix, and then iterate using the column-major iterator), respectively.&lt;/p&gt;
+&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;#include &amp;lt;RcppArmadillo.h&amp;gt;
+// [[Rcpp::depends(RcppArmadillo)]]
+
+using namespace Rcpp;
+
+// Column-major method iterator (default)
+// [[Rcpp::export]]
+arma::vec sp_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_iterator iter;
+  int k = 0;
+  for (iter i = x.begin(); i != x.end(); i++)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+
+// Sort-of row-major method iterator. For this to work, we first need to tell
+// armadillo which row we would like to look at... this doesn&amp;#39;t look nice.
+// [[Rcpp::export]]
+arma::vec sp_row_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_row_iterator iter;
+  int k = 0;
+  for (unsigned int i = 0; i &amp;lt; x.n_rows; i++)
+    for (iter j = x.begin_row(i); j != x.end_row(i); ++j)
+      ans.at(k++) = *j;
+  
+  return ans;
+}
+
+// Another sort-of row-major method iterator. Now, instead of using
+// `const_row_iterator`, we use `const_iterator` but transpose the matrix first
+// [[Rcpp::export]]
+arma::vec sp_t_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  arma::sp_mat z = x.t();
+  
+  int k = 0;
+  typedef arma::sp_mat::const_iterator iter;
+  for (iter i = z.begin(); i != z.end(); ++i)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here is what we get from calling each of the functions:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.frame(
+  col_major  = sp_iterate(M),
+  row_major  = sp_row_iterate(M),
+  row_major2 = sp_t_iterate(M)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   col_major row_major row_major2
+## 1        21        12         12
+## 2        12        21         21
+## 3        32        23         23
+## 4        23        32         32&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now what about speed?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1)
+n &amp;lt;- 200
+M &amp;lt;- methods::as(
+  matrix(runif(n^2) &amp;lt; .001, nrow = n),
+  &amp;quot;dgCMatrix&amp;quot;
+)
+
+microbenchmark::microbenchmark(
+   sp_row_iterate(M),
+   sp_t_iterate(M),
+   times = 100, unit=&amp;quot;relative&amp;quot;
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Unit: relative
+##               expr      min       lq     mean   median       uq      max
+##  sp_row_iterate(M) 29.80559 26.02395 13.39483 24.80326 23.29237 1.835886
+##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.000000
+##  neval
+##    100
+##    100&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It turns out that &lt;code&gt;const_row_iterator&lt;/code&gt; implementation is significantly slower because of how the data is stored. The &lt;code&gt;SpMat&lt;/code&gt; object from &lt;code&gt;armadillo&lt;/code&gt; uses the &lt;a href=&#34;https://en.wikipedia.org/wiki/Row-_and_column-major_order&#34;&gt;Column-Major Order&lt;/a&gt; method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.&lt;/p&gt;
+&lt;p&gt;For those of you who like looking at source code, you can take a look at the way the &lt;code&gt;const_row_iterator&lt;/code&gt; are implemented &lt;a href=&#34;https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html&#34;&gt;here&lt;/a&gt; starting line 392. Here is an extract from the code:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is irritating because we don’t know where the elements are in each row. What we will do is loop across all columns looking for elements in row 0 (and add to our sum), then in row 1, and so forth, until we get to the desired position.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I can’t agree more with that!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is &lt;em&gt;too dense&lt;/em&gt;, neither your memory nor your computing time will get benefits from using sparse matrices.&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Profiling Rcpp</title>
+      <link>/post/profiling-rcpp/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/profiling-rcpp/</guid>
+      <description>&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Install libuwind&lt;/p&gt;
+&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;amp;&amp;amp; \
+    tar -xf libunwind-1.2.tar.gz &amp;amp;&amp;amp; cd libunwind-1.2; \
+    ./configure; sudo make; sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://github.com/gperftools/gperftools&#34;&gt;google-perftools&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ git clone https://github.com/gperftools/gperftools
+$ &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setting up optional OpenMP support with RcppArmadillo</title>
+      <link>/post/setting-up-optional-openmp-support-with-rcpparmadillo/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/setting-up-optional-openmp-support-with-rcpparmadillo/</guid>
+      <description>
+
+&lt;p&gt;Setting up an R package that supports OpenMP can be a bit awkward. While systems like Ubuntu with g++ have straight forward support for &lt;code&gt;-fopenmp&lt;/code&gt; flags, the same may not be true un MacOS&amp;rsquo;s &lt;code&gt;clang&lt;/code&gt;, since the latter is not shipped with it.&lt;/p&gt;
+
+&lt;p&gt;In order to solve this, it is necesary to have different &lt;code&gt;src/Makevars&lt;/code&gt; file depending on whether the compiler supports OpenMP or not. This can be solved using a &lt;code&gt;configure&lt;/code&gt; file, more over, &lt;code&gt;autoconf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/software/autoconf/autoconf.html&#34; target=&#34;_blank&#34;&gt;Autoconf&lt;/a&gt; is &amp;ldquo;an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages&amp;rdquo;. Among the (cool) things that we can use it for is creating tailored &lt;code&gt;src/Makevars&lt;/code&gt; files (and furthermore, any other files&amp;hellip; even R/*.r source code can be modified with this, just take a look at &lt;a href=&#34;https://cran.r-project.org/doc/manuals/r-devel/R-exts.html#Configure-and-cleanup&#34; target=&#34;_blank&#34;&gt;Writing R Extensions&lt;/a&gt;). The workflow of &lt;code&gt;R CMD&lt;/code&gt;+autoconf follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;configure&lt;/code&gt; file is executed and performs the requested checks (like having OpenMP) and modifies/creates the configuration files that will be used to compile the package, like &lt;code&gt;src/Makevars&lt;/code&gt;, &lt;code&gt;src/makefile&lt;/code&gt;, etc. Furthermore, it can use &amp;ldquo;templates&amp;rdquo; to create such files, which have the suffix &lt;code&gt;.in&lt;/code&gt;, for example, &lt;code&gt;src/Makevars.in&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;R CMD&lt;/code&gt; will compile the package using all the inputs (&lt;code&gt;src/Makevars&lt;/code&gt;, &lt;code&gt;src/makefile&lt;/code&gt;) that were created, and&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In the case of &lt;code&gt;R CMD build&lt;/code&gt;, &lt;code&gt;R CMD&lt;/code&gt; will call &lt;code&gt;cleanup&lt;/code&gt; (they require you to do so) to remove the &lt;code&gt;config.*&lt;/code&gt; files and &lt;code&gt;src/Makevars&lt;/code&gt; so these are not shipped with the package file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The next section describes the files that you need to include in your project to set it up using &lt;code&gt;RcppArmadillo&lt;/code&gt; with OpenMP support depending on whether it is available with the compiler. This example is from the R package &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;netdiffuseR&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration-files&#34;&gt;Configuration Files&lt;/h1&gt;
+
+&lt;p&gt;In order to use &lt;code&gt;autoconf&lt;/code&gt; to optionally include OpenMP with your R package, you need to have the following files in your system:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Need a &lt;code&gt;configure.ac&lt;/code&gt; file. This is what &lt;code&gt;autoconf&lt;/code&gt; uses as input.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#                                               -*- Autoconf -*-
+# netdiffuseR configure.ac
+# (with some code borrowed from RcppArmadillo configure.ac
+# and ARTP2 configure.ac)
+# 
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This line can be replaced by whatever the name of your package is (here is netdiffuseR)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;AC_INIT(netdiffuseR, m4_esyscmd_s([awk &#39;/^Version:/ {print $2}&#39; DESCRIPTION]))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These couple of lines set up the path to R.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Set R_HOME, respecting an environment variable if one is set 
+: ${R_HOME=$(R RHOME)}
+if test -z &amp;quot;${R_HOME}&amp;quot;; then
+    AC_MSG_ERROR([Could not determine R_HOME.])   
+fi
+# Use R to set CXX and CXXFLAGS
+CXX=$(${R_HOME}/bin/R CMD config CXX)
+CXXFLAGS=$(&amp;quot;${R_HOME}/bin/R&amp;quot; CMD config CXXFLAGS)
+
+# We are using C++
+AC_LANG(C++)
+AC_REQUIRE_CPP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This are the lines that actually do the job on setting OpenMP. I copied this from the ARTP2 R Package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dnl this the meat of R&#39;s m4/openmp.m4
+  OPENMP_[]_AC_LANG_PREFIX[]FLAGS=
+  AC_ARG_ENABLE([openmp],
+    [AS_HELP_STRING([--disable-openmp], [do not use OpenMP])])
+  if test &amp;quot;$enable_openmp&amp;quot; != no; then
+    AC_CACHE_CHECK([for $[]_AC_CC[] option to support OpenMP],
+      [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp],
+      [AC_LINK_IFELSE([_AC_LANG_OPENMP],
+     [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=&#39;none needed&#39;],
+     [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=&#39;unsupported&#39;
+      for ac_option in -fopenmp -xopenmp -qopenmp \
+                           -openmp -mp -omp -qsmp=omp -homp \
+               -fopenmp=libomp \
+                           -Popenmp --openmp; do
+        ac_save_[]_AC_LANG_PREFIX[]FLAGS=$[]_AC_LANG_PREFIX[]FLAGS
+        _AC_LANG_PREFIX[]FLAGS=&amp;quot;$[]_AC_LANG_PREFIX[]FLAGS $ac_option&amp;quot;
+        AC_LINK_IFELSE([_AC_LANG_OPENMP],
+          [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=$ac_option])
+        _AC_LANG_PREFIX[]FLAGS=$ac_save_[]_AC_LANG_PREFIX[]FLAGS
+        if test &amp;quot;$ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp&amp;quot; != unsupported; then
+          break
+        fi
+      done])])
+    case $ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp in #(
+      &amp;quot;none needed&amp;quot; | unsupported)
+    ;; #(
+      *)
+    OPENMP_[]_AC_LANG_PREFIX[]FLAGS=$ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp ;;
+    esac
+  fi
+
+AC_SUBST(OPENMP_CXXFLAGS)
+AC_CONFIG_FILES([src/Makevars])
+AC_OUTPUT
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A &lt;code&gt;src/Makevars.in&lt;/code&gt; file which will be modified by configure. The most important part here is the &lt;code&gt;@OPENMP_CXXFLAGS@&lt;/code&gt; tag, which will be replaced accordingly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) @OPENMP_CXXFLAGS@
+# 1.2.4 Using C++11 code
+CXX_STD = CXX11
+
+# Besides of the -fopenmp flag, here I&#39;m telling armadillo to use
+# 64BIT_WORD which removes the matrix size limit constraint.
+PKG_CXXFLAGS=@OPENMP_CXXFLAGS@ -DARMA_64BIT_WORD
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A &lt;code&gt;cleanup&lt;/code&gt; file (with execution permissions) that &lt;code&gt;R CMD build&lt;/code&gt; will call after building the package. Again, this is a requirement.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+rm -f config.* src/Makevars
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once you have all these files in order, you have to run &lt;code&gt;autoconf&lt;/code&gt; so that the &lt;code&gt;configure&lt;/code&gt; file is created, i.e.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ autoconf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you happen to use travis.yml, you need to specify a more modern distribution so that RcppArmadillo can built with a more modern compiler. In order to do so, put the &lt;code&gt;dist: trusty&lt;/code&gt; option in the yml file. Here is an example travis file from netdiffuseR:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;dist: trusty
+language: r
+sudo: required
+
+r:
+  - release
+  - devel # Not working
+  - oldrel
+
+os:
+  - linux
+  - osx
+
+osx_image: xcode7.3
+
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+
+r_packages:
+  - ape
+  - covr
+  - testthat
+  - knitr
+  - rmarkdown
+  - RSiena
+  - igraph
+  - survival
+
+after_success:
+  - if [ $TRAVIS_OS_NAME == &amp;quot;linux&amp;quot; ]; then Rscript -e &#39;covr::codecov()&#39;; fi
+
+after_failure:
+  - ./run.sh dump_logs
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, you&amp;rsquo;ll need to add/keep the following files to your repository: &lt;code&gt;configure&lt;/code&gt;, &lt;code&gt;configure.ac&lt;/code&gt;, &lt;code&gt;src/Makevars.in&lt;/code&gt;, &lt;code&gt;src/Makevars.win&lt;/code&gt;, and &lt;code&gt;cleanup&lt;/code&gt;. Otherwise you&amp;rsquo;ll find yourself scratching your head and asking why is travis failing&amp;hellip; belive me.&lt;/p&gt;
+
+&lt;h1 id=&#34;see-also&#34;&gt;See also&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The RcppArmadillo &lt;a href=&#34;https://github.com/RcppCore/RcppArmadillo/blob/dcc8d474446aacabbb13813ee7da4636eeeee450/configure.ac&#34; target=&#34;_blank&#34;&gt;configure.ac&lt;/a&gt; file&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The netdiffuseR &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR/blob/98020e28dce5fd8cbabd497eb7fbf99be3ec0e2e/configure.ac&#34; target=&#34;_blank&#34;&gt;configure.ac&lt;/a&gt; file.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The aphylo [configure.ac]() file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random on GGVY</title>
+    <link>/tags/random/</link>
+    <description>Recent content in Random on GGVY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
+    <lastBuildDate>Wed, 25 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/random/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Research != Software dev?</title>
+      <link>/post/research-software-dev/</link>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/research-software-dev/</guid>
+      <description>&lt;p&gt;Some times I feel like I&amp;rsquo;m in the wrong place. At least a few times, while talking to scientists, I&amp;rsquo;ve realized that people don&amp;rsquo;t think of scientific software the same way I do, this is, as actual research. While I know I&amp;rsquo;m not a fancy computer/informatics scientist, I do believe that scientific software development is underestimated.&lt;/p&gt;
+
+&lt;p&gt;When I was in the visiting day at Caltech, I recall that one of the questions that our host did to us during the visiting day was &amp;ldquo;what makes you excited about coming to Caltech?&amp;rdquo; and my response was something like &amp;ldquo;creating new things with other people!&amp;rdquo;, which in this context is obiously tools! Later on while on grad school I understood that people was not as excited as I was on that. And now a days, that same feeling of misfits has hit me a couple of times while talking to professors and grad students.&lt;/p&gt;
+
+&lt;p&gt;The thing is, I still believe scientific software development is science too. While my claim may be a bit biased, since I really love R and &amp;ldquo;creating things with other people&amp;rdquo;, I know that I&amp;rsquo;m not alone (see for example []). A couple of arguments:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Theory is very important, yes, but in order to be useful it has to be available to apply/make use of it in some fashion. This is particlarly relevant for statistics/economics. Now a days, with all the computing power at the tip of our hands there&amp;rsquo;s no excuse for researchers to create tools that make whatever they are doing available.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Writing scientific software helps theory advance. Imagine the following scenario: a fancy new method/model is developed and published in a fancy journal, then&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

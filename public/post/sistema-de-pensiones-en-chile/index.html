@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="George G. Vega Yon">
+  <meta name="description" content="Statistical Computing">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-40608305-3', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="GGVY">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="GGVY">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="/post/sistema-de-pensiones-en-chile/">
+
+  
+
+  <title>Sistema de Pensiones en Chile | GGVY</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GGVY</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Research</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Sistema de Pensiones en Chile</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2017-09-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Sep 29, 2017
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/policy">Policy</a
+    >, 
+    
+    <a href="/categories/econ">Econ</a
+    >, 
+    
+    <a href="/categories/stats">Stats</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/simulations">simulations</a
+    >, 
+    
+    <a href="/tags/rstats">rstats</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fsistema-de-pensiones-en-chile%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Sistema%20de%20Pensiones%20en%20Chile&amp;url=%2fpost%2fsistema-de-pensiones-en-chile%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fsistema-de-pensiones-en-chile%2f&amp;title=Sistema%20de%20Pensiones%20en%20Chile"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fsistema-de-pensiones-en-chile%2f&amp;title=Sistema%20de%20Pensiones%20en%20Chile"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Sistema%20de%20Pensiones%20en%20Chile&amp;body=%2fpost%2fsistema-de-pensiones-en-chile%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Con todo el tema del plebiscito anti AFP (porque no es más que eso), y varios correos que he recibido en los últimos años con personas preguntándome acerca de como funciona el sistema de pensiones (que me parece genial!), me decidí a escribir este pequeño post con algunas de las ideas que tengo al respecto. Y qué mejor forma que partir por los mitos sobre el sistema!</p>
+<div id="mitos-sobre-el-sistema-de-pensiones" class="section level2">
+<h2>Mitos sobre el sistema de pensiones</h2>
+<p><a href="http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/" class="uri">http://www.latercera.com/noticia/mitos-y-verdades-del-sistema-de-pensiones-chileno/</a></p>
+<p><a href="http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/" class="uri">http://www.quepasa.cl/articulo/negocios/2017/08/mitos-leyendas-y-pensiones-parte-i.shtml/</a></p>
+<p><a href="http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/" class="uri">http://www.pulso.cl/empresas-mercados/los-ocho-mitos-y-realidades-del-sistema-de-pensiones-chileno/</a></p>
+<p><a href="http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades" class="uri">http://www.uchile.cl/noticias/125298/no--afp-mitos-y-realidades</a></p>
+<p><a href="https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/" class="uri">https://www.aafp.cl/mitos-y-realidades-de-los-sistemas-de-pensiones/</a></p>
+<p><a href="http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx" class="uri">http://www.elmercurio.com/Inversiones/Noticias/Pensiones/2015/11/19/Mitos-y-realidades-del-sistema-de-pensiones.aspx</a></p>
+<p><a href="https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf" class="uri">https://www8.gsb.columbia.edu/faculty/jstiglitz/sites/jstiglitz/files/2001_Rethinking_Pension_Reform_Ten_Myths.pdf</a></p>
+<p>El problema es que hay muchos mitos y los “líderes” son los que los difunden. Aquí van algunos:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Te calculan la pension hasta los 110 años!</strong> Falso! Cuando se calcula el monto de pension por retiro programado (la modalidad mas comun), se utilizan lo que se conocen como tablas de mortalidad. En ellas se considera la posibilidad (que es diferente a certeza) de sobrevivir hasta los 110 años. De no usar esas tablas la alternativa seria, por ejemplo, calcular pago de pensiones hasta los 85 años (que es mas menos la edad de sobrevida promedio del hombre en Chile), y que pasa si pasas los 85, 90 años? Eso es lo que se trata de evitar.</p></li>
+<li><p><strong>Las AFP se estan haciendo ricas con mi plata!</strong> Falso. Las AFP cobran comision por contribución, lo que quiere decir que te cobran por cada aporte que tu haces, en otras palabras, las AFPs NO TOCAN TU FONDO DE PENSION. Hoy las comisiones van de 0.41% (Planvital) a 1.5% (Cuprum)… Si quieres que las AFP no ganen tanto, entonces cambiate a una que cobre poco…</p></li>
+<li><p><strong>Trabaje toda mi vida y me pagan una <span class="math inline">\(\#\#\)</span>?% de pensión! Obviamente la culpa es del sistema!</strong> Lamentablemente no es así. Luego de cientos de estudios científicos muy complejos, los expertos llegaron a increíble conclusión de que para gastar más mañana hay que ahorrar más hoy. Si hay algo que se debería cambiar en el sistema, es que la tasa de contribución deberia de ser de al menos 15% y sin tope. Hoy es de 10%.</p></li>
+<li><p><strong>Mi [[elija un familiar]] trabajó toda su vida, se jubiló y ahora gana mucho menos de la mitad!</strong> Tiene que ver con lo anterior. Resulta que muchas personas que se están jubilando con el “sistema nuevo” se vieron perjudicadas por faltas por parte de sus empleadores. Muchas personas o cotizaron por el mínimo (que equivale a decir que cotizaron por menos del 10%), o de frentón llegaron a arreglos con sus empleadores donde les pagaron “retroactivamente” las cotizaciones. El problema es el siguiente, las cotizaciones más importantes son las de los primeros años. Al momento de acercarse a la edad de jubilación, lo único que queda es aportar más dinero en grandes cantidades, pero si nunca ahorraste cuando joven, no puedes esperar tener una pensión similar a la de tus últimos años trabajando.</p></li>
+<li><p><strong>El estado manejaría mejor la plata</strong> Aun que lo dudo, puede ser. Pero de todas formas, como ya he dicho antes, la clave está en aumentar la tasa de ahorro. Aún cuando tengas al mejor administrador de fondos (ya sea estatal o privado), nada cambiará si la tasa de ahorro no cambia.</p></li>
+</ol>
+<p>Al final del día, si bien el sistema no es perfecto, lo unique que si es seguro es que volver a un sistema de reparto no es solución. En mi opinión, los sistemas mixtos (que de hecho es lo que tenemos en Chile hoy) son la solución, y quizás dar más opciones de ahorro a la gente. Pero al final del día, la clave está en ahorrar más. Si no ahorramos lo suficiente, el sistema en el que se administre nuestro dinero da lo mismo…</p>
+</div>
+<div id="simulando-politica" class="section level2">
+<h2>Simulando política</h2>
+<p>Para entender de mejor manera el problema, a continuación presento un set de simulaciones sencillas donde varío dos parámetros del sistema de pensiones: La tasa de contribución, y el año de retiro. Antes de continuar es importante notar que estas simulaciones se realizan bajo los siguientes supuestos:</p>
+<ol style="list-style-type: decimal">
+<li><p>No hay lagunas, en otras palabras, el trabajador nunca está desempleado</p></li>
+<li><p>Sólo existe un fondo, por lo tanto no hablaré de los tipos de fondos en que se invierte el dinero.</p></li>
+<li><p>Al momento del retiro, el cálculo de la pensión se hace assumiendo que la persona es soltera.</p></li>
+</ol>
+<p>Las siguientes equaciones describen el modelo de simulación:</p>
+<p><span class="math display">\[
+\begin{aligned}
+I_1 &amp;= 300 \\
+I_t &amp;= I_{t-1}\times\left(1 + \frac{r_I}{\log(t)}\right), \quad t&gt;1\mbox{ y }r_I\sim N(0.02, 0.02)\\
+C_t &amp;= 12I_{t}\times a\\
+S_t &amp; = (S_{t-1} + C_t)\times(1 + R_t),\quad R_t\sim N(.04, .1)
+\end{aligned}
+\]</span></p>
+<p>Donde <span class="math inline">\(I_t\)</span> es el nivel de ingreso (remuneración) en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(r_t\)</span> es la tasa de crecimiento anual del ingreso en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(S_t\)</span> es el saldo del fondo de capitalización individual en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(C_t\)</span> es el monto anual de contribución en el año <span class="math inline">\(t\)</span>, y <span class="math inline">\(a\)</span> es la tasa de contribución mensual.</p>
+<p><img src="/post/2017-09-29-sistema-de-pensiones-en-chile_files/figure-html/Simulando-renta-1.svg" width="576" /></p>
+<!-- html table generated in R 3.4.4 by xtable 1.8-2 package -->
+<!-- Mon Jun 18 15:49:40 2018 -->
+<table border="1">
+<caption align="bottom">
+Distribución de Rentabilidad Anual simulada (en %)
+</caption>
+<tr>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+-15.64
+</td>
+<td align="right">
+-8.82
+</td>
+<td align="right">
+4.02
+</td>
+<td align="right">
+16.79
+</td>
+<td align="right">
+23.64
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.4 by xtable 1.8-2 package -->
+<!-- Mon Jun 18 15:49:41 2018 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 7%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+11.48
+</td>
+<td align="right">
+14.42
+</td>
+<td align="right">
+22.07
+</td>
+<td align="right">
+34.93
+</td>
+<td align="right">
+44.33
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+13.87
+</td>
+<td align="right">
+17.48
+</td>
+<td align="right">
+27.72
+</td>
+<td align="right">
+44.20
+</td>
+<td align="right">
+56.54
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+15.60
+</td>
+<td align="right">
+19.97
+</td>
+<td align="right">
+32.00
+</td>
+<td align="right">
+52.14
+</td>
+<td align="right">
+68.49
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+17.83
+</td>
+<td align="right">
+22.98
+</td>
+<td align="right">
+37.20
+</td>
+<td align="right">
+61.85
+</td>
+<td align="right">
+80.99
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.4 by xtable 1.8-2 package -->
+<!-- Mon Jun 18 15:49:41 2018 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 10%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+16.40
+</td>
+<td align="right">
+20.60
+</td>
+<td align="right">
+31.53
+</td>
+<td align="right">
+49.90
+</td>
+<td align="right">
+63.34
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+19.82
+</td>
+<td align="right">
+24.97
+</td>
+<td align="right">
+39.60
+</td>
+<td align="right">
+63.14
+</td>
+<td align="right">
+80.77
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+22.28
+</td>
+<td align="right">
+28.53
+</td>
+<td align="right">
+45.71
+</td>
+<td align="right">
+74.48
+</td>
+<td align="right">
+97.85
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+25.47
+</td>
+<td align="right">
+32.83
+</td>
+<td align="right">
+53.14
+</td>
+<td align="right">
+88.35
+</td>
+<td align="right">
+115.70
+</td>
+</tr>
+</table>
+<!-- html table generated in R 3.4.4 by xtable 1.8-2 package -->
+<!-- Mon Jun 18 15:49:41 2018 -->
+<table border="1">
+<caption align="bottom">
+Distribución de tasas de reemplazo fijando tasa de cotizacion en 15%. Filas representan edad de retiro y columnas percentil.
+</caption>
+<tr>
+<th>
+</th>
+<th>
+2.5%
+</th>
+<th>
+10%
+</th>
+<th>
+50%
+</th>
+<th>
+90%
+</th>
+<th>
+97.5%
+</th>
+</tr>
+<tr>
+<td align="right">
+60
+</td>
+<td align="right">
+24.60
+</td>
+<td align="right">
+30.90
+</td>
+<td align="right">
+47.30
+</td>
+<td align="right">
+74.85
+</td>
+<td align="right">
+95.00
+</td>
+</tr>
+<tr>
+<td align="right">
+63
+</td>
+<td align="right">
+29.73
+</td>
+<td align="right">
+37.46
+</td>
+<td align="right">
+59.39
+</td>
+<td align="right">
+94.71
+</td>
+<td align="right">
+121.16
+</td>
+</tr>
+<tr>
+<td align="right">
+65
+</td>
+<td align="right">
+33.43
+</td>
+<td align="right">
+42.79
+</td>
+<td align="right">
+68.57
+</td>
+<td align="right">
+111.73
+</td>
+<td align="right">
+146.77
+</td>
+</tr>
+<tr>
+<td align="right">
+67
+</td>
+<td align="right">
+38.21
+</td>
+<td align="right">
+49.25
+</td>
+<td align="right">
+79.72
+</td>
+<td align="right">
+132.53
+</td>
+<td align="right">
+173.55
+</td>
+</tr>
+</table>
+</div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="/post/an-unexpected-tobit-fact/"><span
+      aria-hidden="true">&larr;</span> An Unexpected Tobit Fact</a></li>
+    
+
+    
+    <li class="next"><a href="/post/environments-in-r-rock/">Environments in R Rock <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ggvy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016 George G. Vega Yon &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/cpp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
