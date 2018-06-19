@@ -11,6 +11,16 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The &#39;Happy Scientist&#39; Workshop #1: An introduction to high-performance computing using R</title>
+      <link>/talk/hpc-in-r-2018/</link>
+      <pubDate>Thu, 29 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/hpc-in-r-2018/</guid>
+      <description>&lt;p&gt;This talk was jointly with Garrett Weaver. The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Working with sparse matrices in C&#43;&#43;</title>
       <link>/post/working-with-sparse-matrices-in-cpp/</link>
       <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
@@ -1395,15 +1405,6 @@ notifications:
 &lt;li&gt;&lt;p&gt;The aphylo [configure.ac]() file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Network Influences on Policy Implementation: Evidence from a Global Health Treaty</title>
-      <link>/publication/fctc/</link>
-      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/fctc/</guid>
-      <description></description>
     </item>
     
   </channel>

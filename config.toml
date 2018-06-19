@@ -134,12 +134,12 @@ defaultContentLanguageInSubdir = false
     icon = "twitter"
     icon_pack = "fa"
     link = "//twitter.com/gvegayon"
-
+    
   [[params.social]]
     icon = "google-scholar"
     icon_pack = "ai"
     link = "//scholar.google.com/citations?user=34E1yTAAAAAJ&hl=en"
-
+    
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
@@ -149,6 +149,11 @@ defaultContentLanguageInSubdir = false
     icon = "linkedin"
     icon_pack = "fa"
     link = "//www.linkedin.com/in/georgevegayon/"
+    
+  [[params.social]]
+    icon = "orcid"
+    icon_pack = "ai"
+    link = "https://orcid.org/0000-0002-3171-0844"
 
 
 # Navigation Links
