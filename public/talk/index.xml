@@ -7,8 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Thu, 29 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Aug 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Workshop: Introduction to R (for HPC users)</title>
+      <link>/talk/intro-2-r-4-hpc-users-2018/</link>
+      <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/intro-2-r-4-hpc-users-2018/</guid>
+      <description>&lt;p&gt;The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The &#39;Happy Scientist&#39; Workshop #1: An introduction to high-performance computing using R</title>
