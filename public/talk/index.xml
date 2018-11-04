@@ -7,8 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Tue, 07 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Overview of Social Network Models</title>
+      <link>/talk/usccais-sep2018/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/usccais-sep2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Bootcamp for Scientific Computing</title>
+      <link>/talk/rbootcamp-2018/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/rbootcamp-2018/</guid>
+      <description>&lt;p&gt;This 5-day bootcamp was held at USC&amp;rsquo;s Department of Preventive medicine jointly with &lt;a href=&#34;https://malco.io&#34; target=&#34;_blank&#34;&gt;Malcolm Barrett&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Workshop: Introduction to R (for HPC users)</title>
