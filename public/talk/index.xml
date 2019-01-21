@@ -7,8 +7,65 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Small network statistics for the network science of teams</title>
+      <link>/talk/netscix2019/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/netscix2019/</guid>
+      <description>&lt;p&gt;Joint work with Kayla de la Haye.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redes y Econometria Espacial con R</title>
+      <link>/talk/redes-estadisticas2018/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/redes-estadisticas2018/</guid>
+      <description>&lt;p&gt;This was my first time talking about Statistical models for network analysis and spatial econometrics in my native language (spanish).&lt;/p&gt;
+
+&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Instituto Milenio Fundamento de los datos, Universidad Católica de Chile.&lt;/li&gt;
+&lt;li&gt;Centro de Investigación en Complejidad Social (CISC), Universidad del Desarrollo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another version of my talk can be found &lt;a href=&#34;https://www.facebook.com/complejidadsocial/videos/2217254995005631/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Computacion de Alto Rendimiento con R</title>
+      <link>/talk/satrday-scl2018/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/satrday-scl2018/</guid>
+      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
+
+&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The SatRdays conference in Santiago de Chile.&lt;/li&gt;
+&lt;li&gt;Instituto Milenio para el Fundamento de los Datos (at Universidad Católica de Chile).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad&lt;/a&gt; (at Universidad de Santiago de Chile).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Big Problems for Small Networks: Small Network Statistics</title>
+      <link>/talk/nasn2018/</link>
+      <pubDate>Thu, 29 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/nasn2018/</guid>
+      <description>&lt;p&gt;Joint work with Kayla de la Haye.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Overview of Social Network Models</title>
