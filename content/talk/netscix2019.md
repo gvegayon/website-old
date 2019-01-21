@@ -10,7 +10,7 @@ location = "Santiago, Chile"
 selected = false
 math = true
 
-url_pdf = "talk/netscix2018/ergomitos.pdf"
+url_pdf = "talk/netscix2019/ergmitos.pdf"
 url_slides = "https://github.com/muriteams/nasn2018/blob/netscix2019"
 # url_video = "https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Network-Diffusion-of-Innovations-in-R-Introducing-netdiffuseR"
 
