@@ -50,9 +50,27 @@
 &lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The SatRdays conference in Santiago de Chile.&lt;/li&gt;
+&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Instituto Milenio para el Fundamento de los Datos at Universidad Católica de Chile (&lt;a href=&#34;https://imfd.cl&#34; target=&#34;_blank&#34;&gt;website&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad at Universidad de Santiago de Chile (folks there were very nice and wrote two news articles based on my talk: &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Computacion de Alto Rendimiento con R</title>
+      <link>/talk/satrday-scl2018.utf8/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/satrday-scl2018.utf8/</guid>
+      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
+
+&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Instituto Milenio para el Fundamento de los Datos (at Universidad Católica de Chile).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad&lt;/a&gt; (at Universidad de Santiago de Chile).&lt;/li&gt;
+&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad (at Universidad de Santiago de Chile) (folks there were very nice and wrote two news articles based on my talk &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

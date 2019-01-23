@@ -50,9 +50,27 @@
 &lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The SatRdays conference in Santiago de Chile.&lt;/li&gt;
+&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Instituto Milenio para el Fundamento de los Datos at Universidad Católica de Chile (&lt;a href=&#34;https://imfd.cl&#34; target=&#34;_blank&#34;&gt;website&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad at Universidad de Santiago de Chile (folks there were very nice and wrote two news articles based on my talk: &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Computacion de Alto Rendimiento con R</title>
+      <link>/talk/satrday-scl2018.utf8/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/satrday-scl2018.utf8/</guid>
+      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
+
+&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Instituto Milenio para el Fundamento de los Datos (at Universidad Católica de Chile).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad&lt;/a&gt; (at Universidad de Santiago de Chile).&lt;/li&gt;
+&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad (at Universidad de Santiago de Chile) (folks there were very nice and wrote two news articles based on my talk &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -521,44 +539,6 @@ digraph boxes_and_circles {
       &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;grViz html-widget&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;diagram&#34;:&#34;\ndigraph boxes_and_circles {\n  # Defining models\n  node [shape = box]\n  \n  # Common world\n  ols [label=\&#34;Linear Regression\&#34;]\n  probit [label=Probit]\n  logit [label=Logit]\n  tobit [label=Tobit]\n\n  # Networks\n  ERGM\n  Siena\n  tERGM\n\n  # Decisions\n  node [shape=diamond]\n  isiid [label=\&#34;Is iid\&#34;]\n  iscts [label=\&#34;Is continuous\&#34;]\n\n  node [shape=plaintext]\n  iid [label=\&#34;Independent data\&#34;]\n  noiid [label=\&#34;Not independent data\&#34;]\n  ctsdat [label=\&#34;Continuous\&#34;]\n  disdat [label=\&#34;Discrete\&#34;]\n  mixdat [label=\&#34;Mixture\&#34;]\n  \n\n  # Edges\n  isiid -&gt; iid [dir=none,label=Yes]\n  iid -&gt; iscts [dir=none]\n  \n  iscts -&gt; ctsdat [label=Yes] \n  ctsdat -&gt; ols\n  \n  iscts -&gt; disdat [label=No]\n  disdat -&gt; {probit logit}\n\n  iscts -&gt; mixdat [label=Both]\n  mixdat -&gt; tobit\n  \n\n  isiid -&gt; noiid [dir=none, label=No]\n  noiid -&gt; ERGM\n  \n}\n\n  \n      &#34;,&#34;config&#34;:{&#34;engine&#34;:&#34;dot&#34;,&#34;options&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>New versions of ABCoptim and googlePublicData on CRAN</title>
-      <link>/post/new-versions-of-abcoptim-and-googlepublicdata-on-cran/</link>
-      <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/new-versions-of-abcoptim-and-googlepublicdata-on-cran/</guid>
-      <description>&lt;p&gt;Finally, after a long wait, the R packages &lt;a href=&#34;https://github.com/gvegayon/googlePublicData&#34;&gt;googlePublicData&lt;/a&gt; (more than 2 years since the last update!) and &lt;a href=&#34;https://github.com/gvegayon/ABCoptim&#34;&gt;ABCoptim&lt;/a&gt; (roughly a year since the last update) have new versions on &lt;a href=&#34;https://cran.r-project.org&#34;&gt;CRAN&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The first just got an update that fixed some nasty bugs that were evident once you upload the data to &lt;a href=&#34;https://www.google.com/publicdata&#34;&gt;Google Public Data Explorer&lt;/a&gt;, and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching &lt;code&gt;optim&lt;/code&gt;, and new methods for printing and plotting the results.&lt;/p&gt;
-&lt;p&gt;Here is an example of &lt;code&gt;ABCoptim&lt;/code&gt; (from the manual)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading the package
-library(ABCoptim)
-
-# This function has a minimum at (pi,pi)
-fun &amp;lt;- function(x) {
-  -cos(x[1])*cos(x[2])*exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
-}
-
-# Calling the function!
-abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  An object of class -abc_answer- (Artificial Bee Colony Optim.):
-##  par:
-##     x[1]:  3.141593
-##     x[2]:  3.141593
-## 
-##  value:
-##           -1.000000
-## 
-##  counts:
-##            208&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here an example of what can you get with &lt;code&gt;googlePublicData&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;iframe width=&#34;400&#34; height=&#34;325&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; src=&#34;http://www.google.com/publicdata/embed?ds=lt98u9rd734rn_&amp;amp;ctype=b&amp;amp;strail=true&amp;amp;bcs=d&amp;amp;nselm=s&amp;amp;met_y=porc_pob_pobre&amp;amp;scale_y=lin&amp;amp;ind_y=false&amp;amp;met_x=prom_de_escolaridad&amp;amp;scale_x=lin&amp;amp;ind_x=false&amp;amp;met_s=porc_hogares_con_computador&amp;amp;scale_s=lin&amp;amp;ind_s=false&amp;amp;idim=region:IX:RM:XII:VIII:VI:VII:X:V&amp;amp;ifdim=region&amp;amp;hl=en_US&amp;amp;dl=en&amp;amp;ind=false&amp;amp;icfg=lt98u9rd734rn_%253A51%253Aregion%26%26IX:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26RM:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26XII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VIII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VI:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26X:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26V:::2009&amp;amp;iconSize=0.5&#34;&gt;
-&lt;/iframe&gt;
-&lt;/p&gt;
 </description>
     </item>
     
