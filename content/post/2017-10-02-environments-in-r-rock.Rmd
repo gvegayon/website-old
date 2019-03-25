@@ -8,9 +8,7 @@ categories:
 tags:
   - r
   - rstats
-summary: "
-In this post I provide a short example in which default arguments are specified not in the function definition, but rather externally making use of environments. A _method_ that I've use recently used in [netdiffuseR](https://github.com/USCCANA/netdiffuseR).
-"
+summary: "In this post I provide a short example in which default arguments are specified not in the function definition, but rather externally making use of environments. A _method_ that I've use recently used in [netdiffuseR](https://github.com/USCCANA/netdiffuseR)."
 ---
 
 ```{r, echo=FALSE}

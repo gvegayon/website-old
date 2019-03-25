@@ -11,6 +11,18 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Big Problems for Small Networks: Statistical Analysis of Small Networks and Team Performance</title>
+      <link>/talk/nu2019/</link>
+      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/nu2019/</guid>
+      <description>&lt;p&gt;As an invitation from Prof. Noshir Contractor, I gave this talk at Northwestern University&amp;rsquo;s SONIC Lab followed by a workshop on the tools that we have been developing for implemting the methods described in it. The lab was kind enough to record my talk as well as advertise it &lt;a href=&#34;http://sonic.northwestern.edu/sonic-speaker-series-presents-george-g-vega-yon/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is joint work with &lt;a href=\&#34;https://www.kayladelahaye.net/\&#34; target=\&#34;_blank\&#34;&gt;Prof. Kayla de la Haye (USC)&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Small network statistics for the network science of teams</title>
       <link>/talk/netscix2019/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -53,24 +65,6 @@
 &lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Instituto Milenio para el Fundamento de los Datos at Universidad Católica de Chile (&lt;a href=&#34;https://imfd.cl&#34; target=&#34;_blank&#34;&gt;website&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad at Universidad de Santiago de Chile (folks there were very nice and wrote two news articles based on my talk: &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Computacion de Alto Rendimiento con R</title>
-      <link>/talk/satrday-scl2018.utf8/</link>
-      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/satrday-scl2018.utf8/</guid>
-      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
-
-&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Instituto Milenio para el Fundamento de los Datos (at Universidad Católica de Chile).&lt;/li&gt;
-&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad (at Universidad de Santiago de Chile) (folks there were very nice and wrote two news articles based on my talk &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -130,7 +124,10 @@
       <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/working-with-sparse-matrices-in-cpp/</guid>
-      <description>&lt;p&gt;Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested &lt;code&gt;for(i...) for (j...)&lt;/code&gt; loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested &lt;code&gt;for(i...) for (j...)&lt;/code&gt; loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.&lt;/p&gt;
 &lt;p&gt;About a year ago, while working on &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt;, I was struggling a bit to write down an efficient way of iterating through non-zero elements. Right after writing my own function to return the position of non-zero elements, I wrote &lt;a href=&#34;http://conradsanderson.id.au/&#34;&gt;Dr Conrad Sanderson&lt;/a&gt;–one of the masterminds behind armadillo–and learned that a nice solution for this was already included in armadillo, &lt;a href=&#34;http://arma.sourceforge.net/docs.html#iterators_mat&#34;&gt;matrix iterators&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;a-simple-example&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;A simple example&lt;/h2&gt;
@@ -259,23 +256,26 @@ microbenchmark::microbenchmark(
    times = 100, unit=&amp;quot;relative&amp;quot;
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Unit: relative
-##               expr      min       lq     mean   median       uq      max
-##  sp_row_iterate(M) 29.80559 26.02395 13.39483 24.80326 23.29237 1.835886
-##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.000000
-##  neval
-##    100
-##    100&lt;/code&gt;&lt;/pre&gt;
+##               expr      min       lq     mean   median       uq     max
+##  sp_row_iterate(M) 30.91646 27.58875 13.20923 25.02841 23.78042 2.15358
+##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.00000
+##  neval cld
+##    100   b
+##    100  a&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It turns out that &lt;code&gt;const_row_iterator&lt;/code&gt; implementation is significantly slower because of how the data is stored. The &lt;code&gt;SpMat&lt;/code&gt; object from &lt;code&gt;armadillo&lt;/code&gt; uses the &lt;a href=&#34;https://en.wikipedia.org/wiki/Row-_and_column-major_order&#34;&gt;Column-Major Order&lt;/a&gt; method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.&lt;/p&gt;
 &lt;p&gt;For those of you who like looking at source code, you can take a look at the way the &lt;code&gt;const_row_iterator&lt;/code&gt; are implemented &lt;a href=&#34;https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html&#34;&gt;here&lt;/a&gt; starting line 392. Here is an extract from the code:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;This is irritating because we don’t know where the elements are in each row. What we will do is loop across all columns looking for elements in row 0 (and add to our sum), then in row 1, and so forth, until we get to the desired position.&lt;/p&gt;
+&lt;p&gt;This is irritating because we don’t know where the elements are in each
+row. What we will do is loop across all columns looking for elements in
+row 0 (and add to our sum), then in row 1, and so forth, until we get to
+the desired position.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I can’t agree more with that!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is &lt;em&gt;too dense&lt;/em&gt;, neither your memory nor your computing time will get benefits from using sparse matrices.&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is &lt;em&gt;too dense&lt;/em&gt;, neither your memory nor your computing time will get benefits from using sparse matrices.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -287,7 +287,8 @@ microbenchmark::microbenchmark(
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/jsphylosvg/jsphylosvg-min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/jsphylosvg/raphael-min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/jsphylosvg/yui-min.js&#34;&gt;&lt;/script&gt;
@@ -306,7 +307,7 @@ tree &amp;lt;- rtree(50)
 
 jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;jsPhyloSVG html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;tree&#34;:&#34;((((t42:0.06164457602,t12:0.8180190395):0.9365026811,((((t46:0.8872811985,t18:0.2442051622):0.05846408405,(t45:0.103828141,t31:0.3593903473):0.7426412788):0.5980824926,t17:0.3825574517):0.6083812208,(t48:0.07718362426,(((t23:0.167053587,t37:0.1261179752):0.7458510986,t6:0.9474354652):0.4349117738,(t50:0.7063381786,t8:0.4962021697):0.9406450125):0.1210038015):0.7206946658):0.2086854116):0.2198985894,((t21:0.2193838274,((t13:0.5840207564,t33:0.2736268432):0.3320097523,t47:0.1042833098):0.3601851477):0.4512686338,t25:0.4689089167):0.9308448818):0.04086005269,(((((t40:0.1956768476,t26:0.7943518062):0.1782792471,((t22:0.376651922,t49:0.02243229607):0.3668012598,(((t34:0.664548245,t3:0.1619326761):0.987456419,t11:0.8452820375):0.4688073481,(t16:0.1818585785,t29:0.232394211):0.4287885327):0.7964651871):0.5320081892):0.5300812169,((((t19:0.7511951746,t2:0.204252976):0.4938647044,t7:0.3556977008):0.3586013827,(t38:0.8039303906,(t32:0.9500118557,t43:0.6342438555):0.1515436959):0.7556200498):0.06952625257,(t39:0.9166283135,(t5:0.389964974,t14:0.06258801115):0.1248964793):0.2041574172):0.5678209993):0.3246593522,t30:0.7534215476):0.03259838023,((t36:0.9918274684,((t28:0.5589617616,t15:0.8905687227):0.1676856377,t10:0.7602554555):0.8512989033):0.8380841515,(((t41:0.2416828792,(t9:0.7206978209,t24:0.2196376026):0.6739168777):0.155479881,t20:0.8713164511):0.52036779,(t1:0.6211066761,(t35:0.7013573709,((t44:0.8949779936,t27:0.373667527):0.6651984421,t4:0.3912915958):0.9155155858):0.3391307804):0.4781178217):0.498043109):0.8864928086):0.3566122628);&#34;,&#34;layout&#34;:&#34;circular&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;tree&#34;:&#34;(((t22:0.9305121121,(t19:0.06586878025,(t33:0.2946041131,t27:0.8020751383):0.2578415691):0.7077936174):0.86534355,((t34:0.9312987251,t5:0.8794542821):0.3116019715,(t28:0.7846930861,(((t11:0.2532951909,t39:0.5316203337):0.5004901427,(t21:0.8671998347,t25:0.532860375):0.3925423257):0.2119684827,t7:0.8801310153):0.4233754983):0.2937266272):0.4731639868):0.6430926481,((((((t35:0.6644314507,(t23:0.4914771093,t32:0.387547361):0.2116135594):0.3363916874,((t3:0.8634205498,t2:0.5724158699):0.2496306107,t13:0.2323171471):0.4002759021):0.4166976379,((t20:0.06379229715,(t47:0.04605403915,t14:0.4128987587):0.2766921478):0.8913664208,(t24:0.7501545418,t29:0.4615897362):0.5327716544):0.7182647032):0.5179446463,t4:0.7910242064):0.8223816638,(t48:0.6275330244,(t26:0.5667159786,t38:0.658034587):0.4069409212):0.7060118045):0.1189023308,((((t9:0.8339729577,t42:0.656061392):0.4228544007,(t10:0.2929325986,t17:0.00134793506):0.06927642762):0.4104950831,((((t31:0.702567437,t50:0.9756578002):0.6701290198,((((t40:0.8085729128,t30:0.1030231265):0.2114965217,t49:0.1431846751):0.5027219388,t37:0.9199501248):0.2869646349,(t41:0.05012416723,t6:0.2648974208):0.7676348314):0.8016345622):0.2422039146,t12:0.4185563317):0.3499588161,t16:0.8341751499):0.8345981056):0.1256090233,(t8:0.5133640205,((t1:0.2924173467,((t36:0.4681472124,t45:0.7387885372):0.2181996121,(t18:0.6699032332,t44:0.1699654842):0.0387458913):0.542438234):0.5627752647,(t15:0.7362010006,(t43:0.7057706064,t46:0.1666993359):0.3598119218):0.7376065464):0.1592472156):0.5797001412):0.06787401717):0.9096292926);&#34;,&#34;layout&#34;:&#34;circular&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;p&gt;You can take a look at the project repo &lt;a href=&#34;https://github.com/USCBiostats/jsPhyloSVG&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
@@ -317,7 +318,10 @@ jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/read-viz-attributes-from-gexf-files/</guid>
-      <description>&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
 &lt;p&gt;We start by loading the R packages and reading the “lesmiserables.gexf” file that is included in &lt;code&gt;rgexf&lt;/code&gt;. We use the &lt;code&gt;gexf.to.igraph&lt;/code&gt; function to coerce the &lt;code&gt;gexf&lt;/code&gt; object to an object of class &lt;code&gt;igraph&lt;/code&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading R packages
 library(rgexf)
@@ -347,7 +351,7 @@ plot(igraph1,
   dir       = &amp;quot;../../static/post/read-viz-attributes-from-gexf-files/viz&amp;quot;
   )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/george/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
+## /home/vegayon/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
 &lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
 &lt;/iframe&gt;
 &lt;p&gt;As expected, the same result.&lt;/p&gt;
@@ -458,7 +462,10 @@ server &amp;lt;- function(input, output) {
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/profiling-rcpp/</guid>
-      <description>&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+      <description>
+
+
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Install libuwind&lt;/p&gt;
 &lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;amp;&amp;amp; \
     tar -xf libunwind-1.2.tar.gz &amp;amp;&amp;amp; cd libunwind-1.2; \
@@ -476,7 +483,8 @@ $ &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
       <pubDate>Mon, 13 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/model-decision-tree/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/viz/viz.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;/rmarkdown-libs/DiagrammeR-styles/styles.css&#34; rel=&#34;stylesheet&#34; /&gt;
 &lt;script src=&#34;/rmarkdown-libs/grViz-binding/grViz.js&#34;&gt;&lt;/script&gt;

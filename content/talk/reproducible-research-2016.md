@@ -11,7 +11,7 @@ selected = false
 math = true
 
 url_pdf = ""
-url_slides = "talk/reproducible-research-2016/slides/"
+url_slides = "https://github.com/gvegayon/reproducible_research/blob/master/reproducible%20research.Rmd"
 url_video = ""
 
 # Optional featured image (relative to `static/img/` folder).

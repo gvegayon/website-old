@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
     <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/networks/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/tags/networks/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Read viz attributes from GEXF files</title>
@@ -16,41 +18,8 @@
       <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/read-viz-attributes-from-gexf-files/</guid>
-      <description>&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
-&lt;p&gt;We start by loading the R packages and reading the “lesmiserables.gexf” file that is included in &lt;code&gt;rgexf&lt;/code&gt;. We use the &lt;code&gt;gexf.to.igraph&lt;/code&gt; function to coerce the &lt;code&gt;gexf&lt;/code&gt; object to an object of class &lt;code&gt;igraph&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading R packages
-library(rgexf)
-library(igraph)
-
-# Reading and coercing into an igraph object
-fn      &amp;lt;- system.file(&amp;quot;gexf-graphs&amp;quot;, &amp;quot;lesmiserables.gexf&amp;quot;, package=&amp;quot;rgexf&amp;quot;)
-gexf1   &amp;lt;- read.gexf(fn)
-igraph1 &amp;lt;- gexf.to.igraph(gexf1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here comes the nice new feature. &lt;code&gt;read.gexf&lt;/code&gt; and &lt;code&gt;gexf.to.igraph&lt;/code&gt; take into account the visual attributes of the network, and we can use those with &lt;code&gt;plot.igraph&lt;/code&gt; directly without us specifying them! The only changes that I do in the next code chunk are rescaling the vertex and labels sizes (igraph automatically changes scales, which messes a bit with what we read from the GEXF object), and setting the edges to be curved and labels to be black using the &lt;code&gt;sans&lt;/code&gt; font family, and this is what we get&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We set the mai = c(0,0,0,0) so we have more space for our plot
-oldpar &amp;lt;- par(no.readonly = TRUE)
-par(mai = rep(0,4))
-plot(igraph1,
-     vertex.size        = V(igraph1)$size/2,
-     vertex.label.cex   = V(igraph1)$size/50,
-     vertex.label.color = &amp;quot;black&amp;quot;,
-     edge.curved        = TRUE,
-     vertex.label.family = &amp;quot;sans&amp;quot;
-     )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-11-27-read-viz-attributes-from-gexf-files_files/figure-html/igraph-plot-1.svg&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(oldpar)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And to make sure we are getting the same output, we can take a look at how the &lt;code&gt;plot.gexf&lt;/code&gt; function draws our GEXF graph.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(
-  gexf1,
-  copy.only = TRUE,
-  dir       = &amp;quot;../../static/post/read-viz-attributes-from-gexf-files/viz&amp;quot;
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/george/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
-&lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
-&lt;/iframe&gt;
-&lt;p&gt;As expected, the same result.&lt;/p&gt;
-</description>
+      <description>So one of the new features that I’ve working on is processing viz attributes. In the CRAN version of rgexf, the function read.gexf only reads in non-visual attributes and the graph structure itself, which is no longer true as of today (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).
+We start by loading the R packages and reading the “lesmiserables.</description>
     </item>
     
     <item>
@@ -59,130 +28,9 @@ plot(igraph1,
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/reboot-of-rgexf/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;https://github.com/gvegayon/rgexf&#34;&gt;rgexf&lt;/a&gt; R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN&lt;/a&gt;) together with the &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt; R package to visualize a random diffusion process.&lt;/p&gt;
-&lt;p&gt;First, we load all the packages that we will be using&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading the relevant packages
-library(igraph, quietly = TRUE)
-library(rgexf, quietly = TRUE)
-library(netdiffuseR, quietly = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A random diffusion network
-set.seed(122)
-net &amp;lt;- rdiffnet(n = 200, t=20, seed.graph = &amp;quot;small-world&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, we get the parameters ready, in this case, position using the function &lt;code&gt;layout_nicely&lt;/code&gt; from the igraph package, and colors using the Time of Adoption (toa)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Setting viz attributes
-pos &amp;lt;- cbind(layout_nicely(diffnet_to_igraph(net)[[1]]), 0)
-
-# Coloring according to time of adoption. White ones are not
-# adopters.
-col &amp;lt;- diffnet.toa(net)
-col &amp;lt;- col/20
-col &amp;lt;- colorRamp(blues9, alpha = TRUE)(col)
-col[is.na(col[,1]),1:3] &amp;lt;- 255
-col[,4] &amp;lt;- .5&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Finally, we create the GEXF object and call the plot function. In this case we are using &lt;a href=&#34;https://github.com/raphv/gexf-js&#34;&gt;gexf-js&lt;/a&gt; (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files by setting &lt;code&gt;copy.only = TRUE&lt;/code&gt; and start the server using the &lt;a href=&#34;https://cran.r-project.org/package=servr&#34;&gt;servr&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Creating the gexf object
-gf &amp;lt;- igraph.to.gexf(
-  diffnet_to_igraph(net)[[1]],
-  nodesVizAtt = list(
-    color    = col,
-    position = pos
-    )
-  )
-
-# Plotting using gexf-js
-plot(
-  gf,
-  edgeWidthFactor = .1,
-  copy.only = TRUE,
-  dir       = &amp;quot;../../static/post/reboot-of-rgexf/viz&amp;quot;
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/george/Documents/website/static/post/reboot-of-rgexf/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can take a look at resulting website &lt;a href=&#34;viz&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;div id=&#34;session-info&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Session info&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.4 (2018-03-15)
-##  system   x86_64, linux-gnu           
-##  ui       X11                         
-##  language en_US                       
-##  collate  en_US.UTF-8                 
-##  tz       America/Los_Angeles         
-##  date     2018-06-18&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package        * version   date       source        
-##  backports        1.1.2     2017-12-13 cran (@1.1.2) 
-##  base           * 3.4.4     2018-03-16 local         
-##  blogdown         0.6       2018-04-18 CRAN (R 3.4.4)
-##  bookdown         0.7       2018-02-18 CRAN (R 3.4.3)
-##  boot             1.3-20    2017-07-30 CRAN (R 3.4.1)
-##  coda             0.19-1    2016-12-08 CRAN (R 3.4.0)
-##  codetools        0.2-15    2016-10-05 CRAN (R 3.3.1)
-##  colorspace       1.3-2     2016-12-14 CRAN (R 3.4.0)
-##  compiler         3.4.4     2018-03-16 local         
-##  datasets       * 3.4.4     2018-03-16 local         
-##  devtools         1.13.5    2018-02-18 CRAN (R 3.4.3)
-##  digest           0.6.15    2018-01-28 cran (@0.6.15)
-##  evaluate         0.10.1    2017-06-24 CRAN (R 3.4.0)
-##  ggplot2          2.2.1     2016-12-30 CRAN (R 3.4.3)
-##  graphics       * 3.4.4     2018-03-16 local         
-##  grDevices      * 3.4.4     2018-03-16 local         
-##  grid             3.4.4     2018-03-16 local         
-##  gridExtra        2.3       2017-09-09 CRAN (R 3.4.4)
-##  gtable           0.2.0     2016-02-26 CRAN (R 3.4.0)
-##  htmltools        0.3.6     2017-04-28 CRAN (R 3.4.0)
-##  httpuv           1.4.3     2018-05-10 CRAN (R 3.4.4)
-##  igraph         * 1.2.1     2018-03-10 CRAN (R 3.4.3)
-##  knitr            1.20      2018-02-20 CRAN (R 3.4.3)
-##  later            0.7.3     2018-06-08 CRAN (R 3.4.4)
-##  lattice          0.20-35   2017-03-25 CRAN (R 3.3.3)
-##  lazyeval         0.2.1     2017-10-29 CRAN (R 3.4.2)
-##  magrittr         1.5       2014-11-22 CRAN (R 3.4.0)
-##  MASS             7.3-50    2018-04-30 CRAN (R 3.4.4)
-##  MatchIt          3.0.2     2018-01-09 CRAN (R 3.4.3)
-##  Matrix           1.2-14    2018-04-09 CRAN (R 3.4.4)
-##  memoise          1.1.0     2017-04-21 CRAN (R 3.4.0)
-##  methods        * 3.4.4     2018-03-16 local         
-##  munsell          0.5.0     2018-06-12 CRAN (R 3.4.4)
-##  netdiffuseR    * 1.20.0    2018-06-07 CRAN (R 3.4.4)
-##  network          1.13.0.1  2018-04-02 CRAN (R 3.4.4)
-##  networkDynamic   0.9.0     2016-01-15 CRAN (R 3.4.0)
-##  pillar           1.2.3     2018-05-25 CRAN (R 3.4.4)
-##  pkgconfig        2.0.1     2017-03-21 CRAN (R 3.4.0)
-##  plyr             1.8.4     2016-06-08 CRAN (R 3.4.0)
-##  promises         1.0.1     2018-04-13 CRAN (R 3.4.4)
-##  R6               2.2.2     2017-06-17 CRAN (R 3.4.4)
-##  Rcpp             0.12.17   2018-05-18 CRAN (R 3.4.4)
-##  rgexf          * 0.16.0    2018-02-05 local         
-##  rlang            0.2.1     2018-05-30 CRAN (R 3.4.4)
-##  rmarkdown        1.10      2018-06-11 CRAN (R 3.4.4)
-##  rprojroot        1.3-2     2018-01-03 cran (@1.3-2) 
-##  scales           0.5.0     2017-08-24 CRAN (R 3.4.1)
-##  servr            0.10      2018-05-30 CRAN (R 3.4.4)
-##  sna              2.4       2016-08-08 CRAN (R 3.4.0)
-##  SparseM          1.77      2017-04-23 CRAN (R 3.4.0)
-##  statnet.common   4.1.2     2018-06-05 CRAN (R 3.4.4)
-##  stats          * 3.4.4     2018-03-16 local         
-##  stringi          1.2.3     2018-06-12 CRAN (R 3.4.4)
-##  stringr          1.3.1     2018-05-10 CRAN (R 3.4.4)
-##  tibble           1.4.2     2018-01-22 cran (@1.4.2) 
-##  tools            3.4.4     2018-03-16 local         
-##  utils          * 3.4.4     2018-03-16 local         
-##  viridis          0.5.1     2018-03-29 CRAN (R 3.4.3)
-##  viridisLite      0.3.0     2018-02-01 cran (@0.3.0) 
-##  withr            2.1.2     2018-03-15 cran (@2.1.2) 
-##  xfun             0.2       2018-06-16 CRAN (R 3.4.4)
-##  XML              3.98-1.11 2018-04-16 CRAN (R 3.4.4)
-##  yaml             2.1.19    2018-05-01 CRAN (R 3.4.4)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;last-updated&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Last updated&lt;/h2&gt;
-&lt;p&gt;This post was last updated on 2017-11-13 to reflect a small change in &lt;code&gt;rgexf&lt;/code&gt; that makes it easier to process colors and positions.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>The rgexf R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to CRAN) together with the netdiffuseR R package to visualize a random diffusion process.
+First, we load all the packages that we will be using
+# Loading the relevant packages library(igraph, quietly = TRUE) library(rgexf, quietly = TRUE) library(netdiffuseR, quietly = TRUE) Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.</description>
     </item>
     
     <item>
@@ -191,10 +39,8 @@ plot(
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/project/netdiffuser/</guid>
-      <description>&lt;p&gt;Empirical statistical analysis, visualization and simulation of diffusion and contagion processes on networks. The package implements algorithms for calculating network diffusion statistics such as transmission rate, hazard rates, exposure models, network threshold levels, infectiousness (contagion), and susceptibility. The package is inspired by work published in Valente, et al., (2015) DOI:10.1016/j.socscimed.2015.10.001; Valente (1995) ISBN:9781881303213, Myers (2000) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;303110&lt;/sub&gt;, Iyengar and others (2011) DOI:10.1287/mksc.1100.0566, Burt (1987) DOI:10.&lt;sup&gt;1086&lt;/sup&gt;&amp;frasl;&lt;sub&gt;228667&lt;/sub&gt;; among others.&lt;/p&gt;
-
-&lt;p&gt;More details &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Empirical statistical analysis, visualization and simulation of diffusion and contagion processes on networks. The package implements algorithms for calculating network diffusion statistics such as transmission rate, hazard rates, exposure models, network threshold levels, infectiousness (contagion), and susceptibility. The package is inspired by work published in Valente, et al., (2015) DOI:10.1016/j.socscimed.2015.10.001; Valente (1995) ISBN:9781881303213, Myers (2000) DOI:10.1086&amp;frasl;303110, Iyengar and others (2011) DOI:10.1287/mksc.1100.0566, Burt (1987) DOI:10.1086&amp;frasl;228667; among others.
+More details here</description>
     </item>
     
   </channel>

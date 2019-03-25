@@ -8,9 +8,7 @@ categories:
 tags:
   - rcpp
   - rstats
-summary: "
-Sparse matrices in RcppArmadillo can be a very useful resource to work with, especially when you are dealing with social networks. Here I provide a couple of examples in which we can take advantage of their structure by using iterators.
-"
+summary: "Sparse matrices in RcppArmadillo can be a very useful resource to work with, especially when you are dealing with social networks. Here I provide a couple of examples in which we can take advantage of their structure by using iterators."
 ---
 
 ```{r Setup, echo=FALSE}

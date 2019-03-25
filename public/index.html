@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.54.0" />
   <meta name="author" content="George G. Vega Yon">
   <meta name="description" content="Statistical Computing">
 
@@ -253,11 +253,11 @@
 
 <h1 id="biography">Biography</h1>
 
-<p>I&rsquo;m a Chilean working and getting a Ph.D. at USC on Statistical Computing at the <a href="https://pm.usc.edu" target="_blank">Department of Preventive Medicine</a> with with <a href="https://www.kayladelahaye.net/" target="_new">Prof. Kayla de la Haye</a> and <a href="http://keck.usc.edu/faculty/paul-marjoram/" target="_new">Prof. Paul Marjoram</a>. I hold a MA in Economics and Public Policy from <a href="http://www.uai.cl/" target="_blank">Universidad Adolfo Ibáñez (Chile)</a> and a M.Sc. in Economics from the <a href="http://hss.caltech.edu" target="_blank">California Institute of Technology (USA)</a>. Currently, I&rsquo;m interested in social networks, developing (and implementing) new statistical methods for data analysis (and inference), statistical computing, and computational social sciences in general.</p>
+<p>I&rsquo;m a Chilean working and getting a Ph.D. at USC on Statistical Computing at the <a href="https://pm.usc.edu" target="_blank">Department of Preventive Medicine</a> with <a href="https://www.kayladelahaye.net/" target="_new">Prof. Kayla de la Haye</a> and <a href="http://keck.usc.edu/faculty/paul-marjoram/" target="_new">Prof. Paul Marjoram</a>. I hold a MA in Economics and Public Policy from <a href="http://www.uai.cl/" target="_blank">Universidad Adolfo Ibáñez (Chile)</a> and a M.Sc. in Economics from the <a href="http://hss.caltech.edu" target="_blank">California Institute of Technology (USA)</a>. Currently, I&rsquo;m interested in social networks, developing (and implementing) new statistical methods for data analysis (and inference), statistical computing, and computational social sciences in general.</p>
 
 <p><strong>Some quick links</strong></p>
 
-<p><a href="https://github.com/muriteams/lergm" target="_blank">ERGMitos</a>,
+<p><a href="https://github.com/muriteams/ergmito" target="_blank">ERGMitos</a>,
 <a href="https://github.com/USCCANA/netdiffuseR" target="_blank">netdiffuseR</a>,
 <a href="https://github.com/gvegayon/twitterreport" target="_blank">twitterreport</a>,
 <a href="https://bitbucket.org/gvegayon/rgexf" target="_blank">rgexf</a>,
@@ -728,6 +728,18 @@
       
       <li itemscope itemtype="http://schema.org/CreativeWork">
   <i class="fa-li fa fa-comment-o pub-icon" aria-hidden="true"></i>
+  <span itemprop="name"><a href="/talk/nu2019/">Big Problems for Small Networks: Statistical Analysis of Small Networks and Team Performance</a></span>
+  <p>
+    Mar 20, 2019,
+    
+            Invited speaker at <a href="https://sonic.northwestern.edu" target="_blank">SONIC</a> (Northwestern University)
+    
+  </p>
+</li>
+
+      
+      <li itemscope itemtype="http://schema.org/CreativeWork">
+  <i class="fa-li fa fa-comment-o pub-icon" aria-hidden="true"></i>
   <span itemprop="name"><a href="/talk/netscix2019/">Small network statistics for the network science of teams</a></span>
   <p>
     Jan 3, 2019,
@@ -753,18 +765,6 @@
       <li itemscope itemtype="http://schema.org/CreativeWork">
   <i class="fa-li fa fa-comment-o pub-icon" aria-hidden="true"></i>
   <span itemprop="name"><a href="/talk/satrday-scl2018/">Computacion de Alto Rendimiento con R</a></span>
-  <p>
-    Dec 12, 2018,
-    
-            satRday Santiago 2018
-    
-  </p>
-</li>
-
-      
-      <li itemscope itemtype="http://schema.org/CreativeWork">
-  <i class="fa-li fa fa-comment-o pub-icon" aria-hidden="true"></i>
-  <span itemprop="name"><a href="/talk/satrday-scl2018.utf8/">Computacion de Alto Rendimiento con R</a></span>
   <p>
     Dec 12, 2018,
     
@@ -1228,7 +1228,10 @@ Before start, I just want to stress that I&rsquo;m writing this after my first s
 
   <div class="article-style" itemprop="articleBody">
     
-    <ol style="list-style-type: decimal">
+    
+
+
+<ol style="list-style-type: decimal">
 <li><p>Install libuwind</p>
 <pre class="shell"><code>$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;&amp; \
     tar -xf libunwind-1.2.tar.gz &amp;&amp; cd libunwind-1.2; \
@@ -1317,7 +1320,7 @@ $ </code></pre></li>
           <div class="card-text">
             <h4><a href="/project/aphylo/" >aphylo: Statistical Inference of Annotated Phylogenetic Trees</a></h4>
             <div class="card-desription">
-              <p>The aphylo R package implements estimation and data imputation methods for Functional Annotations in Phylogenetic Trees.</p>
+              <p>The aphylo R package implements a phylogenetic model for gene functional prediction that I have been developing as part of my doctoral disertation.</p>
             </div>
           </div>
         </div>

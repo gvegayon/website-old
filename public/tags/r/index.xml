@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
     <lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/r/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Visualizing Phylogenetic Trees with R and jsPhyloSVG</title>
@@ -16,28 +18,8 @@
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/jsphylosvg-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/raphael-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/yui-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsPhyloSVG-binding/jsPhyloSVG.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;During the last year I’ve been working on a daily basis with &lt;a href=&#34;../publication/aphylo/&#34;&gt;phylogenetic trees&lt;/a&gt;, objects that in graph jargon are called Directed Acyclic Graphs. While R does have some cool packages out there to visualize these–including &lt;a href=&#34;https://zachcp.github.io/phylocanvas/&#34;&gt;phylocanvas&lt;/a&gt; which looks great!–I wanted to tryout &lt;a href=&#34;http://www.jsphylosvg.com&#34;&gt;jsPhyloSVG&lt;/a&gt;, and moreover, to learn how to use &lt;a href=&#34;http://www.htmlwidgets.org&#34;&gt;htmlwidgets&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So, after a week-long process of playing with JavaScript, of which I had no prior knowledge (so thank you &lt;a href=&#34;https://w3schools.com&#34;&gt;W3shools&lt;/a&gt;)!, and hours of head-scratching, I created this R package, &lt;a href=&#34;https://USCBiostats.github.io/jsPhyloSVG&#34;&gt;jsPhyloSVG&lt;/a&gt; that provides an htmlwidget for the library of the same name. An example follows&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# I&amp;#39;ll be using the ape package to simulate a tree
-library(ape)
-# You can get it from github USCBiostats/jsPhyloSVG
-library(jsPhyloSVG)
-
-# A random phylogenetic tree with 50 tips
-tree &amp;lt;- rtree(50)
-
-jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;jsPhyloSVG html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;tree&#34;:&#34;((((t42:0.06164457602,t12:0.8180190395):0.9365026811,((((t46:0.8872811985,t18:0.2442051622):0.05846408405,(t45:0.103828141,t31:0.3593903473):0.7426412788):0.5980824926,t17:0.3825574517):0.6083812208,(t48:0.07718362426,(((t23:0.167053587,t37:0.1261179752):0.7458510986,t6:0.9474354652):0.4349117738,(t50:0.7063381786,t8:0.4962021697):0.9406450125):0.1210038015):0.7206946658):0.2086854116):0.2198985894,((t21:0.2193838274,((t13:0.5840207564,t33:0.2736268432):0.3320097523,t47:0.1042833098):0.3601851477):0.4512686338,t25:0.4689089167):0.9308448818):0.04086005269,(((((t40:0.1956768476,t26:0.7943518062):0.1782792471,((t22:0.376651922,t49:0.02243229607):0.3668012598,(((t34:0.664548245,t3:0.1619326761):0.987456419,t11:0.8452820375):0.4688073481,(t16:0.1818585785,t29:0.232394211):0.4287885327):0.7964651871):0.5320081892):0.5300812169,((((t19:0.7511951746,t2:0.204252976):0.4938647044,t7:0.3556977008):0.3586013827,(t38:0.8039303906,(t32:0.9500118557,t43:0.6342438555):0.1515436959):0.7556200498):0.06952625257,(t39:0.9166283135,(t5:0.389964974,t14:0.06258801115):0.1248964793):0.2041574172):0.5678209993):0.3246593522,t30:0.7534215476):0.03259838023,((t36:0.9918274684,((t28:0.5589617616,t15:0.8905687227):0.1676856377,t10:0.7602554555):0.8512989033):0.8380841515,(((t41:0.2416828792,(t9:0.7206978209,t24:0.2196376026):0.6739168777):0.155479881,t20:0.8713164511):0.52036779,(t1:0.6211066761,(t35:0.7013573709,((t44:0.8949779936,t27:0.373667527):0.6651984421,t4:0.3912915958):0.9155155858):0.3391307804):0.4781178217):0.498043109):0.8864928086):0.3566122628);&#34;,&#34;layout&#34;:&#34;circular&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;You can take a look at the project repo &lt;a href=&#34;https://github.com/USCBiostats/jsPhyloSVG&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>During the last year I’ve been working on a daily basis with phylogenetic trees, objects that in graph jargon are called Directed Acyclic Graphs. While R does have some cool packages out there to visualize these–including phylocanvas which looks great!–I wanted to tryout jsPhyloSVG, and moreover, to learn how to use htmlwidgets.
+So, after a week-long process of playing with JavaScript, of which I had no prior knowledge (so thank you W3shools)!</description>
     </item>
     
     <item>
@@ -46,41 +28,8 @@ jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/read-viz-attributes-from-gexf-files/</guid>
-      <description>&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
-&lt;p&gt;We start by loading the R packages and reading the “lesmiserables.gexf” file that is included in &lt;code&gt;rgexf&lt;/code&gt;. We use the &lt;code&gt;gexf.to.igraph&lt;/code&gt; function to coerce the &lt;code&gt;gexf&lt;/code&gt; object to an object of class &lt;code&gt;igraph&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading R packages
-library(rgexf)
-library(igraph)
-
-# Reading and coercing into an igraph object
-fn      &amp;lt;- system.file(&amp;quot;gexf-graphs&amp;quot;, &amp;quot;lesmiserables.gexf&amp;quot;, package=&amp;quot;rgexf&amp;quot;)
-gexf1   &amp;lt;- read.gexf(fn)
-igraph1 &amp;lt;- gexf.to.igraph(gexf1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here comes the nice new feature. &lt;code&gt;read.gexf&lt;/code&gt; and &lt;code&gt;gexf.to.igraph&lt;/code&gt; take into account the visual attributes of the network, and we can use those with &lt;code&gt;plot.igraph&lt;/code&gt; directly without us specifying them! The only changes that I do in the next code chunk are rescaling the vertex and labels sizes (igraph automatically changes scales, which messes a bit with what we read from the GEXF object), and setting the edges to be curved and labels to be black using the &lt;code&gt;sans&lt;/code&gt; font family, and this is what we get&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We set the mai = c(0,0,0,0) so we have more space for our plot
-oldpar &amp;lt;- par(no.readonly = TRUE)
-par(mai = rep(0,4))
-plot(igraph1,
-     vertex.size        = V(igraph1)$size/2,
-     vertex.label.cex   = V(igraph1)$size/50,
-     vertex.label.color = &amp;quot;black&amp;quot;,
-     edge.curved        = TRUE,
-     vertex.label.family = &amp;quot;sans&amp;quot;
-     )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-11-27-read-viz-attributes-from-gexf-files_files/figure-html/igraph-plot-1.svg&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(oldpar)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And to make sure we are getting the same output, we can take a look at how the &lt;code&gt;plot.gexf&lt;/code&gt; function draws our GEXF graph.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(
-  gexf1,
-  copy.only = TRUE,
-  dir       = &amp;quot;../../static/post/read-viz-attributes-from-gexf-files/viz&amp;quot;
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/george/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
-&lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
-&lt;/iframe&gt;
-&lt;p&gt;As expected, the same result.&lt;/p&gt;
-</description>
+      <description>So one of the new features that I’ve working on is processing viz attributes. In the CRAN version of rgexf, the function read.gexf only reads in non-visual attributes and the graph structure itself, which is no longer true as of today (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).
+We start by loading the R packages and reading the “lesmiserables.</description>
     </item>
     
     <item>
@@ -89,16 +38,9 @@ plot(igraph1,
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/profiling-rcpp/</guid>
-      <description>&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Install libuwind&lt;/p&gt;
-&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;amp;&amp;amp; \
-    tar -xf libunwind-1.2.tar.gz &amp;amp;&amp;amp; cd libunwind-1.2; \
-    ./configure; sudo make; sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://github.com/gperftools/gperftools&#34;&gt;google-perftools&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ git clone https://github.com/gperftools/gperftools
-$ &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description> Install libuwind
+$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;amp;&amp;amp; \ tar -xf libunwind-1.2.tar.gz &amp;amp;&amp;amp; cd libunwind-1.2; \ ./configure; sudo make; sudo make install Install google-perftools
+$ git clone https://github.com/gperftools/gperftools $   </description>
     </item>
     
     <item>
@@ -107,36 +49,8 @@ $ &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/new-versions-of-abcoptim-and-googlepublicdata-on-cran/</guid>
-      <description>&lt;p&gt;Finally, after a long wait, the R packages &lt;a href=&#34;https://github.com/gvegayon/googlePublicData&#34;&gt;googlePublicData&lt;/a&gt; (more than 2 years since the last update!) and &lt;a href=&#34;https://github.com/gvegayon/ABCoptim&#34;&gt;ABCoptim&lt;/a&gt; (roughly a year since the last update) have new versions on &lt;a href=&#34;https://cran.r-project.org&#34;&gt;CRAN&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The first just got an update that fixed some nasty bugs that were evident once you upload the data to &lt;a href=&#34;https://www.google.com/publicdata&#34;&gt;Google Public Data Explorer&lt;/a&gt;, and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching &lt;code&gt;optim&lt;/code&gt;, and new methods for printing and plotting the results.&lt;/p&gt;
-&lt;p&gt;Here is an example of &lt;code&gt;ABCoptim&lt;/code&gt; (from the manual)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading the package
-library(ABCoptim)
-
-# This function has a minimum at (pi,pi)
-fun &amp;lt;- function(x) {
-  -cos(x[1])*cos(x[2])*exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
-}
-
-# Calling the function!
-abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  An object of class -abc_answer- (Artificial Bee Colony Optim.):
-##  par:
-##     x[1]:  3.141593
-##     x[2]:  3.141593
-## 
-##  value:
-##           -1.000000
-## 
-##  counts:
-##            208&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here an example of what can you get with &lt;code&gt;googlePublicData&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;iframe width=&#34;400&#34; height=&#34;325&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; src=&#34;http://www.google.com/publicdata/embed?ds=lt98u9rd734rn_&amp;amp;ctype=b&amp;amp;strail=true&amp;amp;bcs=d&amp;amp;nselm=s&amp;amp;met_y=porc_pob_pobre&amp;amp;scale_y=lin&amp;amp;ind_y=false&amp;amp;met_x=prom_de_escolaridad&amp;amp;scale_x=lin&amp;amp;ind_x=false&amp;amp;met_s=porc_hogares_con_computador&amp;amp;scale_s=lin&amp;amp;ind_s=false&amp;amp;idim=region:IX:RM:XII:VIII:VI:VII:X:V&amp;amp;ifdim=region&amp;amp;hl=en_US&amp;amp;dl=en&amp;amp;ind=false&amp;amp;icfg=lt98u9rd734rn_%253A51%253Aregion%26%26IX:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26RM:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26XII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VIII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VI:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26X:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26V:::2009&amp;amp;iconSize=0.5&#34;&gt;
-&lt;/iframe&gt;
-&lt;/p&gt;
-</description>
+      <description>Finally, after a long wait, the R packages googlePublicData (more than 2 years since the last update!) and ABCoptim (roughly a year since the last update) have new versions on CRAN.
+The first just got an update that fixed some nasty bugs that were evident once you upload the data to Google Public Data Explorer, and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching optim, and new methods for printing and plotting the results.</description>
     </item>
     
     <item>
@@ -145,130 +59,9 @@ abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/reboot-of-rgexf/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;https://github.com/gvegayon/rgexf&#34;&gt;rgexf&lt;/a&gt; R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN&lt;/a&gt;) together with the &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt; R package to visualize a random diffusion process.&lt;/p&gt;
-&lt;p&gt;First, we load all the packages that we will be using&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading the relevant packages
-library(igraph, quietly = TRUE)
-library(rgexf, quietly = TRUE)
-library(netdiffuseR, quietly = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# A random diffusion network
-set.seed(122)
-net &amp;lt;- rdiffnet(n = 200, t=20, seed.graph = &amp;quot;small-world&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, we get the parameters ready, in this case, position using the function &lt;code&gt;layout_nicely&lt;/code&gt; from the igraph package, and colors using the Time of Adoption (toa)&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Setting viz attributes
-pos &amp;lt;- cbind(layout_nicely(diffnet_to_igraph(net)[[1]]), 0)
-
-# Coloring according to time of adoption. White ones are not
-# adopters.
-col &amp;lt;- diffnet.toa(net)
-col &amp;lt;- col/20
-col &amp;lt;- colorRamp(blues9, alpha = TRUE)(col)
-col[is.na(col[,1]),1:3] &amp;lt;- 255
-col[,4] &amp;lt;- .5&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Finally, we create the GEXF object and call the plot function. In this case we are using &lt;a href=&#34;https://github.com/raphv/gexf-js&#34;&gt;gexf-js&lt;/a&gt; (sigma-js will return in the future). Also, notice that we are only copying the files; the default behavior is to copy the files by setting &lt;code&gt;copy.only = TRUE&lt;/code&gt; and start the server using the &lt;a href=&#34;https://cran.r-project.org/package=servr&#34;&gt;servr&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Creating the gexf object
-gf &amp;lt;- igraph.to.gexf(
-  diffnet_to_igraph(net)[[1]],
-  nodesVizAtt = list(
-    color    = col,
-    position = pos
-    )
-  )
-
-# Plotting using gexf-js
-plot(
-  gf,
-  edgeWidthFactor = .1,
-  copy.only = TRUE,
-  dir       = &amp;quot;../../static/post/reboot-of-rgexf/viz&amp;quot;
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/george/Documents/website/static/post/reboot-of-rgexf/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can take a look at resulting website &lt;a href=&#34;viz&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;div id=&#34;session-info&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Session info&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::session_info()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Session info -------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  setting  value                       
-##  version  R version 3.4.4 (2018-03-15)
-##  system   x86_64, linux-gnu           
-##  ui       X11                         
-##  language en_US                       
-##  collate  en_US.UTF-8                 
-##  tz       America/Los_Angeles         
-##  date     2018-06-18&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Packages -----------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  package        * version   date       source        
-##  backports        1.1.2     2017-12-13 cran (@1.1.2) 
-##  base           * 3.4.4     2018-03-16 local         
-##  blogdown         0.6       2018-04-18 CRAN (R 3.4.4)
-##  bookdown         0.7       2018-02-18 CRAN (R 3.4.3)
-##  boot             1.3-20    2017-07-30 CRAN (R 3.4.1)
-##  coda             0.19-1    2016-12-08 CRAN (R 3.4.0)
-##  codetools        0.2-15    2016-10-05 CRAN (R 3.3.1)
-##  colorspace       1.3-2     2016-12-14 CRAN (R 3.4.0)
-##  compiler         3.4.4     2018-03-16 local         
-##  datasets       * 3.4.4     2018-03-16 local         
-##  devtools         1.13.5    2018-02-18 CRAN (R 3.4.3)
-##  digest           0.6.15    2018-01-28 cran (@0.6.15)
-##  evaluate         0.10.1    2017-06-24 CRAN (R 3.4.0)
-##  ggplot2          2.2.1     2016-12-30 CRAN (R 3.4.3)
-##  graphics       * 3.4.4     2018-03-16 local         
-##  grDevices      * 3.4.4     2018-03-16 local         
-##  grid             3.4.4     2018-03-16 local         
-##  gridExtra        2.3       2017-09-09 CRAN (R 3.4.4)
-##  gtable           0.2.0     2016-02-26 CRAN (R 3.4.0)
-##  htmltools        0.3.6     2017-04-28 CRAN (R 3.4.0)
-##  httpuv           1.4.3     2018-05-10 CRAN (R 3.4.4)
-##  igraph         * 1.2.1     2018-03-10 CRAN (R 3.4.3)
-##  knitr            1.20      2018-02-20 CRAN (R 3.4.3)
-##  later            0.7.3     2018-06-08 CRAN (R 3.4.4)
-##  lattice          0.20-35   2017-03-25 CRAN (R 3.3.3)
-##  lazyeval         0.2.1     2017-10-29 CRAN (R 3.4.2)
-##  magrittr         1.5       2014-11-22 CRAN (R 3.4.0)
-##  MASS             7.3-50    2018-04-30 CRAN (R 3.4.4)
-##  MatchIt          3.0.2     2018-01-09 CRAN (R 3.4.3)
-##  Matrix           1.2-14    2018-04-09 CRAN (R 3.4.4)
-##  memoise          1.1.0     2017-04-21 CRAN (R 3.4.0)
-##  methods        * 3.4.4     2018-03-16 local         
-##  munsell          0.5.0     2018-06-12 CRAN (R 3.4.4)
-##  netdiffuseR    * 1.20.0    2018-06-07 CRAN (R 3.4.4)
-##  network          1.13.0.1  2018-04-02 CRAN (R 3.4.4)
-##  networkDynamic   0.9.0     2016-01-15 CRAN (R 3.4.0)
-##  pillar           1.2.3     2018-05-25 CRAN (R 3.4.4)
-##  pkgconfig        2.0.1     2017-03-21 CRAN (R 3.4.0)
-##  plyr             1.8.4     2016-06-08 CRAN (R 3.4.0)
-##  promises         1.0.1     2018-04-13 CRAN (R 3.4.4)
-##  R6               2.2.2     2017-06-17 CRAN (R 3.4.4)
-##  Rcpp             0.12.17   2018-05-18 CRAN (R 3.4.4)
-##  rgexf          * 0.16.0    2018-02-05 local         
-##  rlang            0.2.1     2018-05-30 CRAN (R 3.4.4)
-##  rmarkdown        1.10      2018-06-11 CRAN (R 3.4.4)
-##  rprojroot        1.3-2     2018-01-03 cran (@1.3-2) 
-##  scales           0.5.0     2017-08-24 CRAN (R 3.4.1)
-##  servr            0.10      2018-05-30 CRAN (R 3.4.4)
-##  sna              2.4       2016-08-08 CRAN (R 3.4.0)
-##  SparseM          1.77      2017-04-23 CRAN (R 3.4.0)
-##  statnet.common   4.1.2     2018-06-05 CRAN (R 3.4.4)
-##  stats          * 3.4.4     2018-03-16 local         
-##  stringi          1.2.3     2018-06-12 CRAN (R 3.4.4)
-##  stringr          1.3.1     2018-05-10 CRAN (R 3.4.4)
-##  tibble           1.4.2     2018-01-22 cran (@1.4.2) 
-##  tools            3.4.4     2018-03-16 local         
-##  utils          * 3.4.4     2018-03-16 local         
-##  viridis          0.5.1     2018-03-29 CRAN (R 3.4.3)
-##  viridisLite      0.3.0     2018-02-01 cran (@0.3.0) 
-##  withr            2.1.2     2018-03-15 cran (@2.1.2) 
-##  xfun             0.2       2018-06-16 CRAN (R 3.4.4)
-##  XML              3.98-1.11 2018-04-16 CRAN (R 3.4.4)
-##  yaml             2.1.19    2018-05-01 CRAN (R 3.4.4)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;last-updated&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Last updated&lt;/h2&gt;
-&lt;p&gt;This post was last updated on 2017-11-13 to reflect a small change in &lt;code&gt;rgexf&lt;/code&gt; that makes it easier to process colors and positions.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>The rgexf R package has been around a couple of years now, but without much going on on CRAN (my bad!). In this post I’ll show how to use the new version (on development and soon the be shipped to CRAN) together with the netdiffuseR R package to visualize a random diffusion process.
+First, we load all the packages that we will be using
+# Loading the relevant packages library(igraph, quietly = TRUE) library(rgexf, quietly = TRUE) library(netdiffuseR, quietly = TRUE) Next, we simulate a random diffusion network, in this case, a small-world network with 200 nodes spanning 20 time periods.</description>
     </item>
     
     <item>
@@ -277,67 +70,9 @@ plot(
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/environments-in-r-rock/</guid>
-      <description>&lt;p&gt;Last week I found myself working on &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;netdiffuseR&lt;/a&gt; trying to establish nice defaults for some plotting functions with the following goals:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Make the code easy to maintain: So if I need to change defaults I just change a few lines and that works for all plot functions,&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Make the code easy to see in the manual (help) file: So is easier to the user to focus on the main features of a plot rather than looking at a large description of a function with lots of parameters and lots of defaults, and&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Make the code hopefully efficient: Not that I care that much, but if I’m going to be passing arguments across functions, it better be efficient!&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;So, long story short, I came up with the following approach:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Create a list of defaults included in the package: This is actually something that I’ve already seen in some other places, like for example &lt;a href=&#34;https://github.com/igraph/rigraph/blob/665d71ebd40cdfe9b996a4f50c35d65b791e4102/R/par.R&#34; target=&#34;_blank&#34;&gt;igraph&lt;/a&gt;, they have a couple of environments that set plotting defaults.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Make a heavy use of the ellipsis! &lt;code&gt;...&lt;/code&gt; So I can actually grab whatever the user passed through it, and later modify the arguments (I’ll show this in an example)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Use 1. to modify 2. at will… with environments!&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;While I’m not sure this is the most efficient way of doing this (and I’m pretty sure that I’m not the first person to do something like this), it works for what I’m doing right now. The following piece of code illustrates how this works.&lt;/p&gt;
-&lt;p&gt;This is a list of the defaults that we would like all the functions to have:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# This list holds the default parameters
-defaults &amp;lt;- list(color=&amp;quot;steelblue&amp;quot;, add=FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This function is the one that sets the defaults, follow the comments to see how it works:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# This function sets the defaults giving the name of an object that holds the
-# parameters... or at least should hold them!
-set.defaults &amp;lt;- function(obj_name) {
-  
-  # Where was this function called from? This way we get
-  # the parent frame (the environment from where the function was called)
-  # this actually holds all the elements, but works as a reference, so no copy!
-  env &amp;lt;- parent.frame()
-  
-  # Now we loop throught the defaults that I&amp;#39;ve specified
-  # in -defaults-
-  for (d in names(defaults))
-    # If -d- hasn&amp;#39;t been specified, then set it!
-    if (!length(env[[obj_name]][[d]]))
-      env[[obj_name]][[d]] &amp;lt;- defaults[[d]]
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is a function that illustrates how everything works together. So we can pass extra arguments with the ellipsis, we store them in a list called &lt;code&gt;dots&lt;/code&gt; (I’m sure there must be a more efficient way of doing this, but it’s OK for now :]), sets the defaults calling &lt;code&gt;set.defaults&lt;/code&gt;, and returns the &lt;code&gt;dots&lt;/code&gt; list:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- function(...) {
-  
-  # Getting the dots
-  dots &amp;lt;- list(...)
-  
-  # Setting defaults
-  set.defaults(&amp;quot;dots&amp;quot;)
-  
-  # Did we got them?
-  return(dots)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now let’s see if it works!&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $color
-## [1] &amp;quot;steelblue&amp;quot;
-## 
-## $add
-## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f(color=&amp;quot;green&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $color
-## [1] &amp;quot;green&amp;quot;
-## 
-## $add
-## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As expected, the first call of the function returns the default parameters. In the second call, since I specified &lt;code&gt;&amp;quot;green&amp;quot;&lt;/code&gt;, the function &lt;code&gt;set.defaults&lt;/code&gt; only set the argument &lt;code&gt;add&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;You can read more about environments in &lt;a href=&#34;http://adv-r.had.co.nz/Environments.html&#34; target=&#34;_blank&#34;&gt;Hadley Wickham’s Advance R&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Last week I found myself working on netdiffuseR trying to establish nice defaults for some plotting functions with the following goals:
+Make the code easy to maintain: So if I need to change defaults I just change a few lines and that works for all plot functions,
+ Make the code easy to see in the manual (help) file: So is easier to the user to focus on the main features of a plot rather than looking at a large description of a function with lots of parameters and lots of defaults, and</description>
     </item>
     
     <item>
@@ -346,18 +81,8 @@ set.defaults &amp;lt;- function(obj_name) {
       <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/yet-another-plot-of-r-s-colors/</guid>
-      <description>&lt;p&gt;I know there are plenty of these online, but I just thought about having my own for quick reference…&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ncols &amp;lt;- ceiling(sqrt(length(colors())))^2
-dat &amp;lt;- matrix(1:ncols, sqrt(ncols))
-image(dat, col = colors()[1:ncols])
-pos &amp;lt;- seq(0, 1, length.out = sqrt(ncols))
-pos &amp;lt;- lapply(pos, function(x) cbind(x, pos))
-pos &amp;lt;- do.call(rbind, pos)
-
-ncols &amp;lt;- length(colors())
-text(x=pos[1:ncols,2], y=pos[1:ncols,1], labels = 1:ncols, cex=.75, srt=60)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-09-15-yet-another-plot-of-r-s-colors_files/figure-html/fancy-colors-1.svg&#34; width=&#34;768&#34; height=&#34;800px&#34; /&gt;&lt;/p&gt;
-</description>
+      <description> I know there are plenty of these online, but I just thought about having my own for quick reference…
+ncols &amp;lt;- ceiling(sqrt(length(colors())))^2 dat &amp;lt;- matrix(1:ncols, sqrt(ncols)) image(dat, col = colors()[1:ncols]) pos &amp;lt;- seq(0, 1, length.out = sqrt(ncols)) pos &amp;lt;- lapply(pos, function(x) cbind(x, pos)) pos &amp;lt;- do.call(rbind, pos) ncols &amp;lt;- length(colors()) text(x=pos[1:ncols,2], y=pos[1:ncols,1], labels = 1:ncols, cex=.75, srt=60) </description>
     </item>
     
     <item>
@@ -366,178 +91,8 @@ text(x=pos[1:ncols,2], y=pos[1:ncols,1], labels = 1:ncols, cex=.75, srt=60)&lt;/
       <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/setting-up-optional-openmp-support-with-rcpparmadillo/</guid>
-      <description>
-
-&lt;p&gt;Setting up an R package that supports OpenMP can be a bit awkward. While systems like Ubuntu with g++ have straight forward support for &lt;code&gt;-fopenmp&lt;/code&gt; flags, the same may not be true un MacOS&amp;rsquo;s &lt;code&gt;clang&lt;/code&gt;, since the latter is not shipped with it.&lt;/p&gt;
-
-&lt;p&gt;In order to solve this, it is necesary to have different &lt;code&gt;src/Makevars&lt;/code&gt; file depending on whether the compiler supports OpenMP or not. This can be solved using a &lt;code&gt;configure&lt;/code&gt; file, more over, &lt;code&gt;autoconf&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/software/autoconf/autoconf.html&#34; target=&#34;_blank&#34;&gt;Autoconf&lt;/a&gt; is &amp;ldquo;an extensible package of M4 macros that produce shell scripts to automatically configure software source code packages&amp;rdquo;. Among the (cool) things that we can use it for is creating tailored &lt;code&gt;src/Makevars&lt;/code&gt; files (and furthermore, any other files&amp;hellip; even R/*.r source code can be modified with this, just take a look at &lt;a href=&#34;https://cran.r-project.org/doc/manuals/r-devel/R-exts.html#Configure-and-cleanup&#34; target=&#34;_blank&#34;&gt;Writing R Extensions&lt;/a&gt;). The workflow of &lt;code&gt;R CMD&lt;/code&gt;+autoconf follows:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;The &lt;code&gt;configure&lt;/code&gt; file is executed and performs the requested checks (like having OpenMP) and modifies/creates the configuration files that will be used to compile the package, like &lt;code&gt;src/Makevars&lt;/code&gt;, &lt;code&gt;src/makefile&lt;/code&gt;, etc. Furthermore, it can use &amp;ldquo;templates&amp;rdquo; to create such files, which have the suffix &lt;code&gt;.in&lt;/code&gt;, for example, &lt;code&gt;src/Makevars.in&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;R CMD&lt;/code&gt; will compile the package using all the inputs (&lt;code&gt;src/Makevars&lt;/code&gt;, &lt;code&gt;src/makefile&lt;/code&gt;) that were created, and&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;In the case of &lt;code&gt;R CMD build&lt;/code&gt;, &lt;code&gt;R CMD&lt;/code&gt; will call &lt;code&gt;cleanup&lt;/code&gt; (they require you to do so) to remove the &lt;code&gt;config.*&lt;/code&gt; files and &lt;code&gt;src/Makevars&lt;/code&gt; so these are not shipped with the package file.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The next section describes the files that you need to include in your project to set it up using &lt;code&gt;RcppArmadillo&lt;/code&gt; with OpenMP support depending on whether it is available with the compiler. This example is from the R package &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34; target=&#34;_blank&#34;&gt;netdiffuseR&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&#34;configuration-files&#34;&gt;Configuration Files&lt;/h1&gt;
-
-&lt;p&gt;In order to use &lt;code&gt;autoconf&lt;/code&gt; to optionally include OpenMP with your R package, you need to have the following files in your system:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Need a &lt;code&gt;configure.ac&lt;/code&gt; file. This is what &lt;code&gt;autoconf&lt;/code&gt; uses as input.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#                                               -*- Autoconf -*-
-# netdiffuseR configure.ac
-# (with some code borrowed from RcppArmadillo configure.ac
-# and ARTP2 configure.ac)
-# 
-# Process this file with autoconf to produce a configure script.
-
-AC_PREREQ([2.69])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This line can be replaced by whatever the name of your package is (here is netdiffuseR)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;AC_INIT(netdiffuseR, m4_esyscmd_s([awk &#39;/^Version:/ {print $2}&#39; DESCRIPTION]))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;These couple of lines set up the path to R.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Set R_HOME, respecting an environment variable if one is set 
-: ${R_HOME=$(R RHOME)}
-if test -z &amp;quot;${R_HOME}&amp;quot;; then
-    AC_MSG_ERROR([Could not determine R_HOME.])   
-fi
-# Use R to set CXX and CXXFLAGS
-CXX=$(${R_HOME}/bin/R CMD config CXX)
-CXXFLAGS=$(&amp;quot;${R_HOME}/bin/R&amp;quot; CMD config CXXFLAGS)
-
-# We are using C++
-AC_LANG(C++)
-AC_REQUIRE_CPP
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This are the lines that actually do the job on setting OpenMP. I copied this from the ARTP2 R Package.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dnl this the meat of R&#39;s m4/openmp.m4
-  OPENMP_[]_AC_LANG_PREFIX[]FLAGS=
-  AC_ARG_ENABLE([openmp],
-    [AS_HELP_STRING([--disable-openmp], [do not use OpenMP])])
-  if test &amp;quot;$enable_openmp&amp;quot; != no; then
-    AC_CACHE_CHECK([for $[]_AC_CC[] option to support OpenMP],
-      [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp],
-      [AC_LINK_IFELSE([_AC_LANG_OPENMP],
-     [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=&#39;none needed&#39;],
-     [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=&#39;unsupported&#39;
-      for ac_option in -fopenmp -xopenmp -qopenmp \
-                           -openmp -mp -omp -qsmp=omp -homp \
-               -fopenmp=libomp \
-                           -Popenmp --openmp; do
-        ac_save_[]_AC_LANG_PREFIX[]FLAGS=$[]_AC_LANG_PREFIX[]FLAGS
-        _AC_LANG_PREFIX[]FLAGS=&amp;quot;$[]_AC_LANG_PREFIX[]FLAGS $ac_option&amp;quot;
-        AC_LINK_IFELSE([_AC_LANG_OPENMP],
-          [ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp=$ac_option])
-        _AC_LANG_PREFIX[]FLAGS=$ac_save_[]_AC_LANG_PREFIX[]FLAGS
-        if test &amp;quot;$ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp&amp;quot; != unsupported; then
-          break
-        fi
-      done])])
-    case $ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp in #(
-      &amp;quot;none needed&amp;quot; | unsupported)
-    ;; #(
-      *)
-    OPENMP_[]_AC_LANG_PREFIX[]FLAGS=$ac_cv_prog_[]_AC_LANG_ABBREV[]_openmp ;;
-    esac
-  fi
-
-AC_SUBST(OPENMP_CXXFLAGS)
-AC_CONFIG_FILES([src/Makevars])
-AC_OUTPUT
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;A &lt;code&gt;src/Makevars.in&lt;/code&gt; file which will be modified by configure. The most important part here is the &lt;code&gt;@OPENMP_CXXFLAGS@&lt;/code&gt; tag, which will be replaced accordingly:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) @OPENMP_CXXFLAGS@
-# 1.2.4 Using C++11 code
-CXX_STD = CXX11
-
-# Besides of the -fopenmp flag, here I&#39;m telling armadillo to use
-# 64BIT_WORD which removes the matrix size limit constraint.
-PKG_CXXFLAGS=@OPENMP_CXXFLAGS@ -DARMA_64BIT_WORD
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;A &lt;code&gt;cleanup&lt;/code&gt; file (with execution permissions) that &lt;code&gt;R CMD build&lt;/code&gt; will call after building the package. Again, this is a requirement.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/sh
-rm -f config.* src/Makevars
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Once you have all these files in order, you have to run &lt;code&gt;autoconf&lt;/code&gt; so that the &lt;code&gt;configure&lt;/code&gt; file is created, i.e.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ autoconf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you happen to use travis.yml, you need to specify a more modern distribution so that RcppArmadillo can built with a more modern compiler. In order to do so, put the &lt;code&gt;dist: trusty&lt;/code&gt; option in the yml file. Here is an example travis file from netdiffuseR:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;dist: trusty
-language: r
-sudo: required
-
-r:
-  - release
-  - devel # Not working
-  - oldrel
-
-os:
-  - linux
-  - osx
-
-osx_image: xcode7.3
-
-env:
- global:
-   - CRAN: http://cran.rstudio.com
-
-r_packages:
-  - ape
-  - covr
-  - testthat
-  - knitr
-  - rmarkdown
-  - RSiena
-  - igraph
-  - survival
-
-after_success:
-  - if [ $TRAVIS_OS_NAME == &amp;quot;linux&amp;quot; ]; then Rscript -e &#39;covr::codecov()&#39;; fi
-
-after_failure:
-  - ./run.sh dump_logs
-
-notifications:
-  email:
-    on_success: change
-    on_failure: change
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally, you&amp;rsquo;ll need to add/keep the following files to your repository: &lt;code&gt;configure&lt;/code&gt;, &lt;code&gt;configure.ac&lt;/code&gt;, &lt;code&gt;src/Makevars.in&lt;/code&gt;, &lt;code&gt;src/Makevars.win&lt;/code&gt;, and &lt;code&gt;cleanup&lt;/code&gt;. Otherwise you&amp;rsquo;ll find yourself scratching your head and asking why is travis failing&amp;hellip; belive me.&lt;/p&gt;
-
-&lt;h1 id=&#34;see-also&#34;&gt;See also&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The RcppArmadillo &lt;a href=&#34;https://github.com/RcppCore/RcppArmadillo/blob/dcc8d474446aacabbb13813ee7da4636eeeee450/configure.ac&#34; target=&#34;_blank&#34;&gt;configure.ac&lt;/a&gt; file&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;The netdiffuseR &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR/blob/98020e28dce5fd8cbabd497eb7fbf99be3ec0e2e/configure.ac&#34; target=&#34;_blank&#34;&gt;configure.ac&lt;/a&gt; file.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;The aphylo [configure.ac]() file.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Setting up an R package that supports OpenMP can be a bit awkward. While systems like Ubuntu with g++ have straight forward support for -fopenmp flags, the same may not be true un MacOS&amp;rsquo;s clang, since the latter is not shipped with it.
+In order to solve this, it is necesary to have different src/Makevars file depending on whether the compiler supports OpenMP or not. This can be solved using a configure file, more over, autoconf.</description>
     </item>
     
   </channel>

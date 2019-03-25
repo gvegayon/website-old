@@ -4,7 +4,7 @@ copyright = "&copy; 2016 George G. Vega Yon"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "backup$", "\\.gitignore$", "\\.Rhistory$", '\\.rmd$']
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "backup$", "\\.gitignore$", "\\.Rhistory$", "\\.rmd$"]
 publishDir = "public"
 
 # Enable comments by entering your Disqus shortname

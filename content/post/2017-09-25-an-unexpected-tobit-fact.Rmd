@@ -8,9 +8,7 @@ categories:
 tags:
   - regression
   - aer
-summary: '
-Today I figured out a somewhat interesting property of the Tobit model. While models such as $y = f(X, g(y))$ are usually wrong under iid, here I present an interesting example in which running such models makes no difference in the context of tobit regressions. While this has no use in practical scenarios, it does when it comes to have a better understanding of this meethod.
-'
+summary: "Today I figured out a somewhat interesting property of the Tobit model. While models such as $y = f(X, g(y))$ are usually wrong under iid, here I present an interesting example in which running such models makes no difference in the context of tobit regressions. While this has no use in practical scenarios, it does when it comes to have a better understanding of this meethod."
 draft: true
 math: true
 ---

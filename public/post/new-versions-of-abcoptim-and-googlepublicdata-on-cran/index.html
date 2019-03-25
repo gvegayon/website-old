@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.54.0" />
   <meta name="author" content="George G. Vega Yon">
   <meta name="description" content="Statistical Computing">
 
@@ -257,7 +257,10 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p>Finally, after a long wait, the R packages <a href="https://github.com/gvegayon/googlePublicData">googlePublicData</a> (more than 2 years since the last update!) and <a href="https://github.com/gvegayon/ABCoptim">ABCoptim</a> (roughly a year since the last update) have new versions on <a href="https://cran.r-project.org">CRAN</a>.</p>
+      
+
+
+<p>Finally, after a long wait, the R packages <a href="https://github.com/gvegayon/googlePublicData">googlePublicData</a> (more than 2 years since the last update!) and <a href="https://github.com/gvegayon/ABCoptim">ABCoptim</a> (roughly a year since the last update) have new versions on <a href="https://cran.r-project.org">CRAN</a>.</p>
 <p>The first just got an update that fixed some nasty bugs that were evident once you upload the data to <a href="https://www.google.com/publicdata">Google Public Data Explorer</a>, and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching <code>optim</code>, and new methods for printing and plotting the results.</p>
 <p>Here is an example of <code>ABCoptim</code> (from the manual)</p>
 <pre class="r"><code># Loading the package
@@ -280,7 +283,7 @@ abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)</code></pre>
 ##           -1.000000
 ## 
 ##  counts:
-##            208</code></pre>
+##            175</code></pre>
 <p>And here an example of what can you get with <code>googlePublicData</code></p>
 <p>
 <iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="http://www.google.com/publicdata/embed?ds=lt98u9rd734rn_&amp;ctype=b&amp;strail=true&amp;bcs=d&amp;nselm=s&amp;met_y=porc_pob_pobre&amp;scale_y=lin&amp;ind_y=false&amp;met_x=prom_de_escolaridad&amp;scale_x=lin&amp;ind_x=false&amp;met_s=porc_hogares_con_computador&amp;scale_s=lin&amp;ind_s=false&amp;idim=region:IX:RM:XII:VIII:VI:VII:X:V&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false&amp;icfg=lt98u9rd734rn_%253A51%253Aregion%26%26IX:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26RM:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26XII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VIII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VI:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26X:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26V:::2009&amp;iconSize=0.5">
@@ -313,7 +316,7 @@ abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)</code></pre>
   
 <section id="comments">
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -330,8 +333,8 @@ abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)</code></pre>
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
 
 

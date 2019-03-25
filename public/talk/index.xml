@@ -7,8 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/talk/" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Big Problems for Small Networks: Statistical Analysis of Small Networks and Team Performance</title>
+      <link>/talk/nu2019/</link>
+      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/nu2019/</guid>
+      <description>As an invitation from Prof. Noshir Contractor, I gave this talk at Northwestern University&amp;rsquo;s SONIC Lab followed by a workshop on the tools that we have been developing for implemting the methods described in it. The lab was kind enough to record my talk as well as advertise it here
+This is joint work with Prof. Kayla de la Haye (USC).</description>
+    </item>
     
     <item>
       <title>Small network statistics for the network science of teams</title>
@@ -16,8 +28,7 @@
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/netscix2019/</guid>
-      <description>&lt;p&gt;Joint work with Kayla de la Haye.&lt;/p&gt;
-</description>
+      <description>Joint work with Kayla de la Haye.</description>
     </item>
     
     <item>
@@ -26,17 +37,9 @@
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/redes-estadisticas2018/</guid>
-      <description>&lt;p&gt;This was my first time talking about Statistical models for network analysis and spatial econometrics in my native language (spanish).&lt;/p&gt;
-
-&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Instituto Milenio Fundamento de los datos, Universidad Católica de Chile.&lt;/li&gt;
-&lt;li&gt;Centro de Investigación en Complejidad Social (CISC), Universidad del Desarrollo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Another version of my talk can be found &lt;a href=&#34;https://www.facebook.com/complejidadsocial/videos/2217254995005631/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>This was my first time talking about Statistical models for network analysis and spatial econometrics in my native language (spanish).
+This very same workshop was taught during December 2018 and January 2019 at:
+ Instituto Milenio Fundamento de los datos, Universidad Católica de Chile. Centro de Investigación en Complejidad Social (CISC), Universidad del Desarrollo.  Another version of my talk can be found here.</description>
     </item>
     
     <item>
@@ -45,34 +48,9 @@
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/satrday-scl2018/</guid>
-      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
-
-&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Instituto Milenio para el Fundamento de los Datos at Universidad Católica de Chile (&lt;a href=&#34;https://imfd.cl&#34; target=&#34;_blank&#34;&gt;website&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad at Universidad de Santiago de Chile (folks there were very nice and wrote two news articles based on my talk: &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Computacion de Alto Rendimiento con R</title>
-      <link>/talk/satrday-scl2018.utf8/</link>
-      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/satrday-scl2018.utf8/</guid>
-      <description>&lt;p&gt;This was my first time talking about HPC with R in my native language (spanish).&lt;/p&gt;
-
-&lt;p&gt;This very same workshop was taught during December 2018 and January 2019 at:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The SatRdays conference in Santiago de Chile (organized by my friends at the &lt;a href=&#34;https://www.meetup.com/useRchile/&#34; target=&#34;_blank&#34;&gt;R Users Group in SCL&lt;/a&gt; and R &lt;a href=&#34;https://www.meetup.com/rladies-scl/&#34; target=&#34;_blank&#34;&gt;Ladies in SCL&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;Instituto Milenio para el Fundamento de los Datos (at Universidad Católica de Chile).&lt;/li&gt;
-&lt;li&gt;Núcleo Milenio para el estudio del curso de vida y vulnerabilidad (at Universidad de Santiago de Chile) (folks there were very nice and wrote two news articles based on my talk &lt;a href=&#34;http://economia.usach.cl/index.php/noticias-blog/81-taller-computacion-de-alto-rendimiento-en-r&#34; target=&#34;_blank&#34;&gt;one&lt;/a&gt;  and &lt;a href=&#34;http://mliv.cl/2019/01/23/mliv-capacita-a-estudiantes-de-postgrado-investigadores-y-academicos-en-r/&#34; target=&#34;_blank&#34;&gt;two&lt;/a&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>This was my first time talking about HPC with R in my native language (spanish).
+This very same workshop was taught during December 2018 and January 2019 at:
+ The SatRdays conference in Santiago de Chile (organized by my friends at the R Users Group in SCL and R Ladies in SCL). Instituto Milenio para el Fundamento de los Datos at Universidad Católica de Chile (website). Núcleo Milenio para el estudio del curso de vida y vulnerabilidad at Universidad de Santiago de Chile (folks there were very nice and wrote two news articles based on my talk: one and two).</description>
     </item>
     
     <item>
@@ -81,8 +59,7 @@
       <pubDate>Thu, 29 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/nasn2018/</guid>
-      <description>&lt;p&gt;Joint work with Kayla de la Haye.&lt;/p&gt;
-</description>
+      <description>Joint work with Kayla de la Haye.</description>
     </item>
     
     <item>
@@ -100,8 +77,7 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/rbootcamp-2018/</guid>
-      <description>&lt;p&gt;This 5-day bootcamp was held at USC&amp;rsquo;s Department of Preventive medicine jointly with &lt;a href=&#34;https://malco.io&#34; target=&#34;_blank&#34;&gt;Malcolm Barrett&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>This 5-day bootcamp was held at USC&amp;rsquo;s Department of Preventive medicine jointly with Malcolm Barrett.</description>
     </item>
     
     <item>
@@ -110,8 +86,7 @@
       <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/intro-2-r-4-hpc-users-2018/</guid>
-      <description>&lt;p&gt;The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>The presentation source code can be found here</description>
     </item>
     
     <item>
@@ -120,8 +95,7 @@
       <pubDate>Thu, 29 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/talk/hpc-in-r-2018/</guid>
-      <description>&lt;p&gt;This talk was jointly with Garrett Weaver. The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>This talk was jointly with Garrett Weaver. The presentation source code can be found here</description>
     </item>
     
     <item>
@@ -130,8 +104,7 @@
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>/talk/stata-conf-2017/</guid>
-      <description>&lt;p&gt;This talk was done by my coauthor &lt;a href=&#34;https://www.microsoft.com/en-us/research/people/bquist/&#34; target=&#34;_blank&#34;&gt;Brian Quistorff&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>This talk was done by my coauthor Brian Quistorff.</description>
     </item>
     
     <item>
@@ -140,8 +113,7 @@
       <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>/talk/hpc-in-r-2017/</guid>
-      <description>&lt;p&gt;This talk was jointly with Garrett Weaver. The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>This talk was jointly with Garrett Weaver. The presentation source code can be found here</description>
     </item>
     
     <item>
@@ -169,6 +141,15 @@
       
       <guid>/talk/netdiffuser-user-2016/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial Rcpp: Cómo usar C&#43;&#43; en R con sólo 3 líneas!</title>
+      <link>/talk/userchile2014/</link>
+      <pubDate>Wed, 23 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/userchile2014/</guid>
+      <description>Tutorial de Rcpp en español. Grupo de Usuarios de R en Chile.</description>
     </item>
     
   </channel>

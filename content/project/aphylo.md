@@ -6,7 +6,7 @@ date = "2016-04-27"
 title = "aphylo: Statistical Inference of Annotated Phylogenetic Trees"
 
 # Project summary to display on homepage.
-summary = "The aphylo R package implements estimation and data imputation methods for Functional Annotations in Phylogenetic Trees."
+summary = "The aphylo R package implements a phylogenetic model for gene functional prediction that I have been developing as part of my doctoral disertation."
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 # image_preview = "boards.jpg"
@@ -23,6 +23,6 @@ math = false
 
 +++
 
-The aphylo R package implements estimation and data imputation methods for Functional Annotations in Phylogenetic Trees. The core function consists on the computation of the log-likelihood of observing a given phylogenetic tree with functional annotation on its leafs, and probabilities associated to gain and loss of functionalities, including probabilities of experimental misclassification. Furthermore, the log-likelihood is computed using peeling algorithms, which required developing and implementing efficient algorithms for re-coding and preparing phylogenetic tree data so that can be used with the package. Finally, aphylo works smoothly with popular tools for analysis of phylogenetic data such as ape R package, "Analyses of Phylogenetics and Evolution".
+The aphylo R package implements a phylogenetic model for gene functional prediction that I have been developing as part of my doctoral disertation. The package includes functions for estimating these models including calculating probabilities of functional annotations on unannorated genes. This is part of a larger project on development of methods for Integrative Methods for Analysis of Genetic and Epidemiological Data (IMAGE) at USC.
 
 More details [here](https://github.com/USCbiostats/aphylo).

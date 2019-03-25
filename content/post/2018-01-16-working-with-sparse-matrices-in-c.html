@@ -8,14 +8,12 @@ categories:
 tags:
   - rcpp
   - rstats
-summary: "
-Sparse matrices in RcppArmadillo can be a very useful resource to work with, especially when you are dealing with social networks. Here I provide a couple of examples in which we can take advantage of their structure by using iterators.
-"
+summary: "Sparse matrices in RcppArmadillo can be a very useful resource to work with, especially when you are dealing with social networks. Here I provide a couple of examples in which we can take advantage of their structure by using iterators."
 ---
 
 
 
-<p>Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested <code>for(i...) for (j...)</code> loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.</p>
+<p>Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested <code>for(i...) for (j...)</code> loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.</p>
 <p>About a year ago, while working on <a href="https://github.com/USCCANA/netdiffuseR">netdiffuseR</a>, I was struggling a bit to write down an efficient way of iterating through non-zero elements. Right after writing my own function to return the position of non-zero elements, I wrote <a href="http://conradsanderson.id.au/">Dr Conrad Sanderson</a>–one of the masterminds behind armadillo–and learned that a nice solution for this was already included in armadillo, <a href="http://arma.sourceforge.net/docs.html#iterators_mat">matrix iterators</a>.</p>
 <div id="a-simple-example" class="section level2">
 <h2>A simple example</h2>
@@ -144,22 +142,25 @@ microbenchmark::microbenchmark(
    times = 100, unit=&quot;relative&quot;
 )</code></pre>
 <pre><code>## Unit: relative
-##               expr      min       lq     mean   median       uq      max
-##  sp_row_iterate(M) 29.80559 26.02395 13.39483 24.80326 23.29237 1.835886
-##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.000000
-##  neval
-##    100
-##    100</code></pre>
+##               expr      min       lq     mean   median       uq     max
+##  sp_row_iterate(M) 30.91646 27.58875 13.20923 25.02841 23.78042 2.15358
+##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.00000
+##  neval cld
+##    100   b
+##    100  a</code></pre>
 <p>It turns out that <code>const_row_iterator</code> implementation is significantly slower because of how the data is stored. The <code>SpMat</code> object from <code>armadillo</code> uses the <a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order">Column-Major Order</a> method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.</p>
 <p>For those of you who like looking at source code, you can take a look at the way the <code>const_row_iterator</code> are implemented <a href="https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html">here</a> starting line 392. Here is an extract from the code:</p>
 <blockquote>
-<p>This is irritating because we don’t know where the elements are in each row. What we will do is loop across all columns looking for elements in row 0 (and add to our sum), then in row 1, and so forth, until we get to the desired position.</p>
+<p>This is irritating because we don’t know where the elements are in each
+row. What we will do is loop across all columns looking for elements in
+row 0 (and add to our sum), then in row 1, and so forth, until we get to
+the desired position.</p>
 </blockquote>
 <p>I can’t agree more with that!</p>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is <em>too dense</em>, neither your memory nor your computing time will get benefits from using sparse matrices.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is <em>too dense</em>, neither your memory nor your computing time will get benefits from using sparse matrices.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

@@ -10,9 +10,7 @@ categories:
 tags:
   - simulations
   - rstats
-summary: "
-Hola mundo
-"
+summary: "Hola mundo"
 math: true
 html_document:
   code_folding: show
