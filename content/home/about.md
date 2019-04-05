@@ -36,7 +36,7 @@ weight = 1
 
 # Biography
 
-I'm a Chilean working and getting a Ph.D. at USC on Biostatistics at the [Department of Preventive Medicine](https://pm.usc.edu) with <a href="https://www.kayladelahaye.net/" target="_new">Prof. Kayla de la Haye</a> and <a href="http://keck.usc.edu/faculty/paul-marjoram/" target="_new">Prof. Paul Marjoram</a>. My interests are in computational statistics and scientific software development. Most recently, my research has focused on the development of statistical methods for both phylogenetics and social network analysis. You can take a look at my résumé [here](https://github.com/gvegayon/resume/raw/master/resume.pdf).
+I'm a Chilean working and getting a Ph.D. at USC on Biostatistics at the [Department of Preventive Medicine](https://pm.usc.edu) with <a href="https://www.kayladelahaye.net/" target="_new">Prof. Kayla de la Haye</a> and <a href="http://keck.usc.edu/faculty/paul-marjoram/" target="_new">Prof. Paul Marjoram</a>. My interests are in computational statistics and scientific software development. Most recently, my research has focused on the development of statistical methods for both phylogenetics and social network analysis. You can take a look at my résumé [here](resume.pdf).
 
 __Some quick links__
 
