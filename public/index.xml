@@ -11,6 +11,24 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Sensing eating mimicry among family members</title>
+      <link>/publication/bites-paper/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/bites-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exponential Random Graph models for Little Networks</title>
+      <link>/publication/ergmito-paper/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/ergmito-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Big Problems for Small Networks: Statistical Analysis of Small Networks and Team Performance</title>
       <link>/talk/nu2019/</link>
       <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
@@ -20,6 +38,15 @@
 
 &lt;p&gt;This is joint work with &lt;a href=\&#34;https://www.kayladelahaye.net/\&#34; target=\&#34;_blank\&#34;&gt;Prof. Kayla de la Haye (USC)&lt;/a&gt;.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Network influences on policy implementation: Evidence from a global health treaty</title>
+      <link>/publication/fctc-paper/</link>
+      <pubDate>Fri, 04 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fctc-paper/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -355,198 +382,6 @@ plot(igraph1,
 &lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
 &lt;/iframe&gt;
 &lt;p&gt;As expected, the same result.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Some notes on my first shiny app</title>
-      <link>/post/some-notes-on-my-first-shiny-app/</link>
-      <pubDate>Thu, 16 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/some-notes-on-my-first-shiny-app/</guid>
-      <description>&lt;p&gt;Since there are plenty of examples out there telling you how to get started with shiny (like &lt;a href=&#34;https://shiny.rstudio.com/tutorial/&#34; target=&#34;_blank&#34;&gt;Rstudio&amp;rsquo;s&lt;/a&gt;, or &lt;a href=&#34;https://www.google.com/search?newwindow=1&amp;amp;ei=Og8OWpG4CYOUjwO9tZzABw&amp;amp;q=shiny+tutorial&amp;amp;oq=shiny+tutorial&amp;amp;gs_l=psy-ab.3..0i71k1l4.0.0.0.38217.0.0.0.0.0.0.0.0..0.0....0...1..64.psy-ab..0.0.0....0.v793tYPbUcw&#34; target=&#34;_blank&#34;&gt;Google&lt;/a&gt;), I will focus on telling some of the stuff that I did learned and may not be obvious at first, including some of the mistakes I made.&lt;/p&gt;
-
-&lt;p&gt;Before start, I just want to stress that I&amp;rsquo;m writing this after my first shiny app, you&amp;rsquo;ve been warned! Here it goes:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Use the &amp;ldquo;two-file&amp;rdquo; method&lt;/strong&gt; Instead of putting everything, UI and Server, in a single &lt;code&gt;app.R&lt;/code&gt; file, create two separate files &lt;code&gt;server.R&lt;/code&gt; and &lt;code&gt;ui.R&lt;/code&gt; (see &lt;a href=&#34;http://shiny.rstudio.com/articles/two-file.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;). This is not hard to figure out, but is not the first thing that you see when you create a shiny app from Rstudio. The reason why is very simple, as your project grows, you want to have it organized using several Rscripts rather than a single big R file that&amp;rsquo;s called &lt;code&gt;app.R&lt;/code&gt;. That&amp;rsquo;s OK but not very friendly to maintain. This takes us to the next point.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Use separate R files for more complex functions&lt;/strong&gt; If you have other functions that you would like to run with your app, either use the &lt;code&gt;global.R&lt;/code&gt; script, which will be run automatically, or just source your file like &lt;code&gt;source(&amp;quot;extra-functions.R&amp;quot;)&lt;/code&gt; (see &lt;a href=&#34;https://shiny.rstudio.com/articles/modules.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;). Again, this makes code maintenance easier.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Make sure all the packages that you need are installed&lt;/strong&gt; You can either keep the source version of such packages as a sub directory, or follow a more simple approach such as using &lt;code&gt;require&lt;/code&gt;, e.g.:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;if (!require(somepackage)) {
-  install.packages(&amp;quot;somepackage&amp;quot;)
-  library(somepackage)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is especially important when deploying shiny in a in-house server as the &amp;ldquo;shiny user&amp;rdquo; has to have access to those R packages. You can always try to install them globally too so that all users in the server have access to the required packages.&lt;/p&gt;
-
-&lt;p&gt;More important, &lt;font color=&#34;red&#34;&gt;&lt;b&gt;make sure that you have &lt;code&gt;shiny&lt;/code&gt; and &lt;code&gt;rmarkdown&lt;/code&gt; installed and available system-wide!&lt;/b&gt;&lt;/font&gt; I spent roughly half an hour figuring out why my shiny apps didn&amp;rsquo;t started once I started the server in our machine.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Nested apps&lt;/strong&gt; If you want to include several apps under the same folder in your &lt;code&gt;/srv/shiny-server&lt;/code&gt; folder (which is where the shiny apps live), e.g. &lt;code&gt;my-apps&lt;/code&gt;, avoid including &lt;code&gt;R&lt;/code&gt; or &lt;code&gt;Rmd&lt;/code&gt; files in that folder, shiny will try to run those as shiny apps and, for some reason that I&amp;rsquo;m not aware of, links that go from html pages in that folder to your sub directory apps will not work.&lt;/p&gt;
-
-&lt;p&gt;For example, suppose that we have two apps, &lt;code&gt;shinyApp1&lt;/code&gt; and &lt;code&gt;shinyApp2&lt;/code&gt; and we want to keep those in the same folder &lt;code&gt;your-site&lt;/code&gt;, and you have a nice front-end website allowing you to access to such apps with relative links in the form of &lt;code&gt;&amp;lt;a href=&amp;quot;shinyApp1&amp;quot;&amp;gt;Go to shinyApp1&amp;lt;/a&amp;gt;&lt;/code&gt;, you&amp;rsquo;ll just need to &lt;strong&gt;include the &lt;code&gt;index.html&lt;/code&gt;&lt;/strong&gt; of your website (which you can create with &lt;code&gt;rmarkdown&lt;/code&gt;). The &lt;strong&gt;following would be wrong&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;+---/srv/shiny-server
-|   +---/you-site
-|       +---index.html
-|       +---index.Rmd    # THIS SHOULDN&#39;T BE HERE!
-|       +---shinyApp1
-|           +---server.R
-|           +---ui.R
-|       +---shinyApp2
-|           +---server.R
-|           +---ui.R
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This would result in having a broken link in your &lt;code&gt;index.html&lt;/code&gt; file. You should do this instead, remove the Rmd file from the &lt;code&gt;your-site&lt;/code&gt; folder:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;+---/srv/shiny-server
-|   +---/you-site
-|       +---index.html
-|       +---shinyApp1
-|           +---server.R
-|           +---ui.R
-|       +---shinyApp2
-|           +---server.R
-|           +---ui.R
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This example was adapted from &lt;a href=&#34;http://docs.rstudio.com/shiny-server/#host-a-directory-of-applications&#34; target=&#34;_blank&#34;&gt;Section 2.7.1&lt;/a&gt; from the Shiny&amp;rsquo;s Admin guide.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Read about Reactivity&lt;/strong&gt; This is a fundamental thing to understand in Shiny, moreover, the key function to review is &lt;code&gt;reactive&lt;/code&gt;, which allows you to create intermediate points (reactive conductors) between your input and output data in the shiny app. Just to give you an idea, here is an (adapted) example that I find useful from the &lt;a href=&#34;http://shiny.rstudio.com/articles/#reactivity&#34; target=&#34;_blank&#34;&gt;shiny documentation&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;This will work&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# A function that will be called from within the server
-fib &amp;lt;- function(n) ifelse(n&amp;lt;3, 1, fib(n-1)+fib(n-2))
-    
-server &amp;lt;- function(input, output) {
-      
-  # Calling your fancy fib function, notice the
-  #
-  #     reactive({ ... })
-  #
-  # wrapper.
-  currentFib         &amp;lt;- reactive({ fib(as.numeric(input$n)) })
-    
-  # You use it as a function later on.
-  output$nthValue    &amp;lt;- renderText({ currentFib() })
-  output$nthValueInv &amp;lt;- renderText({ 1 / currentFib() })
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This won&amp;rsquo;t work, since currentFib is not in the &amp;ldquo;reactive&amp;rdquo; world!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;server &amp;lt;- function(input, output) {
-  # Will give error
-  currentFib      &amp;lt;- fib(as.numeric(input$n))
-  output$nthValue &amp;lt;- renderText({ currentFib })
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For my next steps, I expect to be able to include a shiny app in the R packages &lt;code&gt;aphylo&lt;/code&gt; (which is not on CRAN yet, but available &lt;a href=&#34;https://github.com/USCBiostats/aphylo&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;) and &lt;code&gt;rgexf&lt;/code&gt; (which it is on &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34; target=&#34;_blank&#34;&gt;CRAN&lt;/a&gt;, but is currently on a major update &lt;a href=&#34;https://github.com/gvegayon/rgexf&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;I recommend taking a look at &lt;a href=&#34;https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html&#34; target=&#34;_blank&#34;&gt;this section&lt;/a&gt; from the &lt;a href=&#34;https://bookdown.org/yihui/bookdown&#34; target=&#34;_blank&#34;&gt;bookdown&lt;/a&gt; that talks about how to include shiny apps within web pages.&lt;/p&gt;
-
-&lt;p&gt;Finally, if you are interested, you can take a look at the shiny app &lt;a href=&#34;https://gvegayon.shinyapps.io/predq/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; and at the code &lt;a href=&#34;https://github.com/gvegayon/predq&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Profiling Rcpp</title>
-      <link>/post/profiling-rcpp/</link>
-      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/profiling-rcpp/</guid>
-      <description>
-
-
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Install libuwind&lt;/p&gt;
-&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ wget http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz &amp;amp;&amp;amp; \
-    tar -xf libunwind-1.2.tar.gz &amp;amp;&amp;amp; cd libunwind-1.2; \
-    ./configure; sudo make; sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://github.com/gperftools/gperftools&#34;&gt;google-perftools&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&#34;shell&#34;&gt;&lt;code&gt;$ git clone https://github.com/gperftools/gperftools
-$ &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Model Decision Tree</title>
-      <link>/post/model-decision-tree/</link>
-      <pubDate>Mon, 13 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/model-decision-tree/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/viz/viz.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/DiagrammeR-styles/styles.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/grViz-binding/grViz.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!require(DiagrammeR)) {
-  install.packages(&amp;quot;DiagrammeR&amp;quot;, repos = &amp;quot;https://cloud.r-project.org&amp;quot;)
-  library(DiagrammeR)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: DiagrammeR&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;grViz(&amp;quot;
-digraph boxes_and_circles {
-  # Defining models
-  node [shape = box]
-  
-  # Common world
-  ols [label=&amp;#39;Linear Regression&amp;#39;]
-  probit [label=Probit]
-  logit [label=Logit]
-  tobit [label=Tobit]
-
-  # Networks
-  ERGM
-  Siena
-  tERGM
-
-  # Decisions
-  node [shape=diamond]
-  isiid [label=&amp;#39;Is iid&amp;#39;]
-  iscts [label=&amp;#39;Is continuous&amp;#39;]
-
-  node [shape=plaintext]
-  iid [label=&amp;#39;Independent data&amp;#39;]
-  noiid [label=&amp;#39;Not independent data&amp;#39;]
-  ctsdat [label=&amp;#39;Continuous&amp;#39;]
-  disdat [label=&amp;#39;Discrete&amp;#39;]
-  mixdat [label=&amp;#39;Mixture&amp;#39;]
-  
-
-  # Edges
-  isiid -&amp;gt; iid [dir=none,label=Yes]
-  iid -&amp;gt; iscts [dir=none]
-  
-  iscts -&amp;gt; ctsdat [label=Yes] 
-  ctsdat -&amp;gt; ols
-  
-  iscts -&amp;gt; disdat [label=No]
-  disdat -&amp;gt; {probit logit}
-
-  iscts -&amp;gt; mixdat [label=Both]
-  mixdat -&amp;gt; tobit
-  
-
-  isiid -&amp;gt; noiid [dir=none, label=No]
-  noiid -&amp;gt; ERGM
-  
-}
-
-  
-      &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;grViz html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;diagram&#34;:&#34;\ndigraph boxes_and_circles {\n  # Defining models\n  node [shape = box]\n  \n  # Common world\n  ols [label=\&#34;Linear Regression\&#34;]\n  probit [label=Probit]\n  logit [label=Logit]\n  tobit [label=Tobit]\n\n  # Networks\n  ERGM\n  Siena\n  tERGM\n\n  # Decisions\n  node [shape=diamond]\n  isiid [label=\&#34;Is iid\&#34;]\n  iscts [label=\&#34;Is continuous\&#34;]\n\n  node [shape=plaintext]\n  iid [label=\&#34;Independent data\&#34;]\n  noiid [label=\&#34;Not independent data\&#34;]\n  ctsdat [label=\&#34;Continuous\&#34;]\n  disdat [label=\&#34;Discrete\&#34;]\n  mixdat [label=\&#34;Mixture\&#34;]\n  \n\n  # Edges\n  isiid -&gt; iid [dir=none,label=Yes]\n  iid -&gt; iscts [dir=none]\n  \n  iscts -&gt; ctsdat [label=Yes] \n  ctsdat -&gt; ols\n  \n  iscts -&gt; disdat [label=No]\n  disdat -&gt; {probit logit}\n\n  iscts -&gt; mixdat [label=Both]\n  mixdat -&gt; tobit\n  \n\n  isiid -&gt; noiid [dir=none, label=No]\n  noiid -&gt; ERGM\n  \n}\n\n  \n      &#34;,&#34;config&#34;:{&#34;engine&#34;:&#34;dot&#34;,&#34;options&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 </description>
     </item>
     
