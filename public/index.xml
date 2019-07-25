@@ -11,6 +11,142 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Working with sparse matrices in C&#43;&#43; (part 2)</title>
+      <link>/post/working-with-sparse-matrices-in-cpp-part2/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/working-with-sparse-matrices-in-cpp-part2/</guid>
+      <description>
+
+
+&lt;p&gt;Last time I talked about this, iterators in armadillo were fast only in the constext of colum-major access, since data is stored like that. Today, the developers of armadillo, &lt;a href=&#34;http://conradsanderson.id.au/&#34;&gt;Dr Conrad Sanderson&lt;/a&gt; and &lt;a href=&#34;http://www.ratml.org/&#34;&gt;Dr Ryan Curtin&lt;/a&gt;, have work furiously on adding new features to the header-only library, which has lead me to update the results of a benchmark I wrote on 2018:&lt;/p&gt;
+&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;#include &amp;lt;RcppArmadillo.h&amp;gt;
+// [[Rcpp::depends(RcppArmadillo)]]
+
+using namespace Rcpp;
+
+// Column-major method iterator (default)
+// [[Rcpp::export]]
+arma::vec sp_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_iterator iter;
+  int k = 0;
+  for (iter i = x.begin(); i != x.end(); ++i)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+
+// Sort-of row-major method iterator. For this to work, we first need to tell
+// armadillo which row we would like to look at... this doesn&amp;#39;t look nice.
+// [[Rcpp::export]]
+arma::vec sp_row_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  
+  typedef arma::sp_mat::const_row_iterator iter;
+  int k = 0;
+  for (unsigned int i = 0; i &amp;lt; x.n_rows; ++i)
+    for (iter j = x.begin_row(i); j != x.end_row(i); ++j)
+      ans.at(k++) = *j;
+  
+  return ans;
+}
+
+
+// Another sort-of row-major method iterator. Now, instead of using
+// `const_row_iterator`, we use `const_iterator` but transpose the matrix first
+// [[Rcpp::export]]
+arma::vec sp_t_iterate(arma::sp_mat x) {
+  
+  arma::vec ans(x.n_nonzero);
+  arma::sp_mat z = x.t();
+  
+  int k = 0;
+  typedef arma::sp_mat::const_iterator iter;
+  for (iter i = z.begin(); i != z.end(); ++i)
+    ans.at(k++) = *i;
+  
+  return ans;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here is what we get from calling each of the functions:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Matrix)
+M &amp;lt;- matrix(0,nrow=3, ncol=3)
+M[1,2] &amp;lt;- 12
+M[2,1] &amp;lt;- 21
+M[2,3] &amp;lt;- 23
+M[3,2] &amp;lt;- 32
+(M &amp;lt;- methods::as(M, &amp;quot;dgCMatrix&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3 x 3 sparse Matrix of class &amp;quot;dgCMatrix&amp;quot;
+##              
+## [1,]  . 12  .
+## [2,] 21  . 23
+## [3,]  . 32  .&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.frame(
+  col_major  = sp_iterate(M),
+  row_major  = sp_row_iterate(M),
+  row_major2 = sp_t_iterate(M)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   col_major row_major row_major2
+## 1        21        12         12
+## 2        12        21         21
+## 3        32        23         23
+## 4        23        32         32&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now what about speed?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Matrix)
+set.seed(1)
+n &amp;lt;- 1000
+M &amp;lt;- methods::as(
+  matrix(runif(n^2) &amp;lt; .001, nrow = n),
+  &amp;quot;dgCMatrix&amp;quot;
+)
+
+microbenchmark::microbenchmark(
+   sp_row_iterate(M),
+   sp_t_iterate(M),
+   times = 1000, unit=&amp;quot;relative&amp;quot;
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Unit: relative
+##               expr      min       lq    mean   median       uq      max
+##  sp_row_iterate(M) 735.1931 472.8596 361.332 374.4857 313.4359 30.93766
+##    sp_t_iterate(M)   1.0000   1.0000   1.000   1.0000   1.0000  1.00000
+##  neval cld
+##   1000   b
+##   1000  a&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It turns out that &lt;code&gt;const_row_iterator&lt;/code&gt; implementation is significantly slower because of how the data is stored. The &lt;code&gt;SpMat&lt;/code&gt; object from &lt;code&gt;armadillo&lt;/code&gt; uses the &lt;a href=&#34;https://en.wikipedia.org/wiki/Row-_and_column-major_order&#34;&gt;Column-Major Order&lt;/a&gt; method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.&lt;/p&gt;
+&lt;p&gt;For those of you who like looking at source code, you can take a look at the way the &lt;code&gt;const_row_iterator&lt;/code&gt; are implemented &lt;a href=&#34;https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html&#34;&gt;here&lt;/a&gt; starting line 392. Here is an extract from the code:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is irritating because we don’t know where the elements are in each
+row. What we will do is loop across all columns looking for elements in
+row 0 (and add to our sum), then in row 1, and so forth, until we get to
+the desired position.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I can’t agree more with that!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>fmcmc: A friendly MCMC framework</title>
+      <link>/publication/fmcmc-paper/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fmcmc-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sluRm: A lightweight wrapper for HPC with Slurm</title>
+      <link>/publication/slurm-paper/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/slurm-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sensing eating mimicry among family members</title>
       <link>/publication/bites-paper/</link>
       <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
@@ -142,246 +278,6 @@
       
       <guid>/talk/hpc-in-r-2018/</guid>
       <description>&lt;p&gt;This talk was jointly with Garrett Weaver. The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Working with sparse matrices in C&#43;&#43;</title>
-      <link>/post/working-with-sparse-matrices-in-cpp/</link>
-      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/working-with-sparse-matrices-in-cpp/</guid>
-      <description>
-
-
-&lt;p&gt;Working with sparse matrices is a big part of my day. Social networks are inherently sparse, so sparse matrices are the best buds you can get when representing large networks as adjacency matrices.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; As so, I usually find myself trying to take advantage of their structure as, contrasting dense matrices, we don’t need to write nested &lt;code&gt;for(i...) for (j...)&lt;/code&gt; loops to work with them, instead, sometimes all what we want is just to extract/work with its non-zero elements.&lt;/p&gt;
-&lt;p&gt;About a year ago, while working on &lt;a href=&#34;https://github.com/USCCANA/netdiffuseR&#34;&gt;netdiffuseR&lt;/a&gt;, I was struggling a bit to write down an efficient way of iterating through non-zero elements. Right after writing my own function to return the position of non-zero elements, I wrote &lt;a href=&#34;http://conradsanderson.id.au/&#34;&gt;Dr Conrad Sanderson&lt;/a&gt;–one of the masterminds behind armadillo–and learned that a nice solution for this was already included in armadillo, &lt;a href=&#34;http://arma.sourceforge.net/docs.html#iterators_mat&#34;&gt;matrix iterators&lt;/a&gt;.&lt;/p&gt;
-&lt;div id=&#34;a-simple-example&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;A simple example&lt;/h2&gt;
-&lt;p&gt;First off, to work with iterators for sparse matrices we will look at the simplest example: extracting positions and values from the matrix.&lt;/p&gt;
-&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;#include &amp;lt;RcppArmadillo.h&amp;gt;
-// [[Rcpp::depends(RcppArmadillo)]]
-
-using namespace Rcpp;
-
-// [[Rcpp::export]]
-NumericMatrix sp_show_storage(arma::sp_mat x) {
-  
-  NumericMatrix ans(x.n_nonzero, 3u);
-  int i = 0;
-  for(arma::sp_mat::const_iterator it = x.begin(); it != x.end(); ++it) {
-    
-    ans(i, 0) = it.row(); // Row position
-    ans(i, 1) = it.col(); // Col position
-    ans(i++, 2) = *it;    // Value
-    
-  }
-  
-  // Adding colnames
-  colnames(ans) = CharacterVector::create(&amp;quot;row&amp;quot;, &amp;quot;col&amp;quot;, &amp;quot;val&amp;quot;);
-    
-  return ans;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here is a fake (not at all) sparse matrix of size 3x3 in which each of the non-zero elements &lt;code&gt;(i,j)&lt;/code&gt; are in the form of &lt;code&gt;ij&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Matrix)
-M &amp;lt;- matrix(0,nrow=3, ncol=3)
-M[1,2] &amp;lt;- 12
-M[2,1] &amp;lt;- 21
-M[2,3] &amp;lt;- 23
-M[3,2] &amp;lt;- 32
-(M &amp;lt;- methods::as(M, &amp;quot;dgCMatrix&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 3 x 3 sparse Matrix of class &amp;quot;dgCMatrix&amp;quot;
-##              
-## [1,]  . 12  .
-## [2,] 21  . 23
-## [3,]  . 32  .&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here is what &lt;code&gt;sp_show_storage&lt;/code&gt; returns from this sparse matrix.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sp_show_storage(M)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      row col val
-## [1,]   1   0  21
-## [2,]   0   1  12
-## [3,]   2   1  32
-## [4,]   1   2  23&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-about-iterating-through-rows-instead-of-columns&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What about iterating through rows instead of columns?&lt;/h2&gt;
-&lt;p&gt;The following lines of code create three functions, &lt;code&gt;sp_iterate&lt;/code&gt;, &lt;code&gt;sp_row_iterate&lt;/code&gt;, and &lt;code&gt;sp_t_iterate&lt;/code&gt;, this is, a column-major iterator, a row-major iterator, and a pseudo row-major iterator (I first transpose the matrix, and then iterate using the column-major iterator), respectively.&lt;/p&gt;
-&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;#include &amp;lt;RcppArmadillo.h&amp;gt;
-// [[Rcpp::depends(RcppArmadillo)]]
-
-using namespace Rcpp;
-
-// Column-major method iterator (default)
-// [[Rcpp::export]]
-arma::vec sp_iterate(arma::sp_mat x) {
-  
-  arma::vec ans(x.n_nonzero);
-  
-  typedef arma::sp_mat::const_iterator iter;
-  int k = 0;
-  for (iter i = x.begin(); i != x.end(); i++)
-    ans.at(k++) = *i;
-  
-  return ans;
-}
-
-// Sort-of row-major method iterator. For this to work, we first need to tell
-// armadillo which row we would like to look at... this doesn&amp;#39;t look nice.
-// [[Rcpp::export]]
-arma::vec sp_row_iterate(arma::sp_mat x) {
-  
-  arma::vec ans(x.n_nonzero);
-  
-  typedef arma::sp_mat::const_row_iterator iter;
-  int k = 0;
-  for (unsigned int i = 0; i &amp;lt; x.n_rows; i++)
-    for (iter j = x.begin_row(i); j != x.end_row(i); ++j)
-      ans.at(k++) = *j;
-  
-  return ans;
-}
-
-// Another sort-of row-major method iterator. Now, instead of using
-// `const_row_iterator`, we use `const_iterator` but transpose the matrix first
-// [[Rcpp::export]]
-arma::vec sp_t_iterate(arma::sp_mat x) {
-  
-  arma::vec ans(x.n_nonzero);
-  arma::sp_mat z = x.t();
-  
-  int k = 0;
-  typedef arma::sp_mat::const_iterator iter;
-  for (iter i = z.begin(); i != z.end(); ++i)
-    ans.at(k++) = *i;
-  
-  return ans;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And here is what we get from calling each of the functions:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.frame(
-  col_major  = sp_iterate(M),
-  row_major  = sp_row_iterate(M),
-  row_major2 = sp_t_iterate(M)
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   col_major row_major row_major2
-## 1        21        12         12
-## 2        12        21         21
-## 3        32        23         23
-## 4        23        32         32&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now what about speed?&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(1)
-n &amp;lt;- 200
-M &amp;lt;- methods::as(
-  matrix(runif(n^2) &amp;lt; .001, nrow = n),
-  &amp;quot;dgCMatrix&amp;quot;
-)
-
-microbenchmark::microbenchmark(
-   sp_row_iterate(M),
-   sp_t_iterate(M),
-   times = 100, unit=&amp;quot;relative&amp;quot;
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Unit: relative
-##               expr      min       lq     mean   median       uq     max
-##  sp_row_iterate(M) 30.91646 27.58875 13.20923 25.02841 23.78042 2.15358
-##    sp_t_iterate(M)  1.00000  1.00000  1.00000  1.00000  1.00000 1.00000
-##  neval cld
-##    100   b
-##    100  a&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It turns out that &lt;code&gt;const_row_iterator&lt;/code&gt; implementation is significantly slower because of how the data is stored. The &lt;code&gt;SpMat&lt;/code&gt; object from &lt;code&gt;armadillo&lt;/code&gt; uses the &lt;a href=&#34;https://en.wikipedia.org/wiki/Row-_and_column-major_order&#34;&gt;Column-Major Order&lt;/a&gt; method for storing the sparse matrix, which means that, whenever we want to iterate through columns this is as easy as just reading the values as they are stored. On the other hand, iterating through row-major order implies doing a somewhat exhaustive search of non-empty cells at each row, which eventually becomes computationally very inefficient.&lt;/p&gt;
-&lt;p&gt;For those of you who like looking at source code, you can take a look at the way the &lt;code&gt;const_row_iterator&lt;/code&gt; are implemented &lt;a href=&#34;https://fossies.org/dox/armadillo-8.300.3/SpMat__iterators__meat_8hpp_source.html&#34;&gt;here&lt;/a&gt; starting line 392. Here is an extract from the code:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is irritating because we don’t know where the elements are in each
-row. What we will do is loop across all columns looking for elements in
-row 0 (and add to our sum), then in row 1, and so forth, until we get to
-the desired position.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;I can’t agree more with that!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;It is important to notice that a lot of times using sparse matrices is not as useful as it sounds. Before embracing sparseness, think about whether your data needs it. Sparse networks can, sometimes, take you to the wrong place as when your matrix is &lt;em&gt;too dense&lt;/em&gt;, neither your memory nor your computing time will get benefits from using sparse matrices.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Visualizing Phylogenetic Trees with R and jsPhyloSVG</title>
-      <link>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</link>
-      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/visualizing-phylogenetic-trees-with-r-and-jsphylosvg/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/jsphylosvg-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/raphael-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsphylosvg/yui-min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jsPhyloSVG-binding/jsPhyloSVG.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;During the last year I’ve been working on a daily basis with &lt;a href=&#34;../publication/aphylo/&#34;&gt;phylogenetic trees&lt;/a&gt;, objects that in graph jargon are called Directed Acyclic Graphs. While R does have some cool packages out there to visualize these–including &lt;a href=&#34;https://zachcp.github.io/phylocanvas/&#34;&gt;phylocanvas&lt;/a&gt; which looks great!–I wanted to tryout &lt;a href=&#34;http://www.jsphylosvg.com&#34;&gt;jsPhyloSVG&lt;/a&gt;, and moreover, to learn how to use &lt;a href=&#34;http://www.htmlwidgets.org&#34;&gt;htmlwidgets&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So, after a week-long process of playing with JavaScript, of which I had no prior knowledge (so thank you &lt;a href=&#34;https://w3schools.com&#34;&gt;W3shools&lt;/a&gt;)!, and hours of head-scratching, I created this R package, &lt;a href=&#34;https://USCBiostats.github.io/jsPhyloSVG&#34;&gt;jsPhyloSVG&lt;/a&gt; that provides an htmlwidget for the library of the same name. An example follows&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# I&amp;#39;ll be using the ape package to simulate a tree
-library(ape)
-# You can get it from github USCBiostats/jsPhyloSVG
-library(jsPhyloSVG)
-
-# A random phylogenetic tree with 50 tips
-tree &amp;lt;- rtree(50)
-
-jsPhyloSVG(write.tree(tree))&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:576px;height:480px;&#34; class=&#34;jsPhyloSVG html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;tree&#34;:&#34;(((t22:0.9305121121,(t19:0.06586878025,(t33:0.2946041131,t27:0.8020751383):0.2578415691):0.7077936174):0.86534355,((t34:0.9312987251,t5:0.8794542821):0.3116019715,(t28:0.7846930861,(((t11:0.2532951909,t39:0.5316203337):0.5004901427,(t21:0.8671998347,t25:0.532860375):0.3925423257):0.2119684827,t7:0.8801310153):0.4233754983):0.2937266272):0.4731639868):0.6430926481,((((((t35:0.6644314507,(t23:0.4914771093,t32:0.387547361):0.2116135594):0.3363916874,((t3:0.8634205498,t2:0.5724158699):0.2496306107,t13:0.2323171471):0.4002759021):0.4166976379,((t20:0.06379229715,(t47:0.04605403915,t14:0.4128987587):0.2766921478):0.8913664208,(t24:0.7501545418,t29:0.4615897362):0.5327716544):0.7182647032):0.5179446463,t4:0.7910242064):0.8223816638,(t48:0.6275330244,(t26:0.5667159786,t38:0.658034587):0.4069409212):0.7060118045):0.1189023308,((((t9:0.8339729577,t42:0.656061392):0.4228544007,(t10:0.2929325986,t17:0.00134793506):0.06927642762):0.4104950831,((((t31:0.702567437,t50:0.9756578002):0.6701290198,((((t40:0.8085729128,t30:0.1030231265):0.2114965217,t49:0.1431846751):0.5027219388,t37:0.9199501248):0.2869646349,(t41:0.05012416723,t6:0.2648974208):0.7676348314):0.8016345622):0.2422039146,t12:0.4185563317):0.3499588161,t16:0.8341751499):0.8345981056):0.1256090233,(t8:0.5133640205,((t1:0.2924173467,((t36:0.4681472124,t45:0.7387885372):0.2181996121,(t18:0.6699032332,t44:0.1699654842):0.0387458913):0.542438234):0.5627752647,(t15:0.7362010006,(t43:0.7057706064,t46:0.1666993359):0.3598119218):0.7376065464):0.1592472156):0.5797001412):0.06787401717):0.9096292926);&#34;,&#34;layout&#34;:&#34;circular&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;You can take a look at the project repo &lt;a href=&#34;https://github.com/USCBiostats/jsPhyloSVG&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Read viz attributes from GEXF files</title>
-      <link>/post/read-viz-attributes-from-gexf-files/</link>
-      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/read-viz-attributes-from-gexf-files/</guid>
-      <description>
-
-
-&lt;p&gt;So one of the new features that I’ve working on is processing viz attributes. In the &lt;a href=&#34;https://cran.r-project.org/package=rgexf&#34;&gt;CRAN version of rgexf&lt;/a&gt;, the function &lt;code&gt;read.gexf&lt;/code&gt; only reads in non-visual attributes and the graph structure itself, which is no longer true &lt;a href=&#34;https://github.com/gvegayon/rgexf/commit/39d24409c7c641a1e62bdf518ff8ca46ea6172b5&#34;&gt;as of today&lt;/a&gt; (at least for the static viz attributes, all the other dynamic features supported by GEXF will come in the future).&lt;/p&gt;
-&lt;p&gt;We start by loading the R packages and reading the “lesmiserables.gexf” file that is included in &lt;code&gt;rgexf&lt;/code&gt;. We use the &lt;code&gt;gexf.to.igraph&lt;/code&gt; function to coerce the &lt;code&gt;gexf&lt;/code&gt; object to an object of class &lt;code&gt;igraph&lt;/code&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading R packages
-library(rgexf)
-library(igraph)
-
-# Reading and coercing into an igraph object
-fn      &amp;lt;- system.file(&amp;quot;gexf-graphs&amp;quot;, &amp;quot;lesmiserables.gexf&amp;quot;, package=&amp;quot;rgexf&amp;quot;)
-gexf1   &amp;lt;- read.gexf(fn)
-igraph1 &amp;lt;- gexf.to.igraph(gexf1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here comes the nice new feature. &lt;code&gt;read.gexf&lt;/code&gt; and &lt;code&gt;gexf.to.igraph&lt;/code&gt; take into account the visual attributes of the network, and we can use those with &lt;code&gt;plot.igraph&lt;/code&gt; directly without us specifying them! The only changes that I do in the next code chunk are rescaling the vertex and labels sizes (igraph automatically changes scales, which messes a bit with what we read from the GEXF object), and setting the edges to be curved and labels to be black using the &lt;code&gt;sans&lt;/code&gt; font family, and this is what we get&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# We set the mai = c(0,0,0,0) so we have more space for our plot
-oldpar &amp;lt;- par(no.readonly = TRUE)
-par(mai = rep(0,4))
-plot(igraph1,
-     vertex.size        = V(igraph1)$size/2,
-     vertex.label.cex   = V(igraph1)$size/50,
-     vertex.label.color = &amp;quot;black&amp;quot;,
-     edge.curved        = TRUE,
-     vertex.label.family = &amp;quot;sans&amp;quot;
-     )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-11-27-read-viz-attributes-from-gexf-files_files/figure-html/igraph-plot-1.svg&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(oldpar)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And to make sure we are getting the same output, we can take a look at how the &lt;code&gt;plot.gexf&lt;/code&gt; function draws our GEXF graph.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(
-  gexf1,
-  copy.only = TRUE,
-  dir       = &amp;quot;../../static/post/read-viz-attributes-from-gexf-files/viz&amp;quot;
-  )&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## GEXF graph successfully written at:
-## /home/vegayon/Documents/website/static/post/read-viz-attributes-from-gexf-files/viz/network.gexf&lt;/code&gt;&lt;/pre&gt;
-&lt;iframe width=&#34;100%&#34; height=&#34;400&#34; src=&#34;viz/index.html&#34;&gt;
-&lt;/iframe&gt;
-&lt;p&gt;As expected, the same result.&lt;/p&gt;
 </description>
     </item>
     

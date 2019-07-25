@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Working with sparse matrices in C&#43;&#43; (part 2)</title>
+      <link>/post/working-with-sparse-matrices-in-cpp-part2/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/working-with-sparse-matrices-in-cpp-part2/</guid>
+      <description>Last time I talked about this, iterators in armadillo were fast only in the constext of colum-major access, since data is stored like that. Today, the developers of armadillo, Dr Conrad Sanderson and Dr Ryan Curtin, have work furiously on adding new features to the header-only library, which has lead me to update the results of a benchmark I wrote on 2018:
+#include &amp;lt;RcppArmadillo.h&amp;gt; // [[Rcpp::depends(RcppArmadillo)]] using namespace Rcpp; // Column-major method iterator (default) // [[Rcpp::export]] arma::vec sp_iterate(arma::sp_mat x) { arma::vec ans(x.</description>
+    </item>
     
     <item>
       <title>Working with sparse matrices in C&#43;&#43;</title>

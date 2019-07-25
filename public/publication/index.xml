@@ -13,6 +13,24 @@
     
     
     <item>
+      <title>fmcmc: A friendly MCMC framework</title>
+      <link>/publication/fmcmc-paper/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fmcmc-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sluRm: A lightweight wrapper for HPC with Slurm</title>
+      <link>/publication/slurm-paper/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/slurm-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sensing eating mimicry among family members</title>
       <link>/publication/bites-paper/</link>
       <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
