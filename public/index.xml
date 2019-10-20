@@ -11,6 +11,20 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Statistical and computational methods for bioinformatics and social network analysis: or how did I learn to stop worrying and love the bomb</title>
+      <link>/talk/isi-oct2019/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/isi-oct2019/</guid>
+      <description>&lt;p&gt;This talk was the first time I presented my PhD work in full. The talk was an
+opportunity that I got from one of my comittee members, Prof. &lt;a href=&#34;http://emilio.ferrara.name/&#34; target=&#34;_blank&#34;&gt;Emilio Ferrara&lt;/a&gt;.
+The subtitle of the talk has nothing to do with the topic, but I just really like
+that movie. You can find the source code of my talk here:
+&lt;a href=&#34;https://github.com/gvegayon/quals&#34; target=&#34;_blank&#34;&gt;https://github.com/gvegayon/quals&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>parallel: A command for parallel computing</title>
       <link>/publication/parallel-paper/</link>
       <pubDate>Fri, 20 Sep 2019 00:00:00 +0000</pubDate>
@@ -267,16 +281,6 @@ the desired position.&lt;/p&gt;
       
       <guid>/talk/rbootcamp-2018/</guid>
       <description>&lt;p&gt;This 5-day bootcamp was held at USC&amp;rsquo;s Department of Preventive medicine jointly with &lt;a href=&#34;https://malco.io&#34; target=&#34;_blank&#34;&gt;Malcolm Barrett&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Workshop: Introduction to R (for HPC users)</title>
-      <link>/talk/intro-2-r-4-hpc-users-2018/</link>
-      <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/intro-2-r-4-hpc-users-2018/</guid>
-      <description>&lt;p&gt;The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

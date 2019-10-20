@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Statistical and computational methods for bioinformatics and social network analysis: or how did I learn to stop worrying and love the bomb</title>
+      <link>/talk/isi-oct2019/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/isi-oct2019/</guid>
+      <description>This talk was the first time I presented my PhD work in full. The talk was an opportunity that I got from one of my comittee members, Prof. Emilio Ferrara. The subtitle of the talk has nothing to do with the topic, but I just really like that movie. You can find the source code of my talk here: https://github.com/gvegayon/quals</description>
+    </item>
     
     <item>
       <title>Big Problems for Small Networks: Statistical Analysis of Small Networks and Team Performance</title>
