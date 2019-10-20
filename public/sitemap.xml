@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/publication/parallel-paper/</loc>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/working-with-sparse-matrices-in-cpp-part2/</loc>
       <lastmod>2019-07-25T00:00:00+00:00</lastmod>
     </url>
@@ -402,7 +411,7 @@
     <url>
     
       <loc>/publication_types/2/</loc>
-      <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -501,7 +510,7 @@
     <url>
     
       <loc>/publication_types/</loc>
-      <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+      <lastmod>2019-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

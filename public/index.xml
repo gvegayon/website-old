@@ -11,6 +11,15 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>parallel: A command for parallel computing</title>
+      <link>/publication/parallel-paper/</link>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/parallel-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Working with sparse matrices in C&#43;&#43; (part 2)</title>
       <link>/post/working-with-sparse-matrices-in-cpp-part2/</link>
       <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
@@ -138,7 +147,7 @@ the desired position.&lt;/p&gt;
     </item>
     
     <item>
-      <title>sluRm: A lightweight wrapper for HPC with Slurm</title>
+      <title>slurmR: A lightweight wrapper for HPC with Slurm</title>
       <link>/publication/slurm-paper/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -268,16 +277,6 @@ the desired position.&lt;/p&gt;
       
       <guid>/talk/intro-2-r-4-hpc-users-2018/</guid>
       <description>&lt;p&gt;The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The &#39;Happy Scientist&#39; Workshop #1: An introduction to high-performance computing using R</title>
-      <link>/talk/hpc-in-r-2018/</link>
-      <pubDate>Thu, 29 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/hpc-in-r-2018/</guid>
-      <description>&lt;p&gt;This talk was jointly with Garrett Weaver. The presentation source code can be found &lt;a href=&#34;https://github.com/gvegayon/software-dev/tree/master/happy_scientist/parallel_computing&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

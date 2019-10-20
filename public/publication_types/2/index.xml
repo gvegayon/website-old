@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 George G. Vega Yon</copyright>
-    <lastBuildDate>Tue, 09 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>parallel: A command for parallel computing</title>
+      <link>/publication/parallel-paper/</link>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/parallel-paper/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>fmcmc: A friendly MCMC framework</title>
@@ -22,7 +31,7 @@
     </item>
     
     <item>
-      <title>sluRm: A lightweight wrapper for HPC with Slurm</title>
+      <title>slurmR: A lightweight wrapper for HPC with Slurm</title>
       <link>/publication/slurm-paper/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
