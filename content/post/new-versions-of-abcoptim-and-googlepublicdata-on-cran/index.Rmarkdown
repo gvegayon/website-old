@@ -1,0 +1,40 @@
+---
+title: New versions of ABCoptim and googlePublicData on CRAN
+author: George G Vega Yon
+date: '2017-11-08'
+slug: new-versions-of-abcoptim-and-googlepublicdata-on-cran
+categories:
+  - R
+tags:
+  - r
+  - rstats
+summary: Finally, after a long wait, the R packages [googlePublicData](https://github.com/gvegayon/googlePublicData) (more than 2 years since the last update!) and [ABCoptim](https://github.com/gvegayon/ABCoptim) (roughly a year since the last update) have new versions on [CRAN](https://cran.r-project.org).
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Finally, after a long wait, the R packages [googlePublicData](https://github.com/gvegayon/googlePublicData) (more than 2 years since the last update!) and [ABCoptim](https://github.com/gvegayon/ABCoptim) (roughly a year since the last update) have new versions on [CRAN](https://cran.r-project.org).
+
+The first just got an update that fixed some nasty bugs that were evident once you upload the data to [Google Public Data Explorer](https://www.google.com/publicdata), and some other new internal stuff making the code nicer and easier to maintain. The later also got some small updates, a couple of new parameters matching `optim`, and new methods for printing and plotting the results.
+
+Here is an example of `ABCoptim` (from the manual)
+
+```{r abc-example}
+# Loading the package
+library(ABCoptim)
+
+# This function has a minimum at (pi,pi)
+fun <- function(x) {
+  -cos(x[1])*cos(x[2])*exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
+}
+
+# Calling the function!
+abc_optim(rep(0,2), fun, lb=-10, ub=10, criter=50)
+```
+
+And here an example of what can you get with `googlePublicData`
+
+<p><iframe width="400" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="http://www.google.com/publicdata/embed?ds=lt98u9rd734rn_&amp;ctype=b&amp;strail=true&amp;bcs=d&amp;nselm=s&amp;met_y=porc_pob_pobre&amp;scale_y=lin&amp;ind_y=false&amp;met_x=prom_de_escolaridad&amp;scale_x=lin&amp;ind_x=false&amp;met_s=porc_hogares_con_computador&amp;scale_s=lin&amp;ind_s=false&amp;idim=region:IX:RM:XII:VIII:VI:VII:X:V&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false&amp;icfg=lt98u9rd734rn_%253A51%253Aregion%26%26IX:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26RM:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26XII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VIII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VI:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26VII:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26X:::2009%7Clt98u9rd734rn_%253A51%253Aregion%26%26V:::2009&amp;iconSize=0.5"></iframe></p>
+

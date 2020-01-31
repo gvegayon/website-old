@@ -1,0 +1,4 @@
+data-generating-process	library	Matrix	M	matrix	as
+unnamed-chunk-1	sp_show_storage	M
+calling-the-functions	data.frame	sp_iterate	M	sp_row_iterate	sp_t_iterate
+benchmark	set.seed	n	M	as	matrix	runif	microbenchmark	sp_row_iterate	sp_t_iterate
